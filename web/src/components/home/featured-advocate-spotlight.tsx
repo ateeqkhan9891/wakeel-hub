@@ -8,7 +8,6 @@ import {
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
-  CheckCircle2,
   Clock3,
   Landmark,
   LockKeyhole,
@@ -80,13 +79,10 @@ function AnimatedCounter({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [display, setDisplay] = useState(reduceMotion ? value : 0);
+  const renderedDisplay = reduceMotion ? value : display;
 
   useEffect(() => {
-    if (reduceMotion) {
-      setDisplay(value);
-      return;
-    }
-
+    if (reduceMotion) return;
     if (!inView) return;
     const controls = animate(0, value, {
       duration: 1.15,
@@ -100,7 +96,7 @@ function AnimatedCounter({
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur">
       <p className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-        <span ref={ref}>{display.toLocaleString()}</span>
+        <span ref={ref}>{renderedDisplay.toLocaleString()}</span>
         {suffix}
       </p>
       <p className="mt-1 text-xs font-medium uppercase tracking-wide text-white/55">{label}</p>
@@ -169,7 +165,7 @@ export function FeaturedAdvocateSpotlight({ advocate }: { advocate: FeaturedAdvo
             animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
             transition={reduceMotion ? undefined : { duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
             whileHover={reduceMotion ? undefined : { rotateX: 2.5, rotateY: -3, y: -12 }}
-            className="group relative mx-auto max-w-md rounded-[2rem] border border-gold/35 bg-gradient-to-br from-white/12 to-white/[0.035] p-3 shadow-2xl shadow-black/35"
+            className="group relative mx-auto max-w-md rounded-[2rem] border border-gold/35 bg-gradient-to-br from-white/[0.12] to-white/[0.035] p-3 shadow-2xl shadow-black/35"
           >
             <div className="absolute -inset-1 rounded-[2.15rem] bg-gradient-to-br from-gold/35 via-transparent to-emerald-300/20 opacity-70 blur-lg transition-opacity group-hover:opacity-100" aria-hidden />
             <div className="relative overflow-hidden rounded-[1.55rem] border border-white/10 bg-slate-900">
@@ -252,7 +248,7 @@ export function FeaturedAdvocateSpotlight({ advocate }: { advocate: FeaturedAdvo
                 key={item}
                 whileHover={reduceMotion ? undefined : { y: -3, scale: 1.03 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="rounded-full border border-white/12 bg-white/[0.065] px-3.5 py-2 text-sm font-medium text-white/78 shadow-sm backdrop-blur transition-colors hover:border-gold/40 hover:bg-gold/12 hover:text-white"
+                className="rounded-full border border-white/[0.12] bg-white/[0.065] px-3.5 py-2 text-sm font-medium text-white/78 shadow-sm backdrop-blur transition-colors hover:border-gold/40 hover:bg-gold/[0.12] hover:text-white"
               >
                 {item}
               </motion.span>
