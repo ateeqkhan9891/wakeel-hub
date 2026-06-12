@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion", "date-fns"],
+  },
   images: {
     // Avatar placeholders and dicebear initials are SVGs; allow next/image to
     // serve them (they're sanitized + sandboxed by the CSP below).

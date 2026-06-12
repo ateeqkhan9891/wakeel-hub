@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
-import { WakeelAIFloatingButton } from "@/components/ai/WakeelAIFloatingButton";
+import { WakeelAILazy } from "@/components/ai/wakeel-ai-lazy";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationJsonLd, websiteJsonLd, siteUrl } from "@/lib/seo";
 import "./globals.css";
@@ -82,7 +82,7 @@ export default function RootLayout({
           <TooltipProvider delayDuration={150}>
             <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
             {children}
-            <WakeelAIFloatingButton />
+            <WakeelAILazy />
             <CookieConsent />
             <Toaster />
           </TooltipProvider>

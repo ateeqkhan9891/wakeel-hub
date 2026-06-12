@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
 import type { Lawyer, Review } from "@/lib/types";
@@ -157,7 +158,7 @@ function toLawyer(row: DirectoryRow): Lawyer {
 }
 
 /** All verified + active advocates, for the public directory. */
-export async function getVerifiedLawyers(): Promise<Lawyer[]> {
+export const getVerifiedLawyers = cache(async (): Promise<Lawyer[]> => {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("lawyer_directory")
@@ -168,7 +169,7 @@ export async function getVerifiedLawyers(): Promise<Lawyer[]> {
 
   if (error || !data) return [];
   return (data as DirectoryRow[]).map(toLawyer);
-}
+});
 
 /** A single verified advocate by slug, or null if not found / not public. */
 export async function getPublicLawyerBySlug(slug: string): Promise<Lawyer | null> {

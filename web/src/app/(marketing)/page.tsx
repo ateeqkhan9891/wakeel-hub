@@ -1,19 +1,33 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+
 import { Hero, type AdvocateMatch } from "@/components/home/hero";
-import type { FeaturedAdvocateProfile } from "@/components/home/featured-advocate-spotlight";
-import { getVerifiedLawyers } from "@/lib/data/public-lawyers";
-import { PRACTICE_AREAS } from "@/lib/constants";
-import { formatPKR, initials } from "@/lib/utils";
-import { PracticeAreas } from "@/components/home/practice-areas";
-import { HowItWorks } from "@/components/home/how-it-works";
 import { FeaturedLawyers } from "@/components/home/featured-lawyers";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
-import { CaseTrackingPreview } from "@/components/home/case-tracking-preview";
 import { BenefitsSplit } from "@/components/home/benefits-split";
-import { Testimonials } from "@/components/home/testimonials";
 import { SeoInternalLinks } from "@/components/home/seo-internal-links";
 import { Faq } from "@/components/home/faq";
 import { FinalCta } from "@/components/home/final-cta";
+import { getVerifiedLawyers } from "@/lib/data/public-lawyers";
+import { PRACTICE_AREAS } from "@/lib/constants";
+import { formatPKR, initials } from "@/lib/utils";
+
+const PracticeAreas = dynamic(
+  () => import("@/components/home/practice-areas").then((m) => m.PracticeAreas),
+  { loading: () => null }
+);
+const HowItWorks = dynamic(
+  () => import("@/components/home/how-it-works").then((m) => m.HowItWorks),
+  { loading: () => null }
+);
+const CaseTrackingPreview = dynamic(
+  () => import("@/components/home/case-tracking-preview").then((m) => m.CaseTrackingPreview),
+  { loading: () => null }
+);
+const Testimonials = dynamic(
+  () => import("@/components/home/testimonials").then((m) => m.Testimonials),
+  { loading: () => null }
+);
 
 export const metadata: Metadata = {
   title: "Find & Hire Verified Advocates Across Pakistan",
@@ -36,24 +50,6 @@ export default async function HomePage() {
     availability: l.availability.mode.includes("Video") ? "Online slot open" : "Office consult",
     rating: (l.rating || 0).toFixed(1),
   }));
-  const recommendedLawyer = lawyers.find((lawyer) => lawyer.featured && lawyer.verified) ?? lawyers.find((lawyer) => lawyer.verified) ?? null;
-  const featuredAdvocate: FeaturedAdvocateProfile | null = recommendedLawyer
-    ? {
-        name: recommendedLawyer.fullName,
-        slug: recommendedLawyer.slug,
-        title: "Senior Advocate High Court",
-        city: recommendedLawyer.city || "Pakistan",
-        photoUrl: "/images/hero-advocate.svg",
-        barCouncilNumber: recommendedLawyer.barCouncilNumber,
-        experienceYears: recommendedLawyer.experienceYears,
-        casesHandled: recommendedLawyer.casesHandled,
-        successRate: recommendedLawyer.successRate,
-        responseTime: recommendedLawyer.responseTime,
-        consultationFee: recommendedLawyer.consultationFee,
-        rating: recommendedLawyer.rating || 0,
-        expertise: recommendedLawyer.practiceAreas.map(practiceAreaName),
-      }
-    : null;
   const featuredLawyerLinks = lawyers.slice(0, 5).map((lawyer) => ({
     href: `/lawyers/${lawyer.slug}`,
     label: lawyer.fullName,
@@ -62,10 +58,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero advocates={advocates} featuredAdvocate={featuredAdvocate} />
+      <Hero advocates={advocates} />
       <PracticeAreas />
       <HowItWorks />
-      <FeaturedLawyers />
+      <FeaturedLawyers lawyers={lawyers} />
       <SeoInternalLinks featuredLawyers={featuredLawyerLinks} />
       <WhyChooseUs />
       <CaseTrackingPreview />

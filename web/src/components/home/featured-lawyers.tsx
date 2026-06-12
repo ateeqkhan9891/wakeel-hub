@@ -4,6 +4,7 @@ import { ArrowRight, Clock3, MessageSquareText, ShieldCheck, Star } from "lucide
 import { Button } from "@/components/ui/button";
 import { LawyerCard } from "@/components/shared/lawyer-card";
 import { getVerifiedLawyers } from "@/lib/data/public-lawyers";
+import type { Lawyer } from "@/lib/types";
 
 const SECTION_PROOF = [
   { label: "Verified", value: "Registered advocates", icon: ShieldCheck },
@@ -12,8 +13,8 @@ const SECTION_PROOF = [
   { label: "Client Reviews", value: "Verified feedback", icon: Star },
 ] as const;
 
-export async function FeaturedLawyers() {
-  const lawyers = await getVerifiedLawyers();
+export async function FeaturedLawyers({ lawyers: lawyersProp }: { lawyers?: Lawyer[] } = {}) {
+  const lawyers = lawyersProp ?? (await getVerifiedLawyers());
   const featured = lawyers
     .filter((lawyer) => lawyer.verified)
     .sort((a, b) => {

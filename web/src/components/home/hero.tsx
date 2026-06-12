@@ -3,10 +3,7 @@
 import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   CalendarCheck2,
@@ -28,7 +25,6 @@ import type { LucideIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FeaturedAdvocateSpotlight, type FeaturedAdvocateProfile } from "@/components/home/featured-advocate-spotlight";
 import { CITIES, COURTS_BY_CITY, FEE_RANGES, LANGUAGES, PRACTICE_AREAS, type City } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -97,71 +93,39 @@ const fadeUp = {
   transition: { duration: 0.55, ease: "easeOut" },
 } as const;
 
-function JusticeWatermark({ reduceMotion }: { reduceMotion: boolean | null }) {
+function JusticeWatermark() {
   return (
-    <motion.svg
+    <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 1280 300"
-      className="pointer-events-none absolute left-1/2 top-16 z-0 w-[90%] max-w-[1200px] -translate-x-1/2 select-none text-gold sm:top-12 sm:w-[88%] lg:top-8"
+      className="pointer-events-none absolute left-1/2 top-16 z-0 w-[90%] max-w-[1200px] -translate-x-1/2 select-none text-gold opacity-[0.045] sm:top-12 sm:w-[88%] lg:top-8"
     >
-      <motion.g
-        opacity="0.045"
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                x: [-10, 8, -10],
-                y: [0, -5, 0],
-                rotate: [-0.45, 0.35, -0.45],
-                scale: [1, 1.012, 1],
-              }
-        }
-        transition={reduceMotion ? undefined : { duration: 10, ease: "easeInOut", repeat: Infinity }}
+      <text
+        x="640"
+        y="173"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        textAnchor="middle"
+        style={{
+          fontFamily: '"Segoe Script", "Brush Script MT", "Lucida Handwriting", cursive',
+          fontSize: 156,
+          fontStyle: "italic",
+          fontWeight: 400,
+          letterSpacing: 9,
+        }}
       >
-        <motion.text
-          x="640"
-          y="173"
-          fill="currentColor"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          textAnchor="middle"
-          style={{
-            fontFamily: '"Segoe Script", "Brush Script MT", "Lucida Handwriting", cursive',
-            fontSize: 156,
-            fontStyle: "italic",
-            fontWeight: 400,
-            letterSpacing: 9,
-          }}
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  opacity: [0.68, 1, 0.72],
-                }
-          }
-          transition={reduceMotion ? undefined : { duration: 5.8, ease: "easeInOut", repeat: Infinity }}
-        >
-          JUSTICE
-        </motion.text>
-        <motion.path
-          d="M170 205 C350 240 596 226 770 217 C912 210 1048 219 1130 238"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeWidth="9"
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  pathLength: [0.82, 1, 0.82],
-                  opacity: [0.52, 0.95, 0.52],
-                }
-          }
-          transition={reduceMotion ? undefined : { duration: 6.8, ease: "easeInOut", repeat: Infinity }}
-        />
-      </motion.g>
-    </motion.svg>
+        JUSTICE
+      </text>
+      <path
+        d="M170 205 C350 240 596 226 770 217 C912 210 1048 219 1130 238"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="9"
+      />
+    </svg>
   );
 }
 
@@ -208,21 +172,9 @@ function CleanSelect({
   );
 }
 
-function AdvocateRow({
-  advocate,
-  index,
-}: {
-  advocate: AdvocateMatch;
-  index: number;
-}) {
-  const reduceMotion = useReducedMotion();
-
+function AdvocateRow({ advocate }: { advocate: AdvocateMatch }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, delay: 0.16 + index * 0.08, ease: "easeOut" }}
-      whileHover={reduceMotion ? undefined : { x: 3 }}
+    <article
       className="group grid grid-cols-[auto_minmax(0,1fr)] gap-3 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-gold/50 hover:shadow-md"
     >
       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-950 text-sm font-semibold text-white">
@@ -270,13 +222,12 @@ function AdvocateRow({
           </Link>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
-export function Hero({ advocates = [], featuredAdvocate = null }: { advocates?: AdvocateMatch[]; featuredAdvocate?: FeaturedAdvocateProfile | null }) {
+export function Hero({ advocates = [] }: { advocates?: AdvocateMatch[] }) {
   const router = useRouter();
-  const reduceMotion = useReducedMotion();
   const [practiceArea, setPracticeArea] = useState("");
   const [city, setCity] = useState("");
   const [court, setCourt] = useState("");
@@ -319,7 +270,7 @@ export function Hero({ advocates = [], featuredAdvocate = null }: { advocates?: 
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,23,42,0.06),transparent_34rem)]" />
 
       <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pb-20">
-        <JusticeWatermark reduceMotion={reduceMotion} />
+        <JusticeWatermark />
 
         <motion.div {...fadeUp} className="relative z-10 mx-auto max-w-4xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 shadow-sm">
@@ -431,11 +382,9 @@ export function Hero({ advocates = [], featuredAdvocate = null }: { advocates?: 
           className="relative z-10 mt-8 grid grid-cols-2 gap-3 md:grid-cols-4"
         >
           {TRUST_INDICATORS.map(({ title, subtitle, icon: Icon }) => (
-            <motion.div
+            <div
               key={title}
-              whileHover={reduceMotion ? undefined : { y: -3 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm shadow-slate-950/5 backdrop-blur transition-colors hover:border-gold/40"
+              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm shadow-slate-950/5 backdrop-blur transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-gold/40"
             >
               <span className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
@@ -447,11 +396,9 @@ export function Hero({ advocates = [], featuredAdvocate = null }: { advocates?: 
                   <p className="mt-1 text-sm leading-5 text-slate-500">{subtitle}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
-
-        <FeaturedAdvocateSpotlight advocate={featuredAdvocate} />
 
         <div className="relative z-10 mt-8 grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)]">
           <motion.div
@@ -482,8 +429,8 @@ export function Hero({ advocates = [], featuredAdvocate = null }: { advocates?: 
               </div>
             ) : (
               <div className="mt-4 space-y-3">
-                {advocates.map((advocate, index) => (
-                  <AdvocateRow key={advocate.slug} advocate={advocate} index={index} />
+                {advocates.map((advocate) => (
+                  <AdvocateRow key={advocate.slug} advocate={advocate} />
                 ))}
               </div>
             )}
