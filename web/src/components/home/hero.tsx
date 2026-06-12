@@ -417,10 +417,10 @@ export function Hero({ advocates = [], featuredAdvocate = null }: { advocates?: 
               ))}
             </div>
             <Button asChild variant="ghost" className="justify-start rounded-xl text-slate-700 hover:bg-slate-50 hover:text-slate-950 sm:justify-center">
-              <a href="/register/lawyer">
+              <Link href="/register/lawyer">
                 Register as Advocate
                 <ArrowRight className="h-4 w-4" aria-hidden />
-              </a>
+              </Link>
             </Button>
           </div>
         </motion.form>

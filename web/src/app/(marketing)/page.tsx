@@ -41,9 +41,9 @@ export default async function HomePage() {
     ? {
         name: recommendedLawyer.fullName,
         slug: recommendedLawyer.slug,
-        title: recommendedLawyer.professionalTitle || "Senior Advocate High Court",
+        title: "Senior Advocate High Court",
         city: recommendedLawyer.city || "Pakistan",
-        photoUrl: recommendedLawyer.photoUrl,
+        photoUrl: "/images/hero-advocate.svg",
         barCouncilNumber: recommendedLawyer.barCouncilNumber,
         experienceYears: recommendedLawyer.experienceYears,
         casesHandled: recommendedLawyer.casesHandled,

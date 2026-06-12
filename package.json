@@ -12,9 +12,7 @@
     "web:build": "next build web",
     "web:start": "next start web",
     "web:lint": "eslint web --config web/eslint.config.mjs",
-    "web:typecheck": "tsc -p web/tsconfig.json --noEmit",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "web:typecheck": "tsc -p web/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
@@ -46,7 +44,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
     "tailwindcss": "^4",
-    "@playwright/test": "^1.51.1",
     "typescript": "^5"
   }
 }

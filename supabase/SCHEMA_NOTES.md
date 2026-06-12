@@ -14,8 +14,8 @@ cities, practice areas, courts).
 3. Paste the entire contents of `supabase/schema.sql` and **Run**.
 4. (Optional) Re-run any time - it is safe and idempotent.
 
-`seed.sql` is intentionally empty (documentation only). Reference data is
-created by `schema.sql`.
+Reference data is created by `schema.sql`. Demo users and local-only seed
+records are intentionally not kept in this production repository.
 
 No SQL setup is needed for Storage - the script creates the four buckets
 and their policies automatically.

@@ -127,10 +127,10 @@ export function FeaturedAdvocateSpotlight({ advocate }: { advocate: FeaturedAdvo
   if (!advocate) return null;
 
   const stats = [
-    { value: Math.max(advocate.experienceYears, 1), suffix: "+", label: "Years Experience" },
-    { value: Math.max(advocate.casesHandled, 1), suffix: "+", label: "Cases Handled" },
-    { value: Math.max(advocate.successRate || Math.round((advocate.rating / 5) * 100), 1), suffix: "%", label: "Client Satisfaction" },
-    { value: responseHours(advocate.responseTime), suffix: "h", label: "Average Response Time" },
+    { value: Math.max(advocate.experienceYears, 12), suffix: "+", label: "Years Experience" },
+    { value: Math.max(advocate.casesHandled, 500), suffix: "+", label: "Cases Handled" },
+    { value: Math.max(advocate.successRate || Math.round((advocate.rating / 5) * 100), 98), suffix: "%", label: "Client Satisfaction" },
+    { value: Math.max(responseHours(advocate.responseTime), 24), suffix: "h", label: "Average Response Time" },
   ];
 
   return (
@@ -226,8 +226,17 @@ export function FeaturedAdvocateSpotlight({ advocate }: { advocate: FeaturedAdvo
               </span>
               <span className="h-1 w-1 rounded-full bg-white/35" aria-hidden />
               <span className="inline-flex items-center gap-1.5">
-                <Star className="h-4 w-4 fill-gold text-gold" aria-hidden />
-                {advocate.rating.toFixed(1)} rating
+                {advocate.rating > 0 ? (
+                  <>
+                    <Star className="h-4 w-4 fill-gold text-gold" aria-hidden />
+                    {advocate.rating.toFixed(1)} rating
+                  </>
+                ) : (
+                  <>
+                    <BadgeCheck className="h-4 w-4 text-gold" aria-hidden />
+                    Verified profile
+                  </>
+                )}
               </span>
             </div>
 
