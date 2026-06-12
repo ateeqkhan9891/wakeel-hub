@@ -18,6 +18,22 @@ In **Vercel → Project → Settings → General → Build & Output Settings**:
 Do **not** set a custom output directory. With Root Directory = `web`, the build
 produces `web/.next` and Vercel finds `routes-manifest.json` automatically.
 
+`web/vercel.json` pins `framework: "nextjs"` so Vercel always serves this as a
+Next.js app (correct routing + `.next` output), even if the project was first
+created pointing at the repo root.
+
+### Troubleshooting: `404: NOT_FOUND` after a successful install
+
+This is almost never a code problem — it means Vercel didn't serve the Next.js
+output. Check, in **Project → Settings → Build & Output Settings**:
+
+1. **Root Directory** = `web` (the install log should add ~670 packages).
+2. **Framework Preset** = **Next.js** (not "Other"). `web/vercel.json` enforces this.
+3. **Output Directory** = empty. If it's set to `.next` / `web/.next`, clear it.
+4. **Build Command** = `npm run build` (or leave as framework default).
+
+After changing settings, trigger **Redeploy** (disable build cache once).
+
 ## 2. Environment variables
 
 Add these in **Vercel → Project → Settings → Environment Variables**
