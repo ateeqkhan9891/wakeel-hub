@@ -1,0 +1,49 @@
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of an advocate inside a verified medallion">
+  <defs>
+    <radialGradient id="medallionBg" cx="50%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#3a4d76" />
+      <stop offset="55%" stop-color="#28354f" />
+      <stop offset="100%" stop-color="#1c2740" />
+    </radialGradient>
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3dfac" />
+      <stop offset="55%" stop-color="#d8b46a" />
+      <stop offset="100%" stop-color="#c79a4d" />
+    </linearGradient>
+    <linearGradient id="figureGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#aebbd6" />
+      <stop offset="45%" stop-color="#7c8db3" />
+      <stop offset="100%" stop-color="#5b6d94" />
+    </linearGradient>
+    <linearGradient id="tieGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#f3dfac" />
+      <stop offset="100%" stop-color="#d8b46a" />
+    </linearGradient>
+  </defs>
+
+  <!-- outer halo ring -->
+  <circle cx="240" cy="240" r="226" stroke="url(#ringGradient)" stroke-width="2" stroke-opacity="0.45" fill="none" stroke-dasharray="4 10" stroke-linecap="round" />
+
+  <!-- medallion -->
+  <circle cx="240" cy="240" r="196" fill="url(#medallionBg)" />
+  <circle cx="240" cy="240" r="196" stroke="url(#ringGradient)" stroke-width="3" fill="none" />
+  <circle cx="240" cy="240" r="180" stroke="#f3dfac" stroke-opacity="0.16" stroke-width="1" fill="none" />
+
+  <!-- advocate silhouette: head -->
+  <circle cx="240" cy="190" r="54" fill="url(#figureGradient)" />
+  <!-- shoulders / robe -->
+  <path d="M132 372C132 300 178 256 240 256C302 256 348 300 348 372V392H132V372Z" fill="url(#figureGradient)" />
+  <!-- collar -->
+  <path d="M214 262L240 296L266 262C254 257 226 257 214 262Z" fill="#1c2740" fill-opacity="0.35" />
+  <!-- tie / sash accent -->
+  <path d="M232 270L240 300L248 270L240 262Z" fill="url(#tieGradient)" />
+  <path d="M229 296H251L244 360H236L229 296Z" fill="url(#tieGradient)" fill-opacity="0.85" />
+
+  <!-- scales of justice motif, subtle -->
+  <g opacity="0.5" stroke="url(#ringGradient)" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <path d="M240 122V146" />
+    <path d="M206 134H274" />
+    <path d="M206 134L192 162C192 174 220 174 220 162L206 134Z" />
+    <path d="M274 134L260 162C260 174 288 174 288 162L274 134Z" />
+  </g>
+</svg>

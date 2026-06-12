@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WakeelHub Pakistan
 
-## Getting Started
+WakeelHub Pakistan is a production-oriented legal marketplace for Pakistan: clients find verified advocates, book paid consultations, message securely, track cases, download receipts, and use role-based dashboards. Lawyers manage bookings, cases, verification, earnings, payouts, profile settings, and notifications. Admins manage users, lawyer verification, reports, payments, and platform commission.
 
-First, run the development server:
+## Repository Layout
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```txt
+web/                 Next.js 16 App Router web app
+mobile/              Expo React Native mobile app
+supabase/            Shared Supabase schema, seed data, migrations, functions
+packages/
+  types/             Shared TypeScript domain types
+  utils/             Shared formatting and commission helpers
+  config/            Shared app constants and environment names
+  ui/                Shared design tokens
+docs/                Product and integration notes
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Web: Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Radix, Framer Motion, lucide-react
+- Mobile: Expo React Native, TypeScript, lucide-react-native, Expo-friendly service layer
+- Backend: one Supabase project for Auth, Postgres, Storage, RLS, profiles, bookings, payments, messages, cases, documents, notifications, and admin data
+- Forms and validation: React Hook Form + Zod
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup
 
-## Learn More
+Install root dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Configure the web app:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+cp web/.env.example web/.env.local
+```
 
-## Deploy on Vercel
+Configure the mobile app with the same Supabase project:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+cp mobile/.env.example mobile/.env
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Apply the Supabase database scripts in order:
+
+```bash
+psql "$DATABASE_URL" -f supabase/schema.sql
+psql "$DATABASE_URL" -f supabase/seed.sql
+```
+
+`supabase/schema.sql` is the production schema with RLS policies. `supabase/seed.sql` should be used for reference and development data only.
+
+## Scripts
+
+```bash
+npm run web:dev        # Next.js dev server for /web
+npm run web:build      # Production web build
+npm run web:start      # Start built web app
+npm run web:lint       # Lint web app
+npm run web:typecheck  # Type-check web app
+
+npm run mobile:dev        # Expo dev server for /mobile
+npm run mobile:lint       # Lint mobile app
+npm run mobile:typecheck  # Type-check mobile app
+
+npm run lint       # Current default: web lint
+npm run typecheck  # Current default: web typecheck
+```
+
+## Architecture Notes
+
+- Web routes are grouped into marketing, auth, client dashboard, lawyer dashboard, and admin dashboard segments inside `web/src/app`.
+- `web/src/proxy.ts` performs fast Supabase session refresh and role-aware redirects, while dashboard layouts call server-side guards for defense in depth.
+- Production dashboard metrics are read from Supabase-scoped data modules. Empty states render when no records exist instead of fake numbers.
+- Payment and commission data is modeled for gross amount, platform commission percentage and amount, lawyer net amount, gateway fee, payment status, payout status, transaction reference, receipt number, and invoice number.
+- Mobile uses the same Supabase project and role model. The v1 app is a single WakeelHub app that switches client and lawyer flows after auth; admin mobile dashboards are intentionally out of scope for v1.
+
+## Supabase
+
+The shared backend lives in `supabase/`:
+
+- `schema.sql`: tables, enums, indexes, triggers, RLS policies, storage buckets, and safe public views
+- `seed.sql`: reference/development seed data
+- `migrations/`: future migration files
+- `functions/`: future Supabase Edge Functions
+
+Never rely on client-side role checks alone. RLS, server-side guards, and scoped queries should all remain in place.

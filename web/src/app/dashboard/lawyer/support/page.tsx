@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+
+import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
+import { ComplaintForm } from "@/components/dashboard/complaint-form";
+
+export const metadata: Metadata = { title: "Support" };
+
+export default function LawyerSupportPage() {
+  return (
+    <div className="space-y-6">
+      <DashboardPageHeader title="Support & Reports" description="File a complaint or report a booking, payment, case, or account issue." />
+      <ComplaintForm />
+    </div>
+  );
+}
