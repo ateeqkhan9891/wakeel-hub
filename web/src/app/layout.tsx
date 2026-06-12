@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { WakeelAIFloatingButton } from "@/components/ai/WakeelAIFloatingButton";
 import { JsonLd } from "@/components/seo/json-ld";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { organizationJsonLd, websiteJsonLd, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -21,8 +21,6 @@ const lora = Lora({
   subsets: ["latin"],
   display: "swap",
 });
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wakeelhub.pk";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

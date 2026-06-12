@@ -2,7 +2,31 @@ import { CITIES, PRACTICE_AREAS, type City, type PracticeAreaSlug } from "@/lib/
 import type { Lawyer } from "@/lib/types";
 import { formatPKR } from "@/lib/utils";
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wakeelhub.pk";
+/**
+ * Resolves the canonical site origin safely so the build never crashes on a
+ * missing or malformed env value (the classic "Invalid URL" Vercel failure).
+ * Order: valid NEXT_PUBLIC_SITE_URL → Vercel-provided host → local fallback.
+ */
+function resolveSiteUrl(): string {
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ];
+  for (const raw of candidates) {
+    const value = raw?.trim();
+    if (!value) continue;
+    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+    try {
+      return new URL(withProtocol).origin;
+    } catch {
+      // ignore invalid value and try the next candidate
+    }
+  }
+  return process.env.NODE_ENV === "production" ? "https://wakeelhub.pk" : "http://localhost:3000";
+}
+
+export const siteUrl = resolveSiteUrl();
 
 export function absoluteUrl(path = "/") {
   if (/^https?:\/\//i.test(path)) return path;

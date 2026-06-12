@@ -3,8 +3,7 @@ import { CITIES, PRACTICE_AREAS } from "@/lib/constants";
 import { getVerifiedLawyers } from "@/lib/data/public-lawyers";
 import { getPracticeAreaSlugs, getSubcategoryStaticParams } from "@/lib/practice-area-pages";
 import { LEGAL_GUIDES, SEO_PRACTICE_PAGES, getSeoCityPracticePages } from "@/lib/seo-content";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wakeelhub.pk";
+import { siteUrl } from "@/lib/seo";
 
 const STATIC_ROUTES = [
   "",
