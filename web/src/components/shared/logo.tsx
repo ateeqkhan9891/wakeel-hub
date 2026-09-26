@@ -1,16 +1,36 @@
 import Link from "next/link";
 import { Scale } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
-export function Logo({ className, iconOnly }: { className?: string; iconOnly?: boolean }) {
+type LogoProps = {
+  className?: string;
+  iconOnly?: boolean;
+};
+
+export function Logo({
+  className,
+  iconOnly = false,
+}: LogoProps) {
   return (
-    <Link href="/" className={cn("flex items-center gap-2 group", className)}>
-      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm transition-transform group-hover:scale-105">
-        <Scale className="h-5 w-5" strokeWidth={2.25} />
-      </span>
+    <Link
+      href="/"
+      className={cn(
+        "group inline-flex items-center gap-2.5",
+        className
+      )}
+    >
+      <Scale
+        className="h-7 w-7 text-primary transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105"
+        strokeWidth={2.1}
+      />
+
       {!iconOnly && (
-        <span className="font-heading text-lg font-semibold tracking-tight text-foreground">
-          WakeelHub <span className="text-gold">Pakistan</span>
+        <span className="font-heading text-[1.15rem] font-semibold tracking-[-0.02em] text-foreground">
+          WakeelHub
+          <span className="ml-1 text-gold">
+            Pakistan
+          </span>
         </span>
       )}
     </Link>
