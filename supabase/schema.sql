@@ -565,42 +565,7 @@ alter table public.messages alter column body drop not null;
 alter table public.messages replica identity full;
 
 -- Enable Supabase Realtime on the chat tables (guarded; safe to re-run).
-do $$
-begin
-  if not exists (select 1 from pg_publication where pubname = 'supabase_realtime') then
-    create publication supabase_realtime;
-  end if;
-  if not exists (
-    select 1 from pg_publication_tables
-    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'messages'
-  ) then
-    alter publication supabase_realtime add table public.messages;
-  end if;
-  if not exists (
-    select 1 from pg_publication_tables
-    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'conversations'
-  ) then
-    alter publication supabase_realtime add table public.conversations;
-  end if;
-  if not exists (
-    select 1 from pg_publication_tables
-    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'case_updates'
-  ) then
-    alter publication supabase_realtime add table public.case_updates;
-  end if;
-  if not exists (
-    select 1 from pg_publication_tables
-    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'hearing_dates'
-  ) then
-    alter publication supabase_realtime add table public.hearing_dates;
-  end if;
-  if not exists (
-    select 1 from pg_publication_tables
-    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'cases'
-  ) then
-    alter publication supabase_realtime add table public.cases;
-  end if;
-end$$;
+
 
 
 -- =====================================================================
@@ -718,7 +683,64 @@ create index if not exists hearing_dates_date_idx on public.hearing_dates (heari
 
 -- Extra hearing fields used by the lawyer hearings workflow.
 alter table public.hearing_dates add column if not exists judge   text;
-alter table public.hearing_dates add column if not exists outcome text;
+
+
+do $$
+begin
+  if not exists (select 1 from pg_publication where pubname = 'supabase_realtime') then
+    create publication supabase_realtime;
+  end if;
+
+  if not exists (
+    select 1
+    from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'messages'
+  ) then
+    alter publication supabase_realtime add table public.messages;
+  end if;
+
+  if not exists (
+    select 1
+    from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'conversations'
+  ) then
+    alter publication supabase_realtime add table public.conversations;
+  end if;
+
+  if not exists (
+    select 1
+    from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'case_updates'
+  ) then
+    alter publication supabase_realtime add table public.case_updates;
+  end if;
+
+  if not exists (
+    select 1
+    from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'hearing_dates'
+  ) then
+    alter publication supabase_realtime add table public.hearing_dates;
+  end if;
+
+  if not exists (
+    select 1
+    from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'cases'
+  ) then
+    alter publication supabase_realtime add table public.cases;
+  end if;
+end $$;
 
 -- Documents: may belong to a case and/or a booking. Private by default.
 create table if not exists public.documents (
