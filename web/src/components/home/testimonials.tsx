@@ -1,113 +1,202 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { BadgeCheck, FileText, MessageSquareText, ShieldCheck, Star, UserCheck } from "lucide-react";
+
+import {
+  BadgeCheck,
+  FileText,
+  MessageSquareText,
+  ShieldCheck,
+  Star,
+  UserCheck,
+} from "lucide-react";
 
 const REVIEW_PRINCIPLES = [
   {
-    title: "Linked to real profiles",
-    body: "Reviews are displayed on the advocate profile they belong to, so visitors can judge feedback in context.",
+    title: "Real advocate profiles",
+    body: "Reviews stay attached to the advocate profile they belong to, giving visitors the context needed to evaluate feedback.",
     icon: UserCheck,
   },
   {
-    title: "Published after moderation",
-    body: "Client feedback can be reviewed before it appears publicly, keeping private legal details out of the marketplace.",
+    title: "Moderated feedback",
+    body: "Reviews can be checked for abuse and unnecessary private legal details before appearing publicly.",
     icon: ShieldCheck,
   },
   {
-    title: "Useful legal context",
-    body: "Practice area, rating, and consultation context matter more than anonymous marketing quotes.",
+    title: "Context matters",
+    body: "Ratings are viewed alongside practice areas, courts, fees, and advocate information.",
     icon: FileText,
   },
 ] as const;
 
 const REVIEW_FLOW = [
-  "Client books or completes a consultation",
-  "Client submits rating and feedback",
-  "WakeelHub reviews it for privacy and abuse",
-  "Approved review appears on the lawyer profile",
+  "Consultation is completed",
+  "Client submits a review",
+  "WakeelHub checks the submission",
+  "Approved review appears on the profile",
 ] as const;
 
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.5, ease: "easeOut" },
+  transition: {
+    duration: 0.5,
+    ease: "easeOut",
+  },
 } as const;
 
 export function Testimonials() {
   const reduce = !!useReducedMotion();
 
   return (
-    <section className="border-y border-slate-200 bg-[#fbfaf7] py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(360px,0.55fr)] lg:items-center">
+    <section className="border-y border-border/70 bg-background">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center">
           <motion.div {...fadeUp} className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold uppercase tracking-wide text-slate-700 shadow-sm">
-              <Star className="h-4 w-4 text-gold-foreground" aria-hidden />
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              <Star
+                className="h-3.5 w-3.5 text-gold-foreground"
+                aria-hidden
+              />
               Client reviews
             </span>
-            <h2 className="mt-5 font-heading text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-              Real feedback belongs on real advocate profiles.
+
+            <h2 className="mt-5 max-w-2xl font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Reviews that belong where the legal relationship happens.
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-              WakeelHub does not need staged client stories on the homepage. When clients review an advocate, that feedback should appear beside the verified profile, consultation fee, courts, and practice areas.
+
+            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              Client feedback is most useful when it appears alongside the
+              advocate, practice areas, courts, and other information that
+              helps people make an informed decision.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-2">
+                <BadgeCheck
+                  className="h-4 w-4 text-gold-foreground"
+                  aria-hidden
+                />
+                Profile-based reviews
+              </span>
+
+              <span className="inline-flex items-center gap-2">
+                <MessageSquareText
+                  className="h-4 w-4 text-gold-foreground"
+                  aria-hidden
+                />
+                Client feedback
+              </span>
+            </div>
           </motion.div>
 
           <motion.div
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.08 }}
-            className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-3xl border border-border bg-card p-6 shadow-sm"
           >
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Review publishing flow</p>
-            <div className="mt-5 space-y-3">
-              {REVIEW_FLOW.map((step, index) => (
-                <motion.div
-                  key={step}
-                  initial={{ opacity: 0, x: 14 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.42, delay: reduce ? 0 : 0.08 + index * 0.06, ease: "easeOut" }}
-                  className="flex items-center gap-3 rounded-2xl bg-slate-50 p-3"
-                >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-slate-950 text-xs font-semibold text-white">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm font-medium text-slate-700">{step}</span>
-                </motion.div>
-              ))}
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Review process
+                </p>
+
+                <h3 className="mt-1 font-heading text-lg font-semibold tracking-tight text-foreground">
+                  From consultation to feedback
+                </h3>
+              </div>
+
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold/10">
+                <MessageSquareText
+                  className="h-4 w-4 text-gold-foreground"
+                  aria-hidden
+                />
+              </div>
+            </div>
+
+            <div className="relative mt-6">
+              <div
+                aria-hidden
+                className="absolute bottom-5 left-4 top-5 w-px bg-border"
+              />
+
+              <div className="space-y-4">
+                {REVIEW_FLOW.map((step, index) => (
+                  <motion.div
+                    key={step}
+                    initial={{ opacity: 0, x: 12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: reduce ? 0 : 0.06 + index * 0.06,
+                      ease: "easeOut",
+                    }}
+                    className="relative flex items-center gap-3"
+                  >
+                    <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-border bg-card text-xs font-semibold text-foreground">
+                      {index + 1}
+                    </span>
+
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {step}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {REVIEW_PRINCIPLES.map(({ title, body, icon: Icon }, index) => (
-            <motion.article
-              key={title}
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.1 + index * 0.06 }}
-              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-gold/50 hover:shadow-xl hover:shadow-slate-950/8"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gold/10 text-gold-foreground">
-                <Icon className="h-5 w-5" aria-hidden />
-              </span>
-              <h3 className="mt-5 text-base font-semibold text-slate-950">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{body}</p>
-            </motion.article>
-          ))}
+        <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 border-t border-border md:grid-cols-3">
+          {REVIEW_PRINCIPLES.map(
+            ({ title, body, icon: Icon }, index) => (
+              <motion.article
+                key={title}
+                {...fadeUp}
+                transition={{
+                  ...fadeUp.transition,
+                  delay: 0.1 + index * 0.06,
+                }}
+                className={`group border-b border-border px-6 py-8 transition-colors duration-200 hover:bg-secondary/30 ${
+                  index > 0 ? "md:border-l" : ""
+                }`}
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold/20 bg-gold/8 text-gold-foreground transition-colors duration-200 group-hover:border-gold/35 group-hover:bg-gold/12">
+                  <Icon
+                    className="h-5 w-5"
+                    strokeWidth={1.8}
+                    aria-hidden
+                  />
+                </div>
+
+                <h3 className="mt-5 font-heading text-base font-semibold tracking-tight text-foreground">
+                  {title}
+                </h3>
+
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {body}
+                </p>
+              </motion.article>
+            ),
+          )}
         </div>
 
         <motion.div
           {...fadeUp}
-          transition={{ ...fadeUp.transition, delay: 0.16 }}
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm"
+          transition={{ ...fadeUp.transition, delay: 0.18 }}
+          className="mx-auto mt-8 flex max-w-6xl items-start gap-3 rounded-2xl border border-gold/15 bg-gold/5 px-5 py-4"
         >
-          <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-foreground" aria-hidden />
-          <p className="text-sm leading-6 text-slate-600">
-            Real published reviews are already supported on individual lawyer pages, including ratings and client comments from the database.
+          <BadgeCheck
+            className="mt-0.5 h-5 w-5 shrink-0 text-gold-foreground"
+            aria-hidden
+          />
+
+          <p className="text-sm leading-6 text-muted-foreground">
+            Reviews are presented as part of the advocate profile, alongside
+            the information clients need to understand their practice.
           </p>
-          <MessageSquareText className="ml-auto hidden h-5 w-5 shrink-0 text-slate-300 sm:block" aria-hidden />
         </motion.div>
       </div>
     </section>

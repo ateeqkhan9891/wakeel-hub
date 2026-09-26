@@ -1,43 +1,48 @@
 "use client";
 
 import { useState } from "react";
+
 import Link from "next/link";
+
 import { motion, useReducedMotion } from "framer-motion";
+
 import {
   ArrowRight,
-  Briefcase,
-  Building2,
+  BriefcaseBusiness,
+  FileText,
+  Globe2,
   Gavel,
+  Handshake,
   HardHat,
+  House,
   Landmark,
-  Plane,
-  Receipt,
+  ReceiptText,
   Scale,
-  ScrollText,
-  ShieldAlert,
-  ShoppingCart,
-  Sparkles,
-  Users,
+  ShieldCheck,
+  ShoppingBag,
+  UsersRound,
   type LucideIcon,
 } from "lucide-react";
 
 const ICONS: Record<string, LucideIcon> = {
-  Users,
+  UsersRound,
+  House,
   Gavel,
-  Building2,
   Scale,
-  Briefcase,
-  Receipt,
-  Plane,
+  BriefcaseBusiness,
+  ReceiptText,
+  Globe2,
   Landmark,
   HardHat,
-  ScrollText,
-  ShieldAlert,
-  ShoppingCart,
+  FileText,
+  ShieldCheck,
+  ShoppingBag,
 };
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const DIRECTORY_NOTE = "Live advocate data appears inside the lawyer directory";
+
+const DIRECTORY_NOTE =
+  "Live advocate profiles are available in the directory";
 
 interface Area {
   slug: string;
@@ -48,44 +53,171 @@ interface Area {
 }
 
 const FEATURED: Area[] = [
-  { slug: "family-law", name: "Family Law", icon: "Users", finder: "family", services: ["Khula", "Divorce", "Child Custody"] },
-  { slug: "property-law", name: "Property Law", icon: "Building2", finder: "property", services: ["Possession", "Transfers", "Title Verification"] },
-  { slug: "criminal-law", name: "Criminal Law", icon: "Gavel", finder: "criminal", services: ["Bail", "FIR Quashing", "Appeals"] },
+  {
+    slug: "family-law",
+    name: "Family Law",
+    icon: "UsersRound",
+    finder: "family",
+    services: ["Khula", "Divorce", "Child Custody"],
+  },
+  {
+    slug: "property-law",
+    name: "Property Law",
+    icon: "House",
+    finder: "property",
+    services: ["Possession", "Transfers", "Title Verification"],
+  },
+  {
+    slug: "criminal-law",
+    name: "Criminal Law",
+    icon: "Gavel",
+    finder: "criminal",
+    services: ["Bail", "FIR Quashing", "Appeals"],
+  },
 ];
 
 const REST: Area[] = [
-  { slug: "civil-law", name: "Civil Law", icon: "Scale", finder: null, services: ["Recovery", "Contracts", "Damages"] },
-  { slug: "corporate-law", name: "Corporate Law", icon: "Briefcase", finder: "corporate", services: ["Incorporation", "Compliance", "Contracts"] },
-  { slug: "tax-law", name: "Tax Law", icon: "Receipt", finder: null, services: ["FBR Notices", "Appeals", "Returns"] },
-  { slug: "immigration-law", name: "Immigration Law", icon: "Plane", finder: "immigration", services: ["Visas", "Citizenship", "Appeals"] },
-  { slug: "banking-law", name: "Banking Law", icon: "Landmark", finder: null, services: ["Loan Recovery", "Finance Disputes"] },
-  { slug: "labour-law", name: "Labour Law", icon: "HardHat", finder: null, services: ["Termination", "Wages", "Disputes"] },
-  { slug: "constitutional-law", name: "Constitutional Law", icon: "ScrollText", finder: null, services: ["Writ Petitions", "Fundamental Rights"] },
-  { slug: "cyber-crime", name: "Cyber Crime", icon: "ShieldAlert", finder: null, services: ["FIA Complaints", "Online Harassment"] },
-  { slug: "consumer-law", name: "Consumer Law", icon: "ShoppingCart", finder: null, services: ["Protection Claims", "Service Disputes"] },
+  {
+    slug: "civil-law",
+    name: "Civil Law",
+    icon: "Scale",
+    finder: null,
+    services: ["Recovery", "Contracts", "Damages"],
+  },
+  {
+    slug: "corporate-law",
+    name: "Corporate Law",
+    icon: "BriefcaseBusiness",
+    finder: "corporate",
+    services: ["Incorporation", "Compliance", "Contracts"],
+  },
+  {
+    slug: "tax-law",
+    name: "Tax Law",
+    icon: "ReceiptText",
+    finder: null,
+    services: ["FBR Notices", "Appeals", "Returns"],
+  },
+  {
+    slug: "immigration-law",
+    name: "Immigration Law",
+    icon: "Globe2",
+    finder: "immigration",
+    services: ["Visas", "Citizenship", "Appeals"],
+  },
+  {
+    slug: "banking-law",
+    name: "Banking Law",
+    icon: "Landmark",
+    finder: null,
+    services: ["Loan Recovery", "Finance Disputes"],
+  },
+  {
+    slug: "labour-law",
+    name: "Labour Law",
+    icon: "HardHat",
+    finder: null,
+    services: ["Termination", "Wages", "Disputes"],
+  },
+  {
+    slug: "constitutional-law",
+    name: "Constitutional Law",
+    icon: "FileText",
+    finder: null,
+    services: ["Writ Petitions", "Fundamental Rights"],
+  },
+  {
+    slug: "cyber-crime",
+    name: "Cyber Crime",
+    icon: "ShieldCheck",
+    finder: null,
+    services: ["FIA Complaints", "Online Harassment"],
+  },
+  {
+    slug: "consumer-law",
+    name: "Consumer Law",
+    icon: "ShoppingBag",
+    finder: null,
+    services: ["Protection Claims", "Service Disputes"],
+  },
 ];
 
 const FINDERS = [
-  { key: "family", label: "Family", icon: Users },
-  { key: "property", label: "Property", icon: Building2 },
-  { key: "criminal", label: "Criminal", icon: Gavel },
-  { key: "corporate", label: "Corporate", icon: Briefcase },
-  { key: "immigration", label: "Immigration", icon: Plane },
+  {
+    key: "family",
+    label: "Family",
+    icon: UsersRound,
+  },
+  {
+    key: "property",
+    label: "Property",
+    icon: House,
+  },
+  {
+    key: "criminal",
+    label: "Criminal",
+    icon: Gavel,
+  },
+  {
+    key: "corporate",
+    label: "Corporate",
+    icon: BriefcaseBusiness,
+  },
+  {
+    key: "immigration",
+    label: "Immigration",
+    icon: Globe2,
+  },
 ] as const;
 
 function Backdrop({ reduce }: { reduce: boolean }) {
   return (
-    <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden" aria-hidden>
-      <div className="absolute inset-0 opacity-[0.035] [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:30px_30px] text-foreground" />
+    <div
+      className="pointer-events-none absolute inset-0 -z-0 overflow-hidden"
+      aria-hidden
+    >
+      <div className="absolute inset-0 opacity-[0.028] [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:32px_32px] text-foreground" />
+
       <motion.div
-        className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-gold/10 blur-3xl"
-        animate={reduce ? undefined : { x: [0, 26, 0], y: [0, -18, 0] }}
-        transition={reduce ? undefined : { duration: 26, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -left-32 top-24 h-80 w-80 rounded-full bg-gold/8 blur-3xl"
+        animate={
+          reduce
+            ? undefined
+            : {
+                x: [0, 24, 0],
+                y: [0, -16, 0],
+              }
+        }
+        transition={
+          reduce
+            ? undefined
+            : {
+                duration: 28,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+        }
       />
+
       <motion.div
-        className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
-        animate={reduce ? undefined : { x: [0, -24, 0], y: [0, 20, 0] }}
-        transition={reduce ? undefined : { duration: 30, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-primary/6 blur-3xl"
+        animate={
+          reduce
+            ? undefined
+            : {
+                x: [0, -20, 0],
+                y: [0, 18, 0],
+              }
+        }
+        transition={
+          reduce
+            ? undefined
+            : {
+                duration: 32,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+        }
       />
     </div>
   );
@@ -108,48 +240,110 @@ function AreaCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: featured ? 28 : 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: featured ? 0.3 : 0.4 }}
-      transition={{ duration: featured ? 0.55 : 0.45, ease: easeOut, delay: Math.min(index, 5) * 0.06 }}
-      animate={{ opacity: dimmed ? 0.45 : 1, scale: highlighted ? 1.02 : 1 }}
-      className={featured ? "group relative shrink-0 basis-[85%] snap-center sm:basis-[55%] lg:basis-auto lg:shrink" : ""}
+      initial={{
+        opacity: 0,
+        y: featured ? 24 : 18,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: featured ? 0.3 : 0.4,
+      }}
+      transition={{
+        duration: featured ? 0.55 : 0.45,
+        ease: easeOut,
+        delay: Math.min(index, 5) * 0.06,
+      }}
+      animate={{
+        opacity: dimmed ? 0.42 : 1,
+        scale: highlighted ? 1.015 : 1,
+      }}
+      className={
+        featured
+          ? "group relative shrink-0 basis-[86%] snap-center sm:basis-[56%] lg:basis-auto lg:shrink"
+          : ""
+      }
     >
       <Link
         href={`/practice-areas/${area.slug}`}
-        className={`group relative flex h-full flex-col overflow-hidden border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-xl hover:shadow-primary/10 ${
-          featured ? "rounded-3xl p-6" : "rounded-2xl p-5"
-        } ${highlighted ? "border-gold/60 ring-1 ring-gold/40" : "border-border"}`}
+        className={`group relative flex h-full flex-col overflow-hidden border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-xl hover:shadow-primary/8 ${
+          featured
+            ? "rounded-[1.5rem] p-6 shadow-md"
+            : "rounded-2xl p-5 shadow-sm"
+        } ${
+          highlighted
+            ? "border-gold/60 bg-gold/[0.025] ring-1 ring-gold/30"
+            : "border-border"
+        }`}
       >
-        {featured && (
-          <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gold/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" aria-hidden />
-        )}
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute bg-gradient-to-br from-gold/10 via-transparent to-transparent opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${
+            featured
+              ? "-right-16 -top-16 h-48 w-48"
+              : "-right-12 -top-12 h-36 w-36"
+          }`}
+        />
 
-        <div className="flex items-start justify-between gap-3">
-          <span className={`${featured ? "h-14 w-14 rounded-2xl" : "h-11 w-11 rounded-xl"} flex items-center justify-center bg-primary/8 text-primary transition-all duration-300 group-hover:scale-105 group-hover:bg-gold/15 group-hover:text-gold-foreground`}>
-            <Icon className={featured ? "h-6.5 w-6.5" : "h-5 w-5"} strokeWidth={2} />
+        <div className="relative flex items-start justify-between gap-4">
+          <span
+            className={`flex shrink-0 items-center justify-center border border-primary/8 bg-primary/[0.055] text-primary transition-all duration-300 group-hover:border-gold/20 group-hover:bg-gold/10 group-hover:text-gold-foreground group-hover:shadow-sm ${
+              featured
+                ? "h-14 w-14 rounded-2xl"
+                : "h-11 w-11 rounded-xl"
+            }`}
+          >
+            <Icon
+              className={featured ? "h-6 w-6" : "h-5 w-5"}
+              strokeWidth={1.8}
+            />
           </span>
+
           {featured && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-gold/10 px-2.5 py-1 text-[11px] font-semibold text-gold-foreground/80 ring-1 ring-inset ring-gold/20">
-              <Sparkles className="h-3 w-3" /> Common matter
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/8 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-gold-foreground/80">
+              Popular
             </span>
           )}
         </div>
 
-        <h3 className={`${featured ? "mt-5 text-xl" : "mt-4 text-base"} font-heading font-semibold text-foreground`}>{area.name}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          Explore guidance first, then compare real advocate profiles from the live directory.
+        <h3
+          className={`relative font-heading font-semibold tracking-tight text-foreground ${
+            featured ? "mt-6 text-xl" : "mt-4 text-base"
+          }`}
+        >
+          {area.name}
+        </h3>
+
+        <p
+          className={`relative text-muted-foreground ${
+            featured
+              ? "mt-2.5 text-sm leading-6"
+              : "mt-2 text-xs leading-5 sm:text-sm"
+          }`}
+        >
+          Find guidance and connect with advocates experienced in{" "}
+          {area.name.toLowerCase()} matters.
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-1.5">
+        <div className="relative mt-4 flex flex-wrap gap-1.5">
           {area.services.map((service) => (
-            <span key={service} className="rounded-full border border-border bg-secondary/50 px-2.5 py-1 text-xs font-medium text-foreground">
+            <span
+              key={service}
+              className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-[11px] font-medium text-muted-foreground transition-colors group-hover:border-gold/15 group-hover:bg-gold/5 group-hover:text-foreground"
+            >
               {service}
             </span>
           ))}
         </div>
 
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-primary transition-colors group-hover:text-gold-foreground">
+        <span
+          className={`relative mt-auto inline-flex items-center gap-1.5 font-semibold text-primary transition-colors group-hover:text-gold-foreground ${
+            featured ? "pt-6 text-sm" : "pt-5 text-xs sm:text-sm"
+          }`}
+        >
           Explore area
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </span>
@@ -165,6 +359,7 @@ export function PracticeAreas() {
   function isHighlighted(area: Area) {
     return selected !== null && area.finder === selected;
   }
+
   function isDimmed(area: Area) {
     return selected !== null && area.finder !== selected;
   }
@@ -172,6 +367,7 @@ export function PracticeAreas() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
       <Backdrop reduce={reduce} />
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -180,85 +376,182 @@ export function PracticeAreas() {
           transition={{ duration: 0.6, ease: easeOut }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold-foreground/80 ring-1 ring-inset ring-gold/20">
-            <Scale className="h-3.5 w-3.5" /> Practice areas
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/20 bg-gold/8 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-gold-foreground/80">
+            <Scale className="h-3.5 w-3.5" />
+            Legal expertise
           </span>
-          <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Find the right lawyer for your legal matter
+
+          <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-[2.65rem]">
+            Legal help for every matter
           </h2>
-          <p className="mt-3 text-base leading-7 text-muted-foreground">
-            Browse Pakistan&apos;s most important legal specialties. Each category leads to guidance and then to real advocate profiles from WakeelHub.
+
+          <p className="mt-4 text-base leading-7 text-muted-foreground">
+            Explore the areas of law covered by WakeelHub, from family and
+            property matters to corporate, tax, and specialist disputes.
           </p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm text-muted-foreground">
+
+          <div className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-muted-foreground shadow-sm">
             <span className="relative flex h-2 w-2">
-              {!reduce && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold/60" />}
+              {!reduce && (
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold/50" />
+              )}
+
               <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
             </span>
-            {DIRECTORY_NOTE}
-          </p>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.5, ease: easeOut, delay: 0.1 }}
-          className="mt-10 flex flex-col items-center gap-3"
-        >
-          <p className="text-sm font-medium text-foreground">What legal help do you need?</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {FINDERS.map((finder) => {
-              const active = selected === finder.key;
-              return (
-                <button
-                  key={finder.key}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => setSelected(active ? null : finder.key)}
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                    active
-                      ? "border-primary bg-primary text-primary-foreground shadow-md shadow-primary/20"
-                      : "border-border bg-card text-foreground hover:border-gold/40 hover:bg-secondary"
-                  }`}
-                >
-                  <finder.icon className="h-4 w-4" />
-                  {finder.label}
-                </button>
-              );
-            })}
-            {selected && (
-              <button type="button" onClick={() => setSelected(null)} className="text-sm font-medium text-muted-foreground underline-offset-4 hover:underline">
-                Clear
-              </button>
-            )}
+            {DIRECTORY_NOTE}
           </div>
         </motion.div>
 
-        <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
-          {FEATURED.map((area, index) => (
-            <AreaCard key={area.slug} area={area} index={index} highlighted={isHighlighted(area)} dimmed={isDimmed(area)} featured />
-          ))}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{
+            duration: 0.5,
+            ease: easeOut,
+            delay: 0.1,
+          }}
+          className="mx-auto mt-10 max-w-3xl"
+        >
+          <div className="rounded-2xl border border-border bg-card/80 p-3 shadow-sm backdrop-blur">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="flex items-center gap-2 px-2">
+                <Handshake className="h-4 w-4 shrink-0 text-gold-foreground" />
+
+                <span className="text-sm font-semibold text-foreground">
+                  What do you need help with?
+                </span>
+              </div>
+
+              <div className="hidden h-5 w-px bg-border sm:block" />
+
+              <div className="flex flex-wrap gap-1.5">
+                {FINDERS.map((finder) => {
+                  const active = selected === finder.key;
+                  const FinderIcon = finder.icon;
+
+                  return (
+                    <button
+                      key={finder.key}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() =>
+                        setSelected(active ? null : finder.key)
+                      }
+                      className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition-all duration-200 ${
+                        active
+                          ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                          : "border-transparent bg-secondary/60 text-foreground hover:border-gold/25 hover:bg-gold/8"
+                      }`}
+                    >
+                      <FinderIcon className="h-3.5 w-3.5" />
+                      {finder.label}
+                    </button>
+                  );
+                })}
+
+                {selected && (
+                  <button
+                    type="button"
+                    onClick={() => setSelected(null)}
+                    className="px-2 text-xs font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="mt-12">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Popular areas
+              </p>
+
+              <h3 className="mt-1 text-lg font-semibold tracking-tight text-foreground">
+                Start with a common legal matter
+              </h3>
+            </div>
+
+            <Link
+              href="/practice-areas"
+              className="hidden items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-gold-foreground sm:inline-flex"
+            >
+              View all
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            {FEATURED.map((area, index) => (
+              <AreaCard
+                key={area.slug}
+                area={area}
+                index={index}
+                highlighted={isHighlighted(area)}
+                dimmed={isDimmed(area)}
+                featured
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:mt-6 lg:grid-cols-3">
-          {REST.map((area, index) => (
-            <AreaCard key={area.slug} area={area} index={index} highlighted={isHighlighted(area)} dimmed={isDimmed(area)} />
-          ))}
+        <div className="mt-8">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="h-px flex-1 bg-border" />
+
+            <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              More practice areas
+            </span>
+
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-3">
+            {REST.map((area, index) => (
+              <AreaCard
+                key={area.slug}
+                area={area}
+                index={index}
+                highlighted={isHighlighted(area)}
+                dimmed={isDimmed(area)}
+              />
+            ))}
+          </div>
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.5, ease: easeOut }}
+          transition={{
+            duration: 0.5,
+            ease: easeOut,
+          }}
           className="mt-12 text-center"
         >
           <Link
-            href="/find-lawyers"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+            href="/practice-areas"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/15"
           >
-            Browse live directory
+            Explore all practice areas
             <ArrowRight className="h-4 w-4" />
+          </Link>
+
+          <p className="mt-3 text-xs text-muted-foreground">
+            Or browse verified advocates directly
+          </p>
+
+          <Link
+            href="/find-lawyers"
+            className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          >
+            Open lawyer directory
+            <ArrowRight className="h-3 w-3" />
           </Link>
         </motion.div>
       </div>

@@ -38,13 +38,13 @@ export function Footer() {
             </p>
             <div className="mt-5 space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-gold" /> support@wakeelhub.pk
+                <Mail className="h-4 w-4 text-gold" /> ateeqrehmankhan0346@gmail.com
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-gold" /> +92 300 1234567
+                <Phone className="h-4 w-4 text-gold" /> +92 3367070686
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-gold" /> Blue Area, Islamabad, Pakistan
+                <MapPin className="h-4 w-4 text-gold" /> i-8bd, Islamabad, Pakistan
               </div>
             </div>
             <div className="mt-5 flex items-center gap-3">

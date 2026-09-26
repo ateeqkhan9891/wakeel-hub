@@ -44,9 +44,9 @@ export function SeoInternalLinks({ featuredLawyers }: { featuredLawyers: Feature
         <div className="grid gap-8 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-start">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-slate-600 shadow-sm">
-              <ShieldCheck className="h-3.5 w-3.5 text-gold" />
-              SEO navigation
-            </span>
+  <ShieldCheck className="h-3.5 w-3.5 text-gold" />
+  Areas of practice
+</span>
             <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-slate-950">
               Explore WakeelHub by legal need
             </h2>
@@ -54,13 +54,14 @@ export function SeoInternalLinks({ featuredLawyers }: { featuredLawyers: Feature
               Browse useful pages by practice area, city, lawyer profile and guide. WakeelHub uses real profile data and
               avoids fake rankings, fake reviews and inflated lawyer counts.
             </p>
-            <Link
-              href="/#wakeel-ai-assistant"
-              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
-            >
-              <Bot className="h-4 w-4" />
-              Ask Wakeel AI
-            </Link>
+            <button
+          type="button"
+          disabled
+          className="mt-5 inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-400"
+        >
+          <Bot className="h-4 w-4" />
+          Ask Wakeel AI
+        </button>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
