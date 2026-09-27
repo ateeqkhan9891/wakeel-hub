@@ -1,5 +1,9 @@
-
-import { CalendarCheck, CreditCard, Gavel, MessageSquare, Wallet } from "lucide-react";
+import {
+  CalendarCheck,
+  CheckSquare,
+  Gavel,
+  MessageSquare,
+} from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 
@@ -7,19 +11,44 @@ type ClientDashboardSummaryProps = {
   activeCases: number;
   upcomingConsultations: number;
   unreadMessages: number;
-  pendingPayments: number;
-  totalPaid: number;
+  pendingActions: number;
+};
+
+type Tone = "navy" | "gold" | "emerald";
+
+const TONES: Record<
+  Tone,
+  {
+    icon: string;
+    value: string;
+    dot: string;
+  }
+> = {
+  navy: {
+    icon: "bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary",
+    value: "text-foreground",
+    dot: "bg-primary",
+  },
+  gold: {
+    icon: "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
+    value: "text-foreground",
+    dot: "bg-amber-500",
+  },
+  emerald: {
+    icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
+    value: "text-foreground",
+    dot: "bg-emerald-500",
+  },
 };
 
 export function ClientDashboardSummary({
   activeCases,
   upcomingConsultations,
   unreadMessages,
-  pendingPayments,
-  totalPaid,
+  pendingActions,
 }: ClientDashboardSummaryProps) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <SummaryCard
         icon={Gavel}
         label="Active cases"
@@ -42,57 +71,56 @@ export function ClientDashboardSummary({
       />
 
       <SummaryCard
-        icon={CreditCard}
-        label="Pending payments"
-        value={pendingPayments}
-        tone="gold"
-      />
-
-      <SummaryCard
-        icon={Wallet}
-        label="Total paid"
-        value={totalPaid}
+        icon={CheckSquare}
+        label="Pending actions"
+        value={pendingActions}
         tone="emerald"
-        formatValue={(value) => `PKR ${value.toLocaleString()}`}
       />
     </div>
   );
 }
-
-type Tone = "navy" | "gold" | "emerald";
-
-const TONES: Record<Tone, string> = {
-  navy: "bg-primary/8 text-primary",
-  gold: "bg-amber-50 text-amber-600",
-  emerald: "bg-emerald-50 text-emerald-600",
-};
 
 function SummaryCard({
   icon: Icon,
   label,
   value,
   tone,
-  formatValue,
 }: {
   icon: typeof Gavel;
   label: string;
   value: number;
   tone: Tone;
-  formatValue?: (value: number) => string;
 }) {
+  const styles = TONES[tone];
+
   return (
-    <Card className="border-slate-200 p-5 ring-0">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-sm text-slate-500">{label}</p>
-          <p className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
-            {formatValue ? formatValue(value) : value}
+    <Card className="border-border bg-card p-5 shadow-sm">
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium text-muted-foreground">
+            {label}
+          </p>
+
+          <p
+            className={`mt-3 truncate text-2xl font-semibold tracking-tight ${styles.value}`}
+          >
+            {value}
           </p>
         </div>
 
-        <div className={`rounded-lg p-2 ${TONES[tone]}`}>
-          <Icon className="h-4 w-4" aria-hidden />
+        <div
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${styles.icon}`}
+        >
+          <Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden />
         </div>
+      </div>
+
+      <div className="mt-5 flex items-center gap-2">
+        <span className={`h-1.5 w-1.5 rounded-full ${styles.dot}`} />
+
+        <span className="text-xs text-muted-foreground">
+          Current overview
+        </span>
       </div>
     </Card>
   );

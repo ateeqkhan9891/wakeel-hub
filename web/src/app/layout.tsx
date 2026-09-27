@@ -10,6 +10,8 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { organizationJsonLd, websiteJsonLd, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
+// import { ThemeProvider } from "@/components/providers/theme-provider";
+
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -78,7 +80,8 @@ export default function RootLayout({
           crawlSpeed={180}
           easing="ease"
         />
-        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false} disableTransitionOnChange>
+        
+        <ThemeProvider attribute="class" defaultTheme="system"  enableSystem disableTransitionOnChange>
           <TooltipProvider delayDuration={150}>
             <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
             {children}

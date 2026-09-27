@@ -28,11 +28,13 @@ export function ClientDashboardHero({
     <Card className="border-slate-200 p-6 ring-0">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
-          <p className="text-sm text-slate-500">Welcome back,</p>
+                <p className="text-sm text-slate-500">
+          Your legal matters at a glance
+        </p>
 
-          <h1 className="font-heading text-2xl font-semibold tracking-tight text-slate-950">
-            {firstName}
-          </h1>
+        <h1 className="font-heading text-2xl font-semibold tracking-tight text-slate-950">
+          Your dashboard
+        </h1>
 
           <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-600">
             <HeroStat
