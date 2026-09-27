@@ -9,22 +9,25 @@ export function ThemeToggle() {
   const { theme, resolvedTheme, setTheme } = useTheme();
 
   return (
-    <Button
-      type="button"
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="h-8 w-8 rounded-lg"
-    >
-      {resolvedTheme === "dark" ? (
-        <Sun className="h-4 w-4" />
-      ) : (
-        <Moon className="h-4 w-4" />
-      )}
+    <div title="Theme switching is temporarily unavailable">
+      <Button
+        type="button"
+        disabled
+        variant="ghost"
+        size="icon"
+        onClick={() =>
+          setTheme(resolvedTheme === "dark" ? "light" : "dark")
+        }
+        className="h-8 w-8 rounded-lg"
+      >
+        {resolvedTheme === "dark" ? (
+          <Sun className="h-4 w-4" />
+        ) : (
+          <Moon className="h-4 w-4" />
+        )}
 
-      <span className="sr-only">
-        {theme} / {resolvedTheme}
-      </span>
-    </Button>
+        <span className="sr-only">Theme switching unavailable</span>
+      </Button>
+    </div>
   );
 }
