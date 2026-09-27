@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Briefcase, ScrollText, PauseCircle, CheckCircle2, XCircle, Archive } from "lucide-react";
 
-import { AdminStat } from "@/components/dashboard/admin-ui";
-import { AdminCasesTable } from "@/components/dashboard/admin-cases-table";
+import { AdminStat } from "@/components/dashboard/admin/admin-ui";
+import { AdminCasesTable } from "@/components/dashboard/admin/admin-cases-table";
 import { getAdminCases } from "@/lib/data/admin";
 
 export const metadata: Metadata = { title: "Cases" };

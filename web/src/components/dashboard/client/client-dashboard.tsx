@@ -158,8 +158,8 @@ export default function ClientDashboard({
         activeCases={activeCases.length}
         upcomingConsultations={upcomingConsultations.length}
         unreadMessages={unreadMessages}
-        pendingPayments={pendingPayments.length}
-        totalPaid={totalPaid}
+        pendingActions={pendingPayments.length}
+        // totalPaid={totalPaid}
       />
 
       <ClientAttention tasks={tasks} />

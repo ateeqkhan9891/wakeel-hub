@@ -4,7 +4,7 @@ import { CreditCard, CheckCircle2, XCircle, RefreshCw, TrendingUp } from "lucide
 import { Card } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StatusBadge } from "@/components/dashboard/shared/status-badge";
-import { AdminStat } from "@/components/dashboard/admin-ui";
+import { AdminStat } from "@/components/dashboard/admin/admin-ui";
 import { getAdminSubscriptions } from "@/lib/data/admin";
 import { formatDate, formatPKR } from "@/lib/utils";
 

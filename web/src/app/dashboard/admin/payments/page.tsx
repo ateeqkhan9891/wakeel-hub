@@ -3,8 +3,8 @@ import { Receipt, TrendingUp, CreditCard, RotateCcw } from "lucide-react";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StatusBadge } from "@/components/dashboard/shared/status-badge";
-import { AdminStat, AdminSection } from "@/components/dashboard/admin-ui";
-import { AdminCommission } from "@/components/dashboard/admin-commission";
+import { AdminStat, AdminSection } from "@/components/dashboard/admin/admin-ui";
+import { AdminCommission } from "@/components/dashboard/admin/admin-commission";
 import { getAdminCommissionOverview, getCommissionSettings } from "@/lib/data/commission";
 import { getAdminStats, getAdminPayments } from "@/lib/data/admin";
 import { formatDate, formatPKR } from "@/lib/utils";
