@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Clock, CheckCircle2, XCircle, ShieldCheck } from "lucide-react";
 
-import { VerificationQueue } from "@/components/dashboard/verification-queue";
-import { AdminStat } from "@/components/dashboard/admin-ui";
+import { VerificationQueue } from "@/components/dashboard/admin/verification-queue";
+import { AdminStat } from "@/components/dashboard/admin/admin-ui";
 import { getAdminVerificationRequests } from "@/lib/data/admin-verifications";
 
 export const metadata: Metadata = { title: "Lawyer Verification" };

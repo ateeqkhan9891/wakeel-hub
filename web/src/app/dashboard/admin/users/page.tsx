@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Briefcase, ShieldCheck, Users, UserCheck } from "lucide-react";
 
-import { AdminStat } from "@/components/dashboard/admin-ui";
-import { AdminUsersTable } from "@/components/dashboard/admin-users-table";
+import { AdminStat } from "@/components/dashboard/admin/admin-ui";
+import { AdminUsersTable } from "@/components/dashboard/admin/admin-users-table";
 import { getAdminStats, getAdminUsers } from "@/lib/data/admin";
 
 export const metadata: Metadata = { title: "Users" };
