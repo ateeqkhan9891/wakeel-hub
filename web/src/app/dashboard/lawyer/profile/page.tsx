@@ -7,7 +7,7 @@ import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashbo
 import {
   LawyerProfileWorkspace,
   type SubscriptionInfo,
-} from "@/components/dashboard/lawyer/lawyer-profile-workspace";
+} from "@/components/dashboard/lawyer/profile/lawyer-profile-workspace";
 
 export const metadata: Metadata = { title: "Profile & Verification" };
 
