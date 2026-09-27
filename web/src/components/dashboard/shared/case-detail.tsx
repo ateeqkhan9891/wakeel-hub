@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { PRACTICE_AREAS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 import type { CaseFile } from "@/lib/types";

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FileWarning, Star, Inbox, SearchCheck, CheckCircle2, XCircle } from "lucide-react";
-import { ComplaintsList } from "@/components/dashboard/complaints-list";
+import { ComplaintsList } from "@/components/dashboard/client/complaints-list";
 import { RatingStars } from "@/components/shared/rating-stars";
-import { AdminStat } from "@/components/dashboard/admin-ui";
+import { AdminStat } from "@/components/dashboard/admin/admin-ui";
 import { getAdminComplaints, getAdminReviews } from "@/lib/data/admin";
 import { formatDate } from "@/lib/utils";
 

@@ -26,8 +26,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { DashboardCard, subduedButtonClass } from "@/components/dashboard/lawyer-dashboard-ui";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { DashboardCard, subduedButtonClass } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 
 const DOCS = [
   { key: "cnic_front", label: "CNIC" },

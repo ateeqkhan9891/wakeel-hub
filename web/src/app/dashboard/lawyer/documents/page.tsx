@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { getLawyerDocuments } from "@/lib/data/lawyer-documents";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
-import { LawyerDocumentsLibrary } from "@/components/dashboard/lawyer-documents-library";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
+import { LawyerDocumentsLibrary } from "@/components/dashboard/lawyer/lawyer-documents-library";
 
 export const metadata: Metadata = { title: "Documents" };
 

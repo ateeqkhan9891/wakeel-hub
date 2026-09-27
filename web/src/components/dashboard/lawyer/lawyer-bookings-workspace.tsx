@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { DashboardCard, EmptyState, TableScroll, subduedButtonClass } from "@/components/dashboard/lawyer-dashboard-ui";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { DashboardCard, EmptyState, TableScroll, subduedButtonClass } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 
 const BOOKING_TABS: { label: string; value: "all" | LawyerBookingStatus }[] = [
   { label: "All", value: "all" },

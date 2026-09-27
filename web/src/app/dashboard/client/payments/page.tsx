@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Receipt, Wallet, CheckCircle2, FileDown, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { StatCard } from "@/components/dashboard/stat-card";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { StatCard } from "@/components/dashboard/shared/stat-card";
 import { getClientReceipts } from "@/lib/data/commission";
 import { formatDate, formatPKR } from "@/lib/utils";
 

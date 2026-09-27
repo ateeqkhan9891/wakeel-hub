@@ -5,7 +5,7 @@ import { Calendar, Check, Clock, MapPin, Phone, Video, X } from "lucide-react";
 import { toast } from "sonner";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { PRACTICE_AREAS } from "@/lib/constants";
 import { formatDate, formatPKR } from "@/lib/utils";
 import type { Booking } from "@/lib/types";

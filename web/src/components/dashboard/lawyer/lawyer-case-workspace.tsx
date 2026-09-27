@@ -26,8 +26,8 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { CaseForm } from "@/components/dashboard/case-form";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { CaseForm } from "@/components/dashboard/shared/case-form";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 

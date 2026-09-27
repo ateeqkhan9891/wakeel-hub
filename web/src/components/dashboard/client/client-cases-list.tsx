@@ -14,7 +14,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 
 const OPEN_STATUSES = new Set(["pending", "active", "in_progress", "adjourned"]);
 

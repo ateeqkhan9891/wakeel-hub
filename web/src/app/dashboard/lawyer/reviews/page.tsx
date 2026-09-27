@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { DashboardCard, DashboardPageHeader, EmptyState } from "@/components/dashboard/lawyer-dashboard-ui";
+import { DashboardCard, DashboardPageHeader, EmptyState } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 
 export const metadata: Metadata = { title: "Reviews" };
 

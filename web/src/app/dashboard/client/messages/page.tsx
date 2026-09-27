@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { createClient } from "@/lib/supabase/server";
 import { getMyConversations, getConversationThread } from "@/lib/data/messages";
-import { ChatView } from "@/components/dashboard/chat-view";
+import { ChatView } from "@/components/dashboard/shared/chat-view";
 
 export const metadata: Metadata = { title: "Messages" };
 

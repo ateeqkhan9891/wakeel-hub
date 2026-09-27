@@ -4,12 +4,12 @@ import { redirect } from "next/navigation";
 import { getLawyerSettings } from "@/lib/data/lawyer-settings";
 import { getMyLawyerProfile } from "@/lib/data/lawyer-profile";
 import { getLawyerSubscription } from "@/lib/data/lawyer-subscription";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 import {
   LawyerSettingsPanel,
   type SettingsSubscription,
   type SettingsSidebarMeta,
-} from "@/components/dashboard/lawyer-settings-panel";
+} from "@/components/dashboard/lawyer/lawyer-settings-panel";
 
 export const metadata: Metadata = { title: "Settings" };
 

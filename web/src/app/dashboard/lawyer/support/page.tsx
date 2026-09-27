@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
-import { ComplaintForm } from "@/components/dashboard/complaint-form";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
+import { ComplaintForm } from "@/components/dashboard/client/complaint-form";
 
 export const metadata: Metadata = { title: "Support" };
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BarChart3 } from "lucide-react";
 
-import { DashboardCard, DashboardPageHeader, EmptyState, MetricCard } from "@/components/dashboard/lawyer-dashboard-ui";
+import { DashboardCard, DashboardPageHeader, EmptyState, MetricCard } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 
 export const metadata: Metadata = { title: "Analytics" };
 

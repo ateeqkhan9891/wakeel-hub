@@ -26,8 +26,8 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { CaseForm, EMPTY_CASE_INPUT } from "@/components/dashboard/case-form";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { CaseForm, EMPTY_CASE_INPUT } from "@/components/dashboard/shared/case-form";
 
 const OPEN_STATUSES = new Set(["pending", "active", "in_progress", "adjourned"]);
 

@@ -6,9 +6,9 @@ import { getLawyerEarnings } from "@/lib/data/commission";
 import { formatDate, formatPKR } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { StatCard } from "@/components/dashboard/stat-card";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { StatCard } from "@/components/dashboard/shared/stat-card";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 
 export const metadata: Metadata = { title: "Earnings" };
 

@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { decideVerificationRequest } from "@/app/actions/admin-verification-actions";
 import { PRACTICE_AREAS } from "@/lib/constants";
 import { formatDate, formatPKR, initials } from "@/lib/utils";

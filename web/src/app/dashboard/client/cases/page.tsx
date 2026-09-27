@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { getClientCases } from "@/lib/data/client-cases";
 import { getMyNotifications } from "@/lib/data/notifications";
-import { ClientCasesList } from "@/components/dashboard/client-cases-list";
+import { ClientCasesList } from "@/components/dashboard/client/client-cases-list";
 
 export const metadata: Metadata = { title: "My Cases" };
 

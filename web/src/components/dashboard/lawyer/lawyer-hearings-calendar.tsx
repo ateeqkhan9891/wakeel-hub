@@ -9,7 +9,7 @@ import type { LawyerHearingRow } from "@/lib/data/lawyer-hearings";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 
 function bucket(row: LawyerHearingRow) {
   const today = new Date();

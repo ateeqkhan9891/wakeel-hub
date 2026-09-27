@@ -6,9 +6,9 @@ import { ArrowLeft, Gavel, Hash, User, Scale, CalendarClock } from "lucide-react
 import { getLawyerCase } from "@/lib/data/cases";
 import { caseStatusLabel } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { LawyerCaseWorkspace } from "@/components/dashboard/lawyer-case-workspace";
-import { CaseRealtime } from "@/components/dashboard/case-realtime";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { LawyerCaseWorkspace } from "@/components/dashboard/lawyer/lawyer-case-workspace";
+import { CaseRealtime } from "@/components/dashboard/shared/case-realtime";
 
 export const metadata: Metadata = { title: "Case Detail" };
 

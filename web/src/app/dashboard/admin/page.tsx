@@ -9,8 +9,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { AdminStat, AdminSection } from "@/components/dashboard/admin-ui";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { AdminStat, AdminSection } from "@/components/dashboard/admin/admin-ui";
 import {
   getAdminStats, getAdminUsers, getAdminCases, getAdminPayments, getAdminComplaints, getAdminReviews,
 } from "@/lib/data/admin";

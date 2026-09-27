@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { getLawyerHearings } from "@/lib/data/lawyer-hearings";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
-import { LawyerHearingsCalendar } from "@/components/dashboard/lawyer-hearings-calendar";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
+import { LawyerHearingsCalendar } from "@/components/dashboard/lawyer/lawyer-hearings-calendar";
 
 export const metadata: Metadata = { title: "Hearings" };
 

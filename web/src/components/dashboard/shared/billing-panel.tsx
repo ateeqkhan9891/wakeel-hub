@@ -15,7 +15,7 @@ import type { LawyerSubscription } from "@/lib/data/lawyer-subscription";
 import { activateSubscription, cancelSubscription } from "@/app/actions/subscription-actions";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 
 type Period = "monthly" | "annual";
 const easeOut = [0.22, 1, 0.36, 1] as const;

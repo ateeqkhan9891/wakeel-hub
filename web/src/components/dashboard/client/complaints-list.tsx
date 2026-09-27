@@ -10,7 +10,7 @@ import type { AdminComplaint } from "@/lib/data/admin";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { formatDate } from "@/lib/utils";
 
 export function ComplaintsList({ reports }: { reports: AdminComplaint[] }) {

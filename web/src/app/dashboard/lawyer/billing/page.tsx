@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { getLawyerSubscription } from "@/lib/data/lawyer-subscription";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
-import { BillingPanel } from "@/components/dashboard/billing-panel";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
+import { BillingPanel } from "@/components/dashboard/shared/billing-panel";
 
 export const metadata: Metadata = { title: "Subscription & Billing" };
 

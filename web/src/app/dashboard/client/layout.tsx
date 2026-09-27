@@ -1,4 +1,4 @@
-import { DashboardShell } from "@/components/dashboard/dashboard-shell";
+import { DashboardShell } from "@/components/dashboard/shared/dashboard-shell";
 import { requireUser } from "@/lib/supabase/guard";
 import { getUnreadNotificationCount } from "@/lib/data/notifications";
 import { getUnreadMessagesCount } from "@/lib/data/messages";

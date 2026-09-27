@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { getLawyerBookings } from "@/lib/data/bookings";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
-import { LawyerBookingsLive } from "@/components/dashboard/lawyer-bookings-live";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
+import { LawyerBookingsLive } from "@/components/dashboard/lawyer/lawyer-bookings-live";
 
 export const metadata: Metadata = { title: "Bookings" };
 

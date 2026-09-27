@@ -38,13 +38,13 @@ import {
   SheetDescription,
   SheetFooter,
 } from "@/components/ui/sheet";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { formatDate, formatPKR, initials, cn } from "@/lib/utils";
 import { MODE_LABEL, type BookingRow } from "@/lib/data/booking-types";
 import type { ConsultationModeEnum, BookingStatusEnum } from "@/lib/supabase/types";
 import { respondToBooking, completeBooking } from "@/app/actions/booking-actions";
 import { createCaseFromBooking } from "@/app/actions/case-actions";
-import { OpenChatButton } from "@/components/dashboard/open-chat-button";
+import { OpenChatButton } from "@/components/dashboard/shared/open-chat-button";
 
 const MODE_ICON: Record<ConsultationModeEnum, LucideIcon> = {
   online: Video,

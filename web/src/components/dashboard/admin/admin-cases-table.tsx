@@ -9,7 +9,7 @@ import { cn, formatDate, timeAgo } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 
 const FILTERS: { key: string; label: string; match: (s: string) => boolean }[] = [
   { key: "all", label: "All", match: () => true },

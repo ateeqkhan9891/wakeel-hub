@@ -10,10 +10,10 @@ import {
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { ClientCaseTimeline } from "@/components/dashboard/client-case-timeline";
-import { CaseRealtime } from "@/components/dashboard/case-realtime";
-import { CaseStages } from "@/components/dashboard/case-stages";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { ClientCaseTimeline } from "@/components/dashboard/client/client-case-timeline";
+import { CaseRealtime } from "@/components/dashboard/shared/case-realtime";
+import { CaseStages } from "@/components/dashboard/shared/case-stages";
 import { getClientCase } from "@/lib/data/client-cases";
 import type { ClientCaseDetail } from "@/lib/data/client-cases";
 import { caseStatusLabel } from "@/lib/constants";

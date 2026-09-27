@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Scale } from "lucide-react";
 
-import { StatusBadge } from "@/components/dashboard/status-badge";
-import { InvoicePrintButton } from "@/components/dashboard/invoice-print-button";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
+import { InvoicePrintButton } from "@/components/dashboard/shared/invoice-print-button";
 import { getSubscriptionInvoice } from "@/lib/data/lawyer-subscription";
 import { formatDate, formatPKR } from "@/lib/utils";
 

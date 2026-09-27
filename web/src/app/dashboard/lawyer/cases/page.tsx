@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { getLawyerCases } from "@/lib/data/cases";
-import { DashboardPageHeader } from "@/components/dashboard/lawyer-dashboard-ui";
-import { LawyerCasesWorkspace } from "@/components/dashboard/lawyer-cases-workspace";
+import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
+import { LawyerCasesWorkspace } from "@/components/dashboard/lawyer/lawyer-cases-workspace";
 
 export const metadata: Metadata = { title: "Cases" };
 

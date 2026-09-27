@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import { respondToBooking } from "@/app/actions/booking-actions";
 import { Button } from "@/components/ui/button";
-import { StatusBadge } from "@/components/dashboard/status-badge";
+import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { MODE_LABEL, type BookingRow } from "@/lib/data/booking-types";
 import type { ConsultationModeEnum } from "@/lib/supabase/types";
 import { formatDate, formatPKR } from "@/lib/utils";

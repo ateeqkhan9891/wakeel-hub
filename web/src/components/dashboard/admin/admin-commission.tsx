@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { StatCard } from "@/components/dashboard/stat-card";
+import { StatCard } from "@/components/dashboard/shared/stat-card";
 
 const PAYOUT_STATUSES = ["pending", "processing", "paid", "failed", "cancelled"];
 

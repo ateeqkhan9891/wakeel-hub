@@ -17,7 +17,7 @@ import { cn, timeAgo } from "@/lib/utils";
 import type { NotificationRow } from "@/lib/data/notifications";
 import type { NotificationTypeEnum } from "@/lib/supabase/types";
 import { markAllNotificationsRead, clearReadNotifications } from "@/app/actions/booking-actions";
-import { OpenChatButton } from "@/components/dashboard/open-chat-button";
+import { OpenChatButton } from "@/components/dashboard/shared/open-chat-button";
 
 type Priority = "urgent" | "important" | "info";
 

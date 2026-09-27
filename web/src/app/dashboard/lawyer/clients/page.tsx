@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { getCurrentLawyerDashboardData } from "@/lib/lawyer-dashboard-data";
-import { DashboardCard, DashboardPageHeader, EmptyState } from "@/components/dashboard/lawyer-dashboard-ui";
+import { DashboardCard, DashboardPageHeader, EmptyState } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
 
 export const metadata: Metadata = { title: "Clients" };
 

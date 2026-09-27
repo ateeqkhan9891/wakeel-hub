@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ComplaintForm } from "@/components/dashboard/complaint-form";
+import { ComplaintForm } from "@/components/dashboard/client/complaint-form";
 
 export const metadata: Metadata = { title: "Support" };
 
