@@ -7,6 +7,8 @@ import {
   Search, Scale, CalendarClock, AlertCircle, Bell, Gavel, UserCog, History, ChevronRight,
 } from "lucide-react";
 
+import Image from "next/image";
+
 import { caseStatusLabel, STATUS_PROGRESS } from "@/lib/constants";
 import { cn, formatDate, timeAgo } from "@/lib/utils";
 import type { ClientCaseSummary } from "@/lib/data/client-cases";
@@ -86,7 +88,14 @@ export function ClientCasesList({ cases, unreadUpdates }: { cases: ClientCaseSum
   if (cases.length === 0) {
     return (
       <div className="flex min-h-64 flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50/70 px-6 py-16 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-400 shadow-sm"><Scale className="h-6 w-6" aria-hidden /></span>
+       <Image
+          src="/client/no-cases.png"
+          alt=""
+          width={120}
+          height={120}
+          className="h-24 w-24 object-contain"
+          aria-hidden
+/>
         <h3 className="mt-4 font-heading text-base font-semibold text-slate-950">No active cases yet</h3>
         <p className="mt-1 max-w-md text-sm leading-6 text-slate-500">
           When an advocate opens a case for you, you&apos;ll be able to track updates, hearings, and progress here.
