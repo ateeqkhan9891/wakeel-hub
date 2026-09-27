@@ -28,7 +28,7 @@ export function AdminCasesTable({ cases }: { cases: AdminCase[] }) {
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     for (const f of FILTERS) c[f.key] = cases.filter((x) => f.match(x.status)).length;
-    return c;
+    return c; 
   }, [cases]);
 
   const filtered = useMemo(() => {
