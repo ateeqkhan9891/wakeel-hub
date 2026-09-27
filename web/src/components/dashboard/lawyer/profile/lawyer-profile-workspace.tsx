@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 import type { LawyerFullProfile } from "@/lib/data/lawyer-profile-types";
 
-import { LawyerProfileEditor } from "@/components/dashboard/lawyer/lawyer-profile-editor";
+import { LawyerProfileEditor } from "@/components/dashboard/lawyer/editor/lawyer-profile-editor";
 
 import {
   LawyerProfileHero,
