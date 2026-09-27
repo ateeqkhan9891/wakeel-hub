@@ -8,6 +8,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { StatusBadge } from "@/components/dashboard/shared/status-badge";
 import { OpenChatButton } from "@/components/dashboard/shared/open-chat-button";
 
+import Image from "next/image";
+
 import { MODE_LABEL } from "@/lib/data/bookings";
 import type { getClientBookings } from "@/lib/data/bookings";
 import type { ConsultationModeEnum } from "@/lib/supabase/types";
@@ -52,9 +54,14 @@ export function ClientRecentBookings({
 
       {recentBookings.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50/70 px-6 py-10 text-center">
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-400 shadow-sm">
-            <CalendarCheck className="h-5 w-5" aria-hidden />
-          </span>
+          <Image
+              src="/client/no-booking.png"
+              alt=""
+              width={120}
+              height={120}
+              className="h-24 w-24 object-contain"
+              aria-hidden
+            />
 
           <h3 className="mt-3 text-sm font-semibold text-slate-950">
             No bookings yet

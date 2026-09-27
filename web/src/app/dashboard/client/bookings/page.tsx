@@ -10,6 +10,8 @@ import { getClientBookings, MODE_LABEL } from "@/lib/data/bookings";
 import type { ConsultationModeEnum } from "@/lib/supabase/types";
 import { formatDate, formatPKR } from "@/lib/utils";
 
+import Image from "next/image";
+
 export const metadata: Metadata = { title: "My Bookings" };
 
 const MODE_ICON: Record<ConsultationModeEnum, typeof Video> = {
@@ -35,9 +37,14 @@ export default async function ClientBookingsPage() {
 
       {bookings.length === 0 ? (
         <Card className="flex flex-col items-center justify-center gap-3 border-dashed border-border/80 px-6 py-16 text-center">
-          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/8 text-primary">
-            <CalendarCheck className="h-6 w-6" />
-          </span>
+          <Image
+            src="/client/no-booking.png"
+            alt=""
+            width={120}
+            height={120}
+            className="h-24 w-24 object-contain"
+            aria-hidden
+          />
           <div>
             <p className="font-heading text-base font-semibold text-foreground">No bookings yet</p>
             <p className="mt-1 text-sm text-muted-foreground">Find a verified advocate and request your first consultation.</p>
