@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { X } from "lucide-react";
+import { Lightbulb, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -52,20 +52,31 @@ const INSIGHTS: Record<DashboardRole, string[]> = {
   ],
 };
 
-export function DashboardInsight({ role }: DashboardInsightProps) {
+export function DashboardInsight({
+  role,
+}: DashboardInsightProps) {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     const showTimer = window.setTimeout(() => {
-      setVisible(true);
+      if (!dismissed) {
+        setVisible(true);
+      }
     }, 12000);
 
     const rotateTimer = window.setInterval(() => {
+      if (dismissed) return;
+
       setVisible(false);
 
       window.setTimeout(() => {
-        setIndex((current) => (current + 1) % INSIGHTS[role].length);
+        setIndex(
+          (current) =>
+            (current + 1) % INSIGHTS[role].length,
+        );
+
         setVisible(true);
       }, 400);
     }, 45000);
@@ -74,41 +85,46 @@ export function DashboardInsight({ role }: DashboardInsightProps) {
       window.clearTimeout(showTimer);
       window.clearInterval(rotateTimer);
     };
-  }, [role]);
+  }, [role, dismissed]);
 
   function handleClose() {
     setVisible(false);
+    setDismissed(true);
   }
 
   return (
     <div
-      className={`pointer-events-none fixed inset-x-0 top-[4.75rem] z-40 flex justify-center px-4 transition-all duration-500 ease-out ${
+      className={`pointer-events-none fixed inset-x-0 top-5 z-40 flex justify-center px-4 transition-all duration-500 ease-out ${
         visible
           ? "translate-y-0 opacity-100"
-          : "-translate-y-6 opacity-0"
+          : "-translate-y-5 opacity-0"
       }`}
     >
-      <div className="pointer-events-auto relative w-full max-w-lg overflow-hidden rounded-2xl p-px">
-        <div className="absolute inset-[-200%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,var(--primary)_70deg,var(--accent)_140deg,transparent_210deg)]" />
+      <div className="pointer-events-auto w-full max-w-xl">
+        <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/95 px-4 py-3 shadow-lg shadow-slate-900/[0.06] backdrop-blur-xl">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-600">
+            <Lightbulb className="h-4 w-4" />
+          </span>
 
-        <div className="relative flex items-center gap-3 rounded-[15px] bg-card/95 px-4 py-3 backdrop-blur-xl">
-          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
-            <span className="text-sm">✦</span>
+          <div className="min-w-0 flex-1">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-400">
+              A quick thought
+            </p>
+
+            <p className="mt-0.5 text-sm leading-5 text-slate-700">
+              {INSIGHTS[role][index]}
+            </p>
           </div>
-
-          <p className="min-w-0 flex-1 text-sm leading-5 text-foreground">
-            {INSIGHTS[role][index]}
-          </p>
 
           <Button
             type="button"
             variant="ghost"
             size="icon"
             onClick={handleClose}
-            className="h-7 w-7 shrink-0 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
+            className="group h-7 w-7 shrink-0 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-700"
             aria-label="Dismiss insight"
           >
-            <X className="h-3.5 w-3.5" />
+            <X className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-90" />
           </Button>
         </div>
       </div>

@@ -38,6 +38,7 @@ export function DashboardShell({
       />
 
       <div className="flex min-w-0 flex-1 flex-col">
+        <DashboardInsight role={role} />
         <DashboardTopbar
           role={role}
           user={user}
@@ -45,7 +46,7 @@ export function DashboardShell({
           onMenuOpen={() => setMobileOpen(true)}
         />
 
-        <DashboardInsight role={role} />
+        {/* <DashboardInsight role={role} /> */}
 
         <main className="flex-1 px-4 py-3 sm:px-6 lg:px-4 lg:py-3">
           {children}
