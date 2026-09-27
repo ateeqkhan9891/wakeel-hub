@@ -9,16 +9,16 @@ import {
 } from "lucide-react";
 
 // refracted into sepaarte section comps -- we will later move these into seaparte folder inside laywer - overview page sections
-import { LawyerDashboardHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-header";
-import { LawyerDashboardMetrics } from "@/components/dashboard/lawyer/lawyer-dashboard-metrics";
-import { LawyerDashboardVisibility } from "@/components/dashboard/lawyer/lawyer-dashboard-visibility";
-import { LawyerDashboardSubscription } from "@/components/dashboard/lawyer/lawyer-dashboard-subscription";
-import { LawyerDashboardHearings } from "@/components/dashboard/lawyer/lawyer-dashboard-hearings";
-import { LawyerDashboardAttention } from "@/components/dashboard/lawyer/lawyer-dashboard-attention";
-import { LawyerDashboardRequests } from "@/components/dashboard/lawyer/lawyer-dashboard-requests";
-import { LawyerDashboardRevenue } from "@/components/dashboard/lawyer/lawyer-dashboard-revenue";
-import { LawyerDashboardChecklist } from "@/components/dashboard/lawyer/lawyer-dashboard-checklist";
-import { LawyerDashboardReadiness } from "@/components/dashboard/lawyer/lawyer-dashboard-readiness";
+import { LawyerDashboardHeader } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-header";
+import { LawyerDashboardMetrics } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-metrics";
+import { LawyerDashboardVisibility } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-visibility";
+import { LawyerDashboardSubscription } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-subscription";
+import { LawyerDashboardHearings } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-hearings";
+import { LawyerDashboardAttention } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-attention";
+import { LawyerDashboardRequests } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-requests";
+import { LawyerDashboardRevenue } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-revenue";
+import { LawyerDashboardChecklist } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-checklist";
+import { LawyerDashboardReadiness } from "@/components/dashboard/lawyer/overview/lawyer-dashboard-readiness";
 
 
 
