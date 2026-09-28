@@ -81,7 +81,7 @@ export default function RootLayout({
           easing="ease"
         />
         
-        <ThemeProvider attribute="class" defaultTheme="system"  enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light"  enableSystem disableTransitionOnChange>
           <TooltipProvider delayDuration={150}>
             <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
             {children}
