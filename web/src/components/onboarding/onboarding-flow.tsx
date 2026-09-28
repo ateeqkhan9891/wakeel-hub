@@ -21,28 +21,28 @@ type Stage = 1 | 2 | 3;
 const stages = [
   {
     number: 1,
-    eyebrow: "Welcome aboard",
-    title: "Every case has a story.",
+    eyebrow: "First things first",
+    title: "You came this far. Might as well see it through.",
     description:
-      "Let’s get your WakeelHub experience ready. Nothing dramatic. No courtroom entrance required.",
+      "Three steps. That’s all. No interrogation, no courtroom drama, no one asking you to confess anything.",
     icon: Sparkles,
   },
   {
     number: 2,
-    eyebrow: "Make it yours",
-    title: "A little context goes a long way.",
+    eyebrow: "Pay attention",
+    title: "The smallest detail can change the whole story.",
     description:
-      "Your profile helps WakeelHub show you the right tools, people, and information.",
+      "Give us the details that matter. Around here, information has a way of becoming leverage.",
     icon: Scale,
   },
   {
-    number: 3,
-    eyebrow: "Almost there",
-    title: "Your next move, counselor.",
-    description:
-      "That’s the setup. Three steps, zero cross-examination. Let’s get you to your dashboard.",
-    icon: BriefcaseBusiness,
-  },
+  number: 3,
+  eyebrow: "Your move",
+  title: "Easy there, Mr. White. We’re almost done.",
+  description:
+    "Your setup is complete. Now go make some legal moves. Preferably the kind that don’t involve the DEA.",
+  icon: BriefcaseBusiness,
+},
 ] as const;
 
 export function OnboardingFlow() {
