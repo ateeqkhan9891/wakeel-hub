@@ -258,7 +258,7 @@ export function LawyerProfileSidebar({
           size="sm"
           className="mt-5 w-full gap-1.5"
         >
-          <Link href="/dashboard/lawyer/verification">
+          <Link href="/dashboard/lawyer/profile#verification">
             <ShieldCheck className="h-3.5 w-3.5" />
             Manage verification
             <ArrowUpRight className="ml-auto h-3 w-3" />

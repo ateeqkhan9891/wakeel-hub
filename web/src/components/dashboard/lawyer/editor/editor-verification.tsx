@@ -61,7 +61,7 @@ export function EditorVerification({
   onUpload: (type: VerificationDocKey, file: File) => void;
 }) {
   return (
-    <Card>
+    <Card id="verification">
       <CardHeader>
         <CardTitle>Verification documents</CardTitle>
       </CardHeader>
