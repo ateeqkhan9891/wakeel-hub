@@ -1,6 +1,6 @@
 "use client";
 
-import { FileCheck2, Loader2, Upload } from "lucide-react";
+import { FileCheck2, Loader2, Send, Upload } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 import type { LawyerFullProfile } from "@/lib/data/lawyer-profile-types";
 
 export type VerificationDocKey =
@@ -53,15 +52,29 @@ export function EditorVerification({
   form,
   docPaths,
   uploadingDoc,
+  submitting,
   onUpload,
+  onSubmit,
 }: {
   form: LawyerFullProfile;
   docPaths: Partial<Record<VerificationDocKey, string>>;
   uploadingDoc: VerificationDocKey | null;
+  submitting: boolean;
   onUpload: (type: VerificationDocKey, file: File) => void;
+  onSubmit: () => void;
 }) {
+  const uploadedCount = VERIFICATION_DOCS.filter(
+    (doc) => Boolean(docPaths[doc.key]),
+  ).length;
+
+  const canSubmit =
+    Boolean(form.barCouncilNumber.trim()) &&
+    uploadedCount === VERIFICATION_DOCS.length &&
+    !uploadingDoc &&
+    !submitting;
+
   return (
-    <Card id="verification">
+    <Card id="verification" className="scroll-mt-24">
       <CardHeader>
         <CardTitle>Verification documents</CardTitle>
       </CardHeader>
@@ -100,6 +113,7 @@ export function EditorVerification({
                     <p className="text-sm font-semibold text-slate-900">
                       {doc.label}
                     </p>
+
                     <p className="mt-1 text-xs text-slate-500">
                       {doc.description}
                     </p>
@@ -117,7 +131,7 @@ export function EditorVerification({
                     type="file"
                     accept="image/*,.pdf"
                     className="hidden"
-                    disabled={uploading}
+                    disabled={uploading || submitting}
                     onChange={(event) => {
                       const file = event.target.files?.[0];
 
@@ -132,7 +146,7 @@ export function EditorVerification({
                   <Button
                     type="button"
                     variant="outline"
-                    disabled={uploading}
+                    disabled={uploading || submitting}
                     asChild
                   >
                     <span className="cursor-pointer">
@@ -179,6 +193,38 @@ export function EditorVerification({
 
             <Input value={form.barEnrollmentYear} disabled />
           </div>
+        </div>
+
+        <div className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-slate-900">
+              Ready for verification?
+            </p>
+
+            <p className="mt-1 text-xs leading-5 text-slate-500">
+              Upload all required documents before sending your verification
+              request to the admin team.
+            </p>
+
+            <p className="mt-2 text-xs font-medium text-slate-600">
+              {uploadedCount} of {VERIFICATION_DOCS.length} documents uploaded
+            </p>
+          </div>
+
+          <Button
+            type="button"
+            disabled={!canSubmit}
+            onClick={onSubmit}
+            className="shrink-0"
+          >
+            {submitting ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <Send className="mr-2 h-4 w-4" />
+            )}
+
+            {submitting ? "Submitting..." : "Submit verification request"}
+          </Button>
         </div>
       </CardContent>
     </Card>

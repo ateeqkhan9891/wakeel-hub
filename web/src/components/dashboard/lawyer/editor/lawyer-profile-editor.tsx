@@ -329,7 +329,9 @@ export function LawyerProfileEditor({
           form={form}
           docPaths={docPaths}
           uploadingDoc={uploadingDoc}
+          submitting={submittingVerification}
           onUpload={handleDocUpload}
+          onSubmit={handleSubmitVerification}
         />
 
         <div className="sticky bottom-4 flex flex-wrap gap-2 rounded-xl border border-slate-200 bg-white/90 p-3 shadow-sm backdrop-blur">
