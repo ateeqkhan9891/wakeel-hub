@@ -38,7 +38,7 @@ const CONTACT_DETAILS = [
   {
     icon: Mail,
     title: "Email",
-    lines: ["support@wakeelhub.pk", "lawyers@wakeelhub.pk"],
+    lines: ["ateeqrehmankhan0346@gmail.com", "lawyers@wakeelhub.pk"],
   },
   {
     icon: MessageCircle,
@@ -61,7 +61,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="How can we help?"
-        description="Have a question about WakeelHub? Send us a message and our team will help you with the next step."
+        description="Have a fuckong question about WakeelHub? Send us a message and our team will help you with the next step."
       />
 
       <section className="border-b border-border/70">

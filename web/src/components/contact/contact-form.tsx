@@ -86,7 +86,7 @@ export function ContactForm() {
       form.reset();
     } catch {
       toast.error("Something went wrong", {
-        description: "Please try again in a moment.",
+        description: "Please try again in a moment.ghinrr saaar",
       });
     } finally {
       setSubmitting(false);
@@ -137,7 +137,7 @@ export function ContactForm() {
                   <Input
                     {...field}
                     type="email"
-                    placeholder="you@example.com"
+                    placeholder="kendaljenner123@gmail.com"
                     autoComplete="email"
                     className="h-11 bg-background"
                   />

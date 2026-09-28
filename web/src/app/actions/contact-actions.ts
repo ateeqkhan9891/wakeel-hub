@@ -37,16 +37,23 @@ export async function submitContactMessage(input: z.infer<typeof contactSchema>)
 
   const supportTo = process.env.SUPPORT_EMAIL;
   if (supportTo) {
-    await sendEmail({
-      to: supportTo,
-      subject: `WakeelHub contact: ${parsed.data.topic}`,
-      html: basicEmail(
-        `New message from ${parsed.data.fullName}`,
-        `${parsed.data.message}<br><br>Email: ${parsed.data.email}`
-      ),
-      text: `${parsed.data.message}\n\nEmail: ${parsed.data.email}`,
-      idempotencyKey: `contact-${parsed.data.email}-${Date.now()}`,
-    });
+    const emailResult = await sendEmail({
+  to: supportTo,
+  subject: `WakeelHub contact: ${parsed.data.topic}`,
+  html: basicEmail(
+    `New message from ${parsed.data.fullName}`,
+    `${parsed.data.message}<br><br>Email: ${parsed.data.email}`,
+  ),
+  text: `${parsed.data.message}\n\nEmail: ${parsed.data.email}`,
+  idempotencyKey: `contact-${parsed.data.email}-${Date.now()}`,
+});
+
+if (!emailResult.ok) {
+  return {
+    ok: false,
+    error: "Your message was saved, but we could not send the notification email.",
+  };
+}
   }
 
   return { ok: true };
