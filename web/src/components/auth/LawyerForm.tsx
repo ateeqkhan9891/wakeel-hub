@@ -209,7 +209,7 @@ export function LawyerForm({
                 general: undefined,
               }));
             }}
-            placeholder="Your full name"
+            placeholder="Your full name Mr.White"
             autoComplete="name"
             disabled={loading}
           />
@@ -232,7 +232,7 @@ export function LawyerForm({
                 general: undefined,
               }));
             }}
-            placeholder="+92 300 1234567"
+            placeholder="+92 333 22 11"
             autoComplete="tel"
             disabled={loading}
           />
@@ -255,7 +255,7 @@ export function LawyerForm({
                 general: undefined,
               }));
             }}
-            placeholder="you@example.com"
+            placeholder="mr_white@gmail.com"
             autoComplete="email"
             disabled={loading}
           />

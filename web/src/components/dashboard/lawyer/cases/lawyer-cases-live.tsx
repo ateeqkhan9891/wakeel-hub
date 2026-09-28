@@ -18,7 +18,7 @@ type LawyerCasesLiveProps = {
   cases: CaseRecord[];
 };
 
-export function LawyerCasesLive({
+export function LawyerCasesLive({ 
   cases,
 }: LawyerCasesLiveProps) {
   const router = useRouter();

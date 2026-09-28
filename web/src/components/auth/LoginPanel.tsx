@@ -133,7 +133,7 @@ export function LoginPanel({
               setEmail(event.target.value);
               if (error) setError("");
             }}
-            placeholder="you@example.com"
+            placeholder="kyliejenner_wazir@gmail.com"
             autoComplete="email"
             disabled={loading}
           />

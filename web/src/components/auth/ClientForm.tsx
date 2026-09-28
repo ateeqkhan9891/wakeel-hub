@@ -181,7 +181,7 @@ export function ClientForm({
                 general: undefined,
               }));
             }}
-            placeholder="Your full name"
+            placeholder="Your full name brother"
             autoComplete="name"
             disabled={loading}
           />
@@ -204,7 +204,7 @@ export function ClientForm({
                 general: undefined,
               }));
             }}
-            placeholder="+92 300 1234567"
+            placeholder="+92 0000 0000"
             autoComplete="tel"
             disabled={loading}
           />
@@ -227,7 +227,7 @@ export function ClientForm({
                 general: undefined,
               }));
             }}
-            placeholder="you@example.com"
+            placeholder="kendaljenner_wazir@gmail.com"
             autoComplete="email"
             disabled={loading}
           />
