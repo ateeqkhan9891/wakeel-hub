@@ -37,6 +37,7 @@ export interface Database {
           avatar_url: string | null;
           city: string | null;
           province: string | null;
+          onboarding_completed: boolean;
           is_active: boolean;
           created_at: string;
           updated_at: string;

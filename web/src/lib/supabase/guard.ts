@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+
 import { createClient } from "@/lib/supabase/server";
 import type { UserRole } from "@/lib/types";
 
@@ -8,6 +9,7 @@ export interface GuardedProfile {
   email: string;
   role: UserRole;
   avatar_url: string | null;
+  onboarding_completed: boolean;
 }
 
 const ROLE_HOME: Record<UserRole, string> = {
@@ -16,14 +18,9 @@ const ROLE_HOME: Record<UserRole, string> = {
   admin: "/dashboard/admin",
 };
 
-/**
- * Server-side route guard for dashboard layouts (defence in depth on top
- * of `proxy.ts`). Validates the Supabase session, loads the `profiles`
- * row, and - when an `expectedRole` is given - redirects users who land on
- * the wrong dashboard to their own. Returns the authenticated profile so
- * the layout can render real identity (no hard-coded demo user).
- */
-export async function requireUser(expectedRole?: UserRole): Promise<GuardedProfile> {
+export async function requireUser(
+  expectedRole?: UserRole
+): Promise<GuardedProfile> {
   const supabase = await createClient();
 
   const {
@@ -36,7 +33,9 @@ export async function requireUser(expectedRole?: UserRole): Promise<GuardedProfi
 
   const { data } = await supabase
     .from("profiles")
-    .select("id, full_name, email, role, avatar_url")
+    .select(
+      "id, full_name, email, role, avatar_url, onboarding_completed"
+    )
     .eq("id", user.id)
     .single();
 
@@ -44,6 +43,10 @@ export async function requireUser(expectedRole?: UserRole): Promise<GuardedProfi
 
   if (!profile) {
     redirect("/login");
+  }
+
+  if (!profile.onboarding_completed) {
+    redirect("/onboarding");
   }
 
   if (expectedRole && profile.role !== expectedRole) {

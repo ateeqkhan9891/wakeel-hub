@@ -147,7 +147,7 @@ export function LawyerForm({
 
       if (data.session) {
         toast.success("Account created successfully.");
-        router.push("/dashboard/lawyer/profile");
+        router.push("/onboarding");
         router.refresh();
         return;
       }

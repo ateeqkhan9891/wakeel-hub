@@ -92,20 +92,27 @@ export function LoginPanel({
         .eq("id", data.user.id)
         .maybeSingle();
 
-      const role =
-        (profile as { role?: string } | null)?.role ?? "client";
+     const profileData = profile as
+      | { role?: string; onboarding_completed?: boolean }
+      | null;
 
-      const destination = ROLE_HOME[role] ?? "/dashboard";
+    const role = profileData?.role ?? "client";
+
+    const destination = ROLE_HOME[role] ?? "/dashboard/client";
+
+    const onboardingCompleted = profileData?.onboarding_completed ?? false;
 
       toast.success("Signed in successfully.");
 
       const next = searchParams.get("next");
 
-      if (next && next.startsWith("/")) {
-        router.push(next);
-      } else {
-        router.push(destination);
-      }
+      if (!onboardingCompleted) {
+  router.push("/onboarding");
+} else if (next && next.startsWith("/")) {
+  router.push(next);
+} else {
+  router.push(destination);
+}
 
       router.refresh();
     } catch {

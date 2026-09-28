@@ -122,7 +122,7 @@ export function ClientForm({
 
       if (data.session) {
         toast.success("Account created successfully.");
-        router.push("/dashboard/client");
+        router.push("/onboarding");
         router.refresh();
         return;
       }
