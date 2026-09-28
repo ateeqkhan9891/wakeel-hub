@@ -5,9 +5,12 @@ import Link from "next/link";
 import {
   ArrowLeft,
   Bell,
+  CalendarCheck,
   ChevronDown,
   LogOut,
   Menu,
+  MessageSquare,
+  Scale,
   SunMoon,
 } from "lucide-react";
 
@@ -32,6 +35,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 type DashboardRole = "client" | "lawyer" | "admin";
 
@@ -113,24 +122,122 @@ export function DashboardTopbar({
       </div>
 
       <div className="flex items-center gap-2">
-        <Link href={`/dashboard/${role}/notifications`}>
-          <Button
-            variant="outline"
-            size="icon"
-            className="relative h-9 w-9 rounded-xl border-slate-200 bg-white shadow-sm hover:bg-slate-50"
-            aria-label="Notifications"
-          >
-            <Bell className="h-4 w-4 text-slate-600" />
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="relative h-9 w-9 rounded-xl border-slate-200 bg-white shadow-sm hover:bg-slate-50"
+              aria-label="Notifications"
+            >
+              <Bell className="h-4 w-4 text-slate-600" />
 
-            {unreadNotifications > 0 && (
-              <span className="absolute -right-1 -top-1 flex min-h-4 min-w-4 items-center justify-center rounded-full border-2 border-white bg-amber-500 px-1 text-[9px] font-bold leading-none text-white">
-                {unreadNotifications > 99
-                  ? "99+"
-                  : unreadNotifications}
-              </span>
+              {unreadNotifications > 0 && (
+                <span className="absolute -right-1 -top-1 flex min-h-4 min-w-4 items-center justify-center rounded-full border-2 border-white bg-amber-500 px-1 text-[9px] font-bold leading-none text-white">
+                  {unreadNotifications > 99
+                    ? "99+"
+                    : unreadNotifications}
+                </span>
+              )}
+            </Button>
+          </PopoverTrigger>
+
+          <PopoverContent
+            align="end"
+            sideOffset={8}
+            className="w-[360px] overflow-hidden rounded-2xl border-slate-200 bg-white p-0 shadow-xl shadow-slate-900/[0.06]"
+          >
+            <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3.5">
+              <div>
+                <h3 className="text-sm font-semibold text-slate-950">
+                  Notifications
+                </h3>
+                <p className="mt-0.5 text-[11px] text-slate-500">
+                  Stay updated with your account activity.
+                </p>
+              </div>
+
+              {unreadNotifications > 0 && (
+                <span className="rounded-full bg-amber-50 px-2 py-1 text-[10px] font-semibold text-amber-700">
+                  {unreadNotifications} unread
+                </span>
+              )}
+            </div>
+
+            {unreadNotifications > 0 ? (
+              <div className="divide-y divide-slate-100">
+                <div className="flex gap-3 px-4 py-3.5 transition-colors hover:bg-slate-50">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/5 text-primary">
+                    <CalendarCheck className="h-4 w-4" />
+                  </span>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold text-slate-800">
+                      New activity
+                    </p>
+                    <p className="mt-0.5 text-[11px] leading-5 text-slate-500">
+                      You have new activity that needs your attention.
+                    </p>
+                    <p className="mt-1 text-[10px] text-slate-400">
+                      Recently
+                    </p>
+                  </div>
+
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                </div>
+
+                {unreadNotifications > 1 && (
+                  <div className="flex gap-3 px-4 py-3.5 transition-colors hover:bg-slate-50">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                      {role === "lawyer" ? (
+                        <Scale className="h-4 w-4" />
+                      ) : (
+                        <MessageSquare className="h-4 w-4" />
+                      )}
+                    </span>
+
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-slate-800">
+                        More notifications
+                      </p>
+                      <p className="mt-0.5 text-[11px] leading-5 text-slate-500">
+                        You have additional unread notifications.
+                      </p>
+                      <p className="mt-1 text-[10px] text-slate-400">
+                        Recently
+                      </p>
+                    </div>
+
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center px-6 py-10 text-center">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-50 text-slate-400">
+                  <Bell className="h-5 w-5" />
+                </span>
+
+                <p className="mt-3 text-sm font-semibold text-slate-800">
+                  You&apos;re all caught up
+                </p>
+
+                <p className="mt-1 max-w-[240px] text-xs leading-5 text-slate-500">
+                  You don&apos;t have any new notifications right now.
+                </p>
+              </div>
             )}
-          </Button>
-        </Link>
+
+            <div className="border-t border-slate-100 bg-slate-50/50 p-2">
+              <Link
+                href={`/dashboard/${role}/notifications`}
+                className="flex w-full items-center justify-center rounded-lg px-3 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary/5"
+              >
+                View all notifications
+              </Link>
+            </div>
+          </PopoverContent>
+        </Popover>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

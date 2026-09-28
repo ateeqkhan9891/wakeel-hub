@@ -1,62 +1,74 @@
+
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { getLawyerSettings } from "@/lib/data/lawyer-settings";
 import { getMyLawyerProfile } from "@/lib/data/lawyer-profile";
 import { getLawyerSubscription } from "@/lib/data/lawyer-subscription";
+
 import { DashboardPageHeader } from "@/components/dashboard/lawyer/lawyer-dashboard-ui";
-import {
-  LawyerSettingsPanel,
-  type SettingsSubscription,
-  type SettingsSidebarMeta,
-} from "@/components/dashboard/lawyer/lawyer-settings-panel";
+import { LawyerSettingsPanel } from "@/components/dashboard/lawyer/settings/lawyer-settings-panel";
+import { SettingsSidebar } from "@/components/dashboard/lawyer/settings/settings-sidebar";
 
-export const metadata: Metadata = { title: "Settings" };
+export const metadata: Metadata = {
+  title: "Settings",
+};
 
-/** Profile-completion checklist shared with the profile view (real fields only). */
-function completionPct(p: NonNullable<Awaited<ReturnType<typeof getMyLawyerProfile>>>): number {
+function completionPct(
+  profile: Awaited<ReturnType<typeof getMyLawyerProfile>>,
+) {
+  if (!profile) return 0;
+
   const checks = [
-    Boolean(p.photoUrl),
-    p.about.trim().length >= 40,
-    Boolean(p.professionalTitle),
-    p.practiceAreas.length > 0,
-    p.courts.length > 0,
-    p.experience.length > 0,
-    p.education.length > 0,
-    p.languages.length > 0,
-    Number(p.onlineConsultationFee) > 0 || Number(p.officeConsultationFee) > 0 || Number(p.phoneConsultationFee) > 0,
-    p.availabilityDays.length > 0,
-    Boolean(p.officeAddress),
-    p.verificationStatus !== "not_submitted",
+    Boolean(profile.photoUrl),
+    Boolean(profile.about && profile.about.length >= 40),
+    Boolean(profile.professionalTitle),
+    profile.practiceAreas.length > 0,
+    profile.courts.length > 0,
+    profile.experience.length > 0,
+    profile.education.length > 0,
+    profile.languages.length > 0,
+    [
+      profile.onlineConsultationFee,
+      profile.officeConsultationFee,
+      profile.phoneConsultationFee,
+    ].some((fee) => Number(fee) > 0),
+    profile.availabilityDays.length > 0,
+    Boolean(profile.officeAddress),
+    profile.verificationStatus !== "not_submitted",
   ];
-  return Math.round((checks.filter(Boolean).length / checks.length) * 100);
+
+  return Math.round(
+    (checks.filter(Boolean).length / checks.length) * 100,
+  );
 }
 
 export default async function LawyerSettingsPage() {
-  const [settings, profile, sub] = await Promise.all([
+  const [settings, profile, subscription] = await Promise.all([
     getLawyerSettings(),
     getMyLawyerProfile(),
     getLawyerSubscription(),
   ]);
-  if (!settings) redirect("/login");
 
-  const subscription: SettingsSubscription | null = sub
-    ? {
-        status: sub.status,
-        plan: sub.plan,
-        period: sub.period,
-        expiresAt: sub.expiresAt,
-        daysRemaining: sub.daysRemaining,
-        expired: sub.expired,
-        expiringSoon: sub.expiringSoon,
-      }
-    : null;
+  if (!settings) {
+    redirect("/login");
+  }
 
-  const meta: SettingsSidebarMeta = {
-    completionPct: profile ? completionPct(profile) : 0,
+  const settingsSubscription = {
+    status: subscription?.status === "active" ? "active" : "inactive",
+    plan: subscription?.plan ?? null,
+    period: subscription?.period ?? null,
+    expiresAt: subscription?.expiresAt ?? null,
+    daysRemaining: subscription?.daysRemaining ?? null,
+    expired: subscription?.expired ?? false,
+    expiringSoon: subscription?.expiringSoon ?? false,
+  } as const;
+
+  const meta = {
+    completionPct: completionPct(profile),
     verificationStatus: profile?.verificationStatus ?? "not_submitted",
-    isVerified: profile?.isVerified ?? false,
-    publicLive: Boolean(profile?.isVerified && profile?.slug),
+    isVerified: profile?.verificationStatus === "approved",
+    publicLive: Boolean(profile?.slug),
     slug: profile?.slug ?? "",
   };
 
@@ -64,9 +76,22 @@ export default async function LawyerSettingsPage() {
     <div className="space-y-6">
       <DashboardPageHeader
         title="Settings"
-        description="Manage your practice details, notifications, privacy settings, security, and subscription."
+        description="Manage your practice, notifications, privacy, security, and subscription."
       />
-      <LawyerSettingsPanel settings={settings} subscription={subscription} meta={meta} />
+
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+        <LawyerSettingsPanel
+          settings={settings}
+          subscription={settingsSubscription}
+          meta={meta}
+        />
+
+        <SettingsSidebar
+          meta={meta}
+          subscription={settingsSubscription}
+        />
+      </div>
     </div>
   );
 }
+

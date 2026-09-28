@@ -123,62 +123,69 @@ export function LawyerDashboardHeader({
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:rounded-3xl sm:p-6">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  Profile strength
-                </p>
+       <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:rounded-3xl sm:p-6">
+  <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-emerald-100/50 blur-2xl" />
+  <div className="pointer-events-none absolute -bottom-16 -left-10 h-28 w-28 rounded-full bg-primary/5 blur-2xl" />
+  <div className="pointer-events-none absolute right-10 top-8 h-16 w-16 rounded-full border border-emerald-200/40" />
+  <div className="pointer-events-none absolute right-14 top-12 h-8 w-8 rounded-full border border-emerald-200/30" />
 
-                <div className="mt-2 flex items-baseline gap-1">
-                  <span className="font-heading text-4xl font-semibold tracking-tight text-slate-950">
-                    {strength}
-                  </span>
+  <div className="relative">
+    <div className="flex items-start justify-between gap-4">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          Profile strength
+        </p>
 
-                  <span className="text-base font-medium text-slate-400">
-                    / 100
-                  </span>
-                </div>
-              </div>
+        <div className="mt-2 flex items-baseline gap-1">
+          <span className="font-heading text-4xl font-semibold tracking-tight text-slate-950">
+            {strength}
+          </span>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-200 bg-white text-emerald-600 shadow-sm">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-            </div>
+          <span className="text-base font-medium text-slate-400">
+            / 100
+          </span>
+        </div>
+      </div>
 
-            <div className="mt-5">
-              <div className="mb-2 flex items-center justify-between text-xs">
-                <span className="font-medium text-slate-500">
-                  Completion
-                </span>
+      <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-200/80 bg-white/80 text-emerald-600 shadow-sm backdrop-blur-sm">
+        <ShieldCheck className="h-5 w-5" />
+      </div>
+    </div>
 
-                <span className="font-semibold text-slate-700">
-                  {strength}%
-                </span>
-              </div>
+    <div className="mt-5">
+      <div className="mb-2 flex items-center justify-between text-xs">
+        <span className="font-medium text-slate-500">
+          Completion
+        </span>
 
-              <Progress
-                value={strength}
-                className="h-2 bg-slate-200"
-              />
-            </div>
+        <span className="rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-semibold text-slate-600 shadow-sm ring-1 ring-slate-200/70">
+          {strength}%
+        </span>
+      </div>
 
-            <div className="mt-5 border-t border-slate-200 pt-4">
-              <div className="flex items-start gap-2.5">
-                {strength >= 80 ? (
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                ) : (
-                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
-                )}
+      <div className="h-2 overflow-hidden rounded-full bg-slate-200/80">
+        <Progress
+          value={strength}
+          className="h-full rounded-full"
+        />
+      </div>
+    </div>
 
-                <p className="text-xs leading-5 text-slate-500">
-                  {strength >= 80
-                    ? "Your profile is well prepared. Keep your information and documents current."
-                    : "Complete the checklist below to improve your profile completeness and client trust."}
-                </p>
-              </div>
-            </div>
-          </div>
+    <div className="mt-5 flex items-start gap-2.5 border-t border-slate-200/70 pt-4">
+      {strength >= 80 ? (
+        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+      ) : (
+        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+      )}
+
+      <p className="text-xs leading-5 text-slate-500">
+        {strength >= 80
+          ? "Your profile is well prepared. Keep your information and documents current."
+          : "Complete the checklist below to improve your profile completeness and client trust."}
+      </p>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </section>
