@@ -181,7 +181,7 @@ export function ClientForm({
                 general: undefined,
               }));
             }}
-            placeholder="Your full name brother"
+            placeholder="Your full name"
             autoComplete="name"
             disabled={loading}
           />

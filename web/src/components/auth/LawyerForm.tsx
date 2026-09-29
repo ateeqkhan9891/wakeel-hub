@@ -209,7 +209,7 @@ export function LawyerForm({
                 general: undefined,
               }));
             }}
-            placeholder="Your full name Mr.White"
+            placeholder="Your full name"
             autoComplete="name"
             disabled={loading}
           />
