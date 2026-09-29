@@ -1,14 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   ArrowRight,
-  BriefcaseBusiness,
   Check,
-  Scale,
-  Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -22,37 +20,37 @@ const stages = [
   {
     number: 1,
     eyebrow: "First things first",
-    title: "You came this far. Might as well see it through.",
+    title: "Welcome to WakeelHub.",
     description:
-      "Three steps. That’s all. No interrogation, no courtroom drama, no one asking you to confess anything.",
-    icon: Sparkles,
+      "“I do believe in killing the messenger. Why? Because it sends a message.” — The Vampire Diaries",
+    image: "/onboarding/onboarding-1.png",
   },
   {
     number: 2,
-    eyebrow: "Pay attention",
-    title: "The smallest detail can change the whole story.",
+    eyebrow: "Build your profile",
+    title: "The details matter.",
     description:
-      "Give us the details that matter. Around here, information has a way of becoming leverage.",
-    icon: Scale,
+      "“Yeah, science!” — Breaking Bad",
+    image: "/onboarding/onboarding-2.png",
   },
   {
-  number: 3,
-  eyebrow: "Your move",
-  title: "Easy there, Mr. White. We’re almost done.",
-  description:
-    "Your setup is complete. Now go make some legal moves. Preferably the kind that don’t involve the DEA.",
-  icon: BriefcaseBusiness,
-},
+    number: 3,
+    eyebrow: "You're ready",
+    title: "Your legal workspace awaits.",
+    description:
+      "“I need a miracle.” — Prison Break",
+    image: "/onboarding/no-booking.png",
+  },
 ] as const;
 
 export function OnboardingFlow() {
   const router = useRouter();
+
   const [stage, setStage] = useState<Stage>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const current = stages[stage - 1];
-  const Icon = current.icon;
-  const isLastStage = stage === 3;
+  const isLastStage = stage === stages.length;
 
   async function handleContinue() {
     if (!isLastStage) {
@@ -81,104 +79,160 @@ export function OnboardingFlow() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-4 py-10">
-      <div className="w-full max-w-2xl">
+    <main className="flex min-h-screen items-center justify-center bg-background px-4 py-8 sm:px-6">
+      <div className="w-full max-w-3xl">
         <div className="mb-8">
-          <div className="mb-3 flex items-center justify-between text-xs font-medium text-muted-foreground">
-            <span>Getting started</span>
-            <span>
-              {stage} of {stages.length}
+          <div className="mb-3 flex items-center justify-between">
+            <div>
+              <p className="text-sm font-semibold text-foreground">
+                Getting started
+              </p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Set up your WakeelHub account
+              </p>
+            </div>
+
+            <span className="rounded-full border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
+              Step {stage} of {stages.length}
             </span>
           </div>
 
-          <div className="h-1 overflow-hidden rounded-full bg-muted">
+          <div className="h-1.5 overflow-hidden rounded-full bg-muted">
             <motion.div
               className="h-full rounded-full bg-primary"
               initial={false}
               animate={{
                 width: `${(stage / stages.length) * 100}%`,
               }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              transition={{
+                duration: 0.4,
+                ease: "easeOut",
+              }}
             />
           </div>
         </div>
 
-        <div className="rounded-3xl border bg-card p-8 shadow-sm sm:p-12">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={stage}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-              className="mx-auto max-w-xl text-center"
-            >
-              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <Icon className="h-7 w-7" />
-              </div>
+        <div className="overflow-hidden rounded-3xl border bg-card shadow-sm">
+          <div className="relative min-h-[600px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={stage}
+                initial={{
+                  opacity: 0,
+                  x: 24,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  x: -24,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                }}
+                className="flex min-h-[600px] flex-col"
+              >
+                <div className="flex flex-1 flex-col items-center px-6 pb-8 pt-10 text-center sm:px-12 sm:pt-12">
+                  <div className="mb-8 flex h-56 w-full max-w-sm items-center justify-center sm:h-64">
+                    <Image
+                      src={current.image}
+                      alt=""
+                      width={500}
+                      height={500}
+                      priority
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
 
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-                {current.eyebrow}
-              </p>
+                  <div className="max-w-xl">
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                      {current.eyebrow}
+                    </p>
 
-              <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                {current.title}
-              </h1>
+                    <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+                      {current.title}
+                    </h1>
 
-              <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-muted-foreground">
-                {current.description}
-              </p>
-            </motion.div>
-          </AnimatePresence>
+                    <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-muted-foreground sm:text-base">
+                      {current.description}
+                    </p>
+                  </div>
+                </div>
 
-          <div className="mt-10 flex items-center justify-between">
-            <Button
-              type="button"
-              variant="ghost"
-              onClick={handleBack}
-              disabled={stage === 1 || isSubmitting}
-              className="rounded-xl"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
-            </Button>
+                <div className="border-t bg-muted/20 px-6 py-5 sm:px-10">
+                  <div className="flex items-center justify-between">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      onClick={handleBack}
+                      disabled={stage === 1 || isSubmitting}
+                      className="rounded-xl"
+                    >
+                      <ArrowLeft className="mr-2 h-4 w-4" />
+                      Back
+                    </Button>
 
-            <Button
-              type="button"
-              onClick={handleContinue}
-              disabled={isSubmitting}
-              size="lg"
-              className="min-w-36 rounded-xl"
-            >
-              {isSubmitting
-                ? "Setting things up..."
-                : isLastStage
-                  ? "Enter WakeelHub"
-                  : "Continue"}
-              {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
-            </Button>
+                    <Button
+                      type="button"
+                      onClick={handleContinue}
+                      disabled={isSubmitting}
+                      size="lg"
+                      className="min-w-36 rounded-xl"
+                    >
+                      {isSubmitting
+                        ? "Setting things up..."
+                        : isLastStage
+                          ? "Enter WakeelHub"
+                          : "Continue"}
+
+                      {!isSubmitting && (
+                        isLastStage ? (
+                          <Check className="ml-2 h-4 w-4" />
+                        ) : (
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        )
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
+        </div>
 
-          <div className="mt-7 flex justify-center gap-2">
-            {stages.map((item) => (
-              <div
-                key={item.number}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {stages.map((item) => (
+            <button
+              key={item.number}
+              type="button"
+              onClick={() => {
+                if (!isSubmitting) {
+                  setStage(item.number as Stage);
+                }
+              }}
+              disabled={isSubmitting}
+              aria-label={`Go to step ${item.number}`}
+              className="group flex items-center gap-2 p-1"
+            >
+              <span
                 className={[
-                  "h-1.5 rounded-full transition-all",
+                  "block h-1.5 rounded-full transition-all duration-300",
                   item.number === stage
-                    ? "w-7 bg-primary"
+                    ? "w-8 bg-primary"
                     : item.number < stage
                       ? "w-2 bg-primary/50"
                       : "w-2 bg-muted",
                 ].join(" ")}
               />
-            ))}
-          </div>
+            </button>
+          ))}
         </div>
 
-        <p className="mt-5 text-center text-xs text-muted-foreground">
-          You can finish this in about a minute. We promise no paperwork
-          mountain.
+        <p className="mt-4 text-center text-xs text-muted-foreground">
+          You can complete your setup in about a minute.
         </p>
       </div>
     </main>
