@@ -139,7 +139,7 @@ export function CaseTrackingPreview() {
 
   return (
     <section className="relative overflow-hidden bg-secondary/30 py-20 sm:py-28">
-      <PremiumBackdrop reduce={reduce} />
+      <PremiumBackdrop />
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         {/* Left - copy */}
