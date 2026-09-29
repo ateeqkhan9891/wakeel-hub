@@ -59,14 +59,16 @@ export function DemoAccountsDialog({
           <div className="relative flex items-start justify-between gap-4">
             <div className="min-w-0">
               <div className="mb-2.5 flex items-center gap-2">
-                <span className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-sm">
-                  <ShieldCheck className="size-3.5" />
-                </span>
-
-                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-600">
-                  Demo Access
-                </span>
-              </div>
+  <span className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-sm">
+    <ShieldCheck className="size-3.5" />
+  </span>
+  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-600">
+    Demo access
+    <span className="ml-1.5 font-medium normal-case tracking-normal text-emerald-600">
+      · Or create your own — no email verification
+    </span>
+  </span>
+</div>
 
               <h2
                 id="demo-accounts-title"
