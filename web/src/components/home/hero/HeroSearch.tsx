@@ -183,26 +183,26 @@ export function HeroSearch({
             </CleanSelect>
           </HeroSearchControl>
 
-          <HeroSearchControl
-            icon={WalletCards}
-            label="Fee"
-            className="md:border-r-0 md:pr-0"
-          >
-            <CleanSelect
-              value={feeRange}
-              onChange={onFeeRangeChange}
-              placeholder="Any fee"
-            >
-              {FEE_RANGES.map((item) => (
-                <SelectItem
-                  key={item.label}
-                  value={item.label}
-                >
-                  {item.label}
-                </SelectItem>
-              ))}
-            </CleanSelect>
-          </HeroSearchControl>
+        <HeroSearchControl
+  icon={WalletCards}
+  label="Fee"
+  className="md:border-r-0 md:pr-0 opacity-50 pointer-events-none"
+>
+  <CleanSelect
+    value=""
+    onChange={() => {}}
+    placeholder="Any fee"
+  >
+    {FEE_RANGES.map((item) => (
+      <SelectItem
+        key={item.label}
+        value={item.label}
+      >
+        {item.label}
+      </SelectItem>
+    ))}
+  </CleanSelect>
+</HeroSearchControl>
 
           <Button
             type="submit"
