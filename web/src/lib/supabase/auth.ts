@@ -73,3 +73,4 @@ export const ROLE_DASHBOARD_PATH: Record<UserRole, string> = {
   lawyer: "/dashboard/lawyer",
   admin: "/dashboard/admin",
 };
+

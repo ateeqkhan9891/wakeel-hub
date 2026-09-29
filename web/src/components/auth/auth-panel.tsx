@@ -115,7 +115,7 @@ export function AuthPanel() {
             ))}
           </div>
           <blockquote className="mt-4 text-base leading-7 text-white/88">
-            &quot;WakeelHub helped me find the right advocate within hours. The process was simple and professional.&quot;
+            &quot;Wakeel360 helped me find the right advocate within hours. The process was simple and professional.&quot;
           </blockquote>
           <p className="mt-4 text-sm font-semibold text-white">&mdash; Client, Lahore</p>
         </motion.div>
@@ -143,3 +143,4 @@ export function AuthPanel() {
     </aside>
   );
 }
+

@@ -126,3 +126,4 @@ export function LawyerProfileForm({ lawyer }: { lawyer: Lawyer }) {
     </Form>
   );
 }
+

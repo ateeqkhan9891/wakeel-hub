@@ -27,7 +27,7 @@ export function Logo({
 
       {!iconOnly && (
         <span className="font-heading text-[1.15rem] font-semibold tracking-[-0.02em] text-foreground">
-          WakeelHub
+          Wakeel360
           <span className="ml-1 text-gold">
             Pakistan
           </span>

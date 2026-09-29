@@ -19,3 +19,4 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
     </DashboardShell>
   );
 }
+

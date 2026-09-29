@@ -65,3 +65,4 @@ export async function getLawyerSettings(): Promise<LawyerSettings | null> {
     hearingReminders: bool(set.hearing_reminders, true),
   };
 }
+

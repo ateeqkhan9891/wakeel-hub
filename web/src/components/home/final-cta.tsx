@@ -14,7 +14,7 @@ export function FinalCta() {
           Ready to find the right legal help?
         </h2>
         <p className="relative mx-auto mt-3 max-w-xl text-base leading-7 text-primary-foreground/80">
-          Join thousands of clients and advocates already using WakeelHub to connect, collaborate and
+          Join thousands of clients and advocates already using Wakeel360 to connect, collaborate and
           resolve legal matters with confidence.
         </p>
         <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -31,3 +31,4 @@ export function FinalCta() {
     </section>
   );
 }
+

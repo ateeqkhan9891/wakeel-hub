@@ -84,3 +84,4 @@ export async function changePassword(newPassword: string): Promise<SettingsResul
   if (error) return { ok: false, error: error.message };
   return { ok: true };
 }
+

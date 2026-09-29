@@ -311,19 +311,19 @@ export const VALUES = [
 export const COMPARE_ROWS = [
   {
     traditional: "Ask around for referrals",
-    wakeelHub: "Search advocates by your requirements",
+    Wakeel360: "Search advocates by your requirements",
   },
   {
     traditional: "Unclear consultation fees",
-    wakeelHub: "Compare available fee information",
+    Wakeel360: "Compare available fee information",
   },
   {
     traditional: "Paper files and phone updates",
-    wakeelHub: "Track documents, hearings, and messages",
+    Wakeel360: "Track documents, hearings, and messages",
   },
   {
     traditional: "No shared progress view",
-    wakeelHub: "Keep client and advocate workflows connected",
+    Wakeel360: "Keep client and advocate workflows connected",
   },
 ] as const;
 

@@ -1,5 +1,5 @@
 -- =====================================================================
--- WakeelHub Pakistan - PRODUCTION Database Schema (PostgreSQL / Supabase)
+-- Wakeel360 Pakistan - PRODUCTION Database Schema (PostgreSQL / Supabase)
 -- =====================================================================
 -- Single copy-paste script for the Supabase SQL Editor on a FRESH project.
 --
@@ -1912,3 +1912,4 @@ on conflict (name, city_id) do nothing;
 -- =====================================================================
 -- End of schema - production ready, no demo data.
 -- =====================================================================
+

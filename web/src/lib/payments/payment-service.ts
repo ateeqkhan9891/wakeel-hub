@@ -165,7 +165,7 @@ export async function confirmSubscriptionPayment(
       user_id: row.lawyer_id as string,
       type: "payment",
       title: "Pro subscription active",
-      body: "Your WakeelHub Pro payment was confirmed and your 0% commission plan is active.",
+      body: "Your Wakeel360 Pro payment was confirmed and your 0% commission plan is active.",
       related_entity_type: "subscription_payment",
       related_entity_id: row.id as string,
     });
@@ -174,7 +174,7 @@ export async function confirmSubscriptionPayment(
     await sendTransactionalEmail({
       to: (profile as { email?: string } | null)?.email,
       subject: "Pro subscription active",
-      title: "WakeelHub Pro is active",
+      title: "Wakeel360 Pro is active",
       body: "Your Pro payment was confirmed. Your 0% commission plan is now active.",
       path: `/dashboard/lawyer/billing/${row.id}/invoice`,
       idempotencyKey: `subscription-paid-${row.id}`,
@@ -225,3 +225,4 @@ export async function expirePastDueSubscriptions(supabase: AdminClient = createA
   revalidatePath("/");
   return { ok: true, expired: ids.length };
 }
+

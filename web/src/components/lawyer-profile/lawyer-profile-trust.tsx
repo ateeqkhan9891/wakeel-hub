@@ -48,7 +48,7 @@ export function LawyerProfileTrust({
         </TrustLine>
 
         <TrustLine>
-          Joined WakeelHub on {formatDate(lawyer.joinedDate)}
+          Joined Wakeel360 on {formatDate(lawyer.joinedDate)}
         </TrustLine>
       </div>
     </section>

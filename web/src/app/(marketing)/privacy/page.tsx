@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Learn how WakeelHub Pakistan collects, uses, and protects your personal information.",
+  description: "Learn how Wakeel360 Pakistan collects, uses, and protects your personal information.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -14,7 +14,7 @@ const SECTIONS = [
     body: [
       "When you create an account, we collect information such as your name, email address, phone number, city, and password. Lawyers additionally provide professional details including Bar Council enrollment numbers, education, practice areas, and fee information for verification purposes.",
       "We also collect information you provide when booking consultations, messaging other users, uploading documents to your case dashboard, or making payments through the platform.",
-      "Like most websites, we automatically collect certain technical information - such as your IP address, browser type, device information, and pages visited - to help us operate and improve WakeelHub.",
+      "Like most websites, we automatically collect certain technical information - such as your IP address, browser type, device information, and pages visited - to help us operate and improve Wakeel360.",
     ],
   },
   {
@@ -29,7 +29,7 @@ const SECTIONS = [
     title: "3. How we share your information",
     body: [
       "Your profile information (such as name, city, practice areas, and reviews) is shared with other users as part of the normal operation of the marketplace - for example, a client can view a lawyer's public profile before booking a consultation.",
-      "We share information with trusted service providers who help us operate WakeelHub, such as payment processors and cloud hosting providers, under strict confidentiality obligations.",
+      "We share information with trusted service providers who help us operate Wakeel360, such as payment processors and cloud hosting providers, under strict confidentiality obligations.",
       "We do not sell your personal information to third parties. We may disclose information if required by law, such as in response to a valid court order or Bar Council inquiry.",
     ],
   },
@@ -37,7 +37,7 @@ const SECTIONS = [
     title: "4. Data security",
     body: [
       "We use industry-standard security measures, including encryption in transit and at rest, to protect your personal information from unauthorized access, alteration, or disclosure.",
-      "Payments are processed through secure, PCI-compliant payment gateways. WakeelHub does not store your full card details on its servers.",
+      "Payments are processed through secure, PCI-compliant payment gateways. Wakeel360 does not store your full card details on its servers.",
       "While we work hard to protect your data, no method of transmission or storage is 100% secure. We encourage you to use a strong, unique password and to keep your login credentials confidential.",
     ],
   },
@@ -52,14 +52,14 @@ const SECTIONS = [
   {
     title: "6. Cookies & tracking technologies",
     body: [
-      "We use cookies and similar technologies to keep you signed in, remember your preferences, and understand how WakeelHub is used so we can improve it.",
+      "We use cookies and similar technologies to keep you signed in, remember your preferences, and understand how Wakeel360 is used so we can improve it.",
       "You can control cookies through your browser settings; however, disabling certain cookies may affect the functionality of the platform, such as staying logged in to your dashboard.",
     ],
   },
   {
     title: "7. Children's privacy",
     body: [
-      "WakeelHub is intended for users who are at least 18 years old or the age of majority in their jurisdiction. We do not knowingly collect personal information from children.",
+      "Wakeel360 is intended for users who are at least 18 years old or the age of majority in their jurisdiction. We do not knowingly collect personal information from children.",
     ],
   },
   {
@@ -71,7 +71,7 @@ const SECTIONS = [
   {
     title: "9. Contact us",
     body: [
-      "If you have any questions or concerns about this Privacy Policy or how your information is handled, please reach out to us at privacy@wakeelhub.pk or through our Contact page.",
+      "If you have any questions or concerns about this Privacy Policy or how your information is handled, please reach out to us at privacy@Wakeel360.pk or through our Contact page.",
     ],
   },
 ];
@@ -82,16 +82,16 @@ export default function PrivacyPolicyPage() {
       <PageHeader
         eyebrow="Legal"
         title="Privacy Policy"
-        description="Last updated: January 15, 2026. This policy explains how WakeelHub Pakistan collects, uses, shares, and protects your personal information."
+        description="Last updated: January 15, 2026. This policy explains how Wakeel360 Pakistan collects, uses, shares, and protects your personal information."
       />
 
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
         <Card className="border-border/80 p-6 sm:p-10">
           <p className="text-sm leading-7 text-muted-foreground">
-            WakeelHub Pakistan (&ldquo;WakeelHub&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is
+            Wakeel360 Pakistan (&ldquo;Wakeel360&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is
             committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and
             safeguard your information when you use our website, mobile experience, and related services
-            (collectively, the &ldquo;Platform&rdquo;). By using WakeelHub, you agree to the collection and use of
+            (collectively, the &ldquo;Platform&rdquo;). By using Wakeel360, you agree to the collection and use of
             information in accordance with this policy.
           </p>
 
@@ -112,3 +112,4 @@ export default function PrivacyPolicyPage() {
     </>
   );
 }
+

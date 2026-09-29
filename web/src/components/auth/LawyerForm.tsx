@@ -187,7 +187,7 @@ export function LawyerForm({
           </h2>
 
           <p className="mt-1 text-sm text-muted-foreground">
-            Build your professional profile on WakeelHub.
+            Build your professional profile on Wakeel360.
           </p>
         </div>
       </div>

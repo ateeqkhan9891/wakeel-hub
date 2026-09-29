@@ -1,8 +1,8 @@
 {
-  "name": "wakeelhub-pakistan",
+  "name": "Wakeel360-pakistan",
   "version": "0.1.0",
   "private": true,
-  "description": "WakeelHub Pakistan monorepo. The deployable Next.js app lives in web/.",
+  "description": "Wakeel360 Pakistan monorepo. The deployable Next.js app lives in web/.",
   "scripts": {
     "web:dev": "npm --prefix web run dev",
     "web:build": "npm --prefix web run build",
@@ -11,3 +11,4 @@
     "web:typecheck": "npm --prefix web run typecheck"
   }
 }
+

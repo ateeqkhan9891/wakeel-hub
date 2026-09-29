@@ -32,7 +32,7 @@ const REVIEW_PRINCIPLES = [
 const REVIEW_FLOW = [
   "Consultation is completed",
   "Client submits a review",
-  "WakeelHub checks the submission",
+  "Wakeel360 checks the submission",
   "Approved review appears on the profile",
 ] as const;
 

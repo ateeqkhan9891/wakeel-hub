@@ -23,7 +23,7 @@ export function AudienceSection() {
           <p className="mt-5 max-w-xl text-sm leading-7 text-zinc-600 sm:text-base">
             Clients need a clearer way to discover and manage legal help.
             Advocates need practical tools for presenting their practice and
-            organizing their work. WakeelHub brings both experiences together.
+            organizing their work. Wakeel360 brings both experiences together.
           </p>
         </motion.div>
 

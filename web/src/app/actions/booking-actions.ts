@@ -128,7 +128,7 @@ export async function createBooking(input: CreateBookingInput): Promise<ActionRe
         to: (lawyerProfile as { email?: string } | null)?.email,
         subject: "New consultation request",
         title: "New consultation request",
-        body: `${profile.full_name} requested a consultation on WakeelHub.`,
+        body: `${profile.full_name} requested a consultation on Wakeel360.`,
         path: "/dashboard/lawyer/bookings",
         idempotencyKey: `booking-created-lawyer-${created?.id}`,
       }),
@@ -263,3 +263,4 @@ export async function clearReadNotifications(): Promise<ActionResult> {
   revalidatePath("/dashboard/lawyer");
   return { ok: true };
 }
+

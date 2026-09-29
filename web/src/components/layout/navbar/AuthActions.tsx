@@ -33,7 +33,7 @@ const getStartedOptions = [
   {
     href: "/register/lawyer",
     eyebrow: "LAWYER",
-    title: "Join WakeelHub",
+    title: "Join Wakeel360",
     description:
       "Build your profile and connect with new clients.",
     icon: Scale,
@@ -81,7 +81,7 @@ export function AuthActions() {
         >
           <div className="px-3 pb-2.5 pt-2">
             <p className="text-sm font-semibold text-[#0F2347]">
-              Get started with WakeelHub
+              Get started with Wakeel360
             </p>
 
             <p className="mt-1 text-xs leading-5 text-slate-500">

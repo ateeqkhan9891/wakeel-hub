@@ -1,30 +1,84 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
+
 import { useRouter } from "next/navigation";
-import { TrendingUp, Percent, Wallet, Banknote, Loader2, Search, SlidersHorizontal, FileDown, CheckSquare } from "lucide-react";
+
+import {
+  Banknote,
+  CheckSquare,
+  FileDown,
+  Loader2,
+  Percent,
+  Search,
+  SlidersHorizontal,
+  TrendingUp,
+  Wallet,
+} from "lucide-react";
+
 import { toast } from "sonner";
 
 import { formatDate, formatPKR } from "@/lib/utils";
-import type { AdminCommissionOverview, CommissionSettings } from "@/lib/data/commission";
-import { bulkUpdatePayoutStatus, updatePayoutStatus, updateCommissionSettings } from "@/app/actions/payment-actions";
+
+import type {
+  AdminCommissionOverview,
+  CommissionSettings,
+} from "@/lib/data/commission";
+
+import {
+  bulkUpdatePayoutStatus,
+  updateCommissionSettings,
+  updatePayoutStatus,
+} from "@/app/actions/payment-actions";
+
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { StatCard } from "@/components/dashboard/shared/stat-card";
 
-const PAYOUT_STATUSES = ["pending", "processing", "paid", "failed", "cancelled"];
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
-export function AdminCommission({ overview, settings }: { overview: AdminCommissionOverview; settings: CommissionSettings }) {
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const PAYOUT_STATUSES = [
+  "pending",
+  "processing",
+  "paid",
+  "failed",
+  "cancelled",
+];
+
+export function AdminCommission({
+  overview,
+  settings,
+}: {
+  overview: AdminCommissionOverview;
+  settings: CommissionSettings;
+}) {
   const router = useRouter();
   const [pending, start] = useTransition();
 
-  const [commission, setCommission] = useState(String(settings.commissionPercentage));
-  const [gateway, setGateway] = useState(String(settings.gatewayFeePercentage));
+  const [commission, setCommission] = useState(
+    String(settings.commissionPercentage),
+  );
+
+  const [gateway, setGateway] = useState(
+    String(settings.gatewayFeePercentage),
+  );
 
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("all");
@@ -33,27 +87,56 @@ export function AdminCommission({ overview, settings }: { overview: AdminCommiss
   const [selected, setSelected] = useState<string[]>([]);
 
   const rows = useMemo(() => {
-    return overview.rows.filter((r) => {
-      if (status !== "all" && r.payoutStatus !== status) return false;
-      if (q) {
-        const hay = `${r.lawyerName ?? ""} ${r.clientName ?? ""} ${r.reference} ${r.receiptNumber}`.toLowerCase();
-        if (!hay.includes(q.toLowerCase())) return false;
+    return overview.rows.filter((row) => {
+      if (status !== "all" && row.payoutStatus !== status) {
+        return false;
       }
-      const d = (r.paidAt ?? r.createdAt).slice(0, 10);
-      if (from && d < from) return false;
-      if (to && d > to) return false;
+
+      if (q) {
+        const haystack =
+          `${row.lawyerName ?? ""} ${row.clientName ?? ""} ${row.reference} ${row.receiptNumber}`.toLowerCase();
+
+        if (!haystack.includes(q.toLowerCase())) {
+          return false;
+        }
+      }
+
+      const date = (row.paidAt ?? row.createdAt).slice(0, 10);
+
+      if (from && date < from) {
+        return false;
+      }
+
+      if (to && date > to) {
+        return false;
+      }
+
       return true;
     });
   }, [overview.rows, q, status, from, to]);
 
   const visibleIds = rows.map((row) => row.id);
+
   const selectedVisible = selected.filter((id) => visibleIds.includes(id));
-  const allVisibleSelected = visibleIds.length > 0 && selectedVisible.length === visibleIds.length;
+
+  const allVisibleSelected =
+    visibleIds.length > 0 &&
+    selectedVisible.length === visibleIds.length;
 
   function saveSettings() {
     start(async () => {
-      const res = await updateCommissionSettings(Number(commission), Number(gateway));
-      if (!res.ok) { toast.error("Could not save", { description: res.error }); return; }
+      const result = await updateCommissionSettings(
+        Number(commission),
+        Number(gateway),
+      );
+
+      if (!result.ok) {
+        toast.error("Could not save", {
+          description: result.error,
+        });
+        return;
+      }
+
       toast.success("Commission settings updated");
       router.refresh();
     });
@@ -61,8 +144,15 @@ export function AdminCommission({ overview, settings }: { overview: AdminCommiss
 
   function setPayout(id: string, value: string) {
     start(async () => {
-      const res = await updatePayoutStatus(id, value);
-      if (!res.ok) { toast.error("Could not update payout", { description: res.error }); return; }
+      const result = await updatePayoutStatus(id, value);
+
+      if (!result.ok) {
+        toast.error("Could not update payout", {
+          description: result.error,
+        });
+        return;
+      }
+
       toast.success(`Payout marked ${value}`);
       router.refresh();
     });
@@ -70,9 +160,24 @@ export function AdminCommission({ overview, settings }: { overview: AdminCommiss
 
   function bulkSetPayout(value: string) {
     start(async () => {
-      const res = await bulkUpdatePayoutStatus(selectedVisible, value);
-      if (!res.ok) { toast.error("Could not update payouts", { description: res.error }); return; }
-      toast.success(`${selectedVisible.length} payout${selectedVisible.length === 1 ? "" : "s"} marked ${value}`);
+      const result = await bulkUpdatePayoutStatus(
+        selectedVisible,
+        value,
+      );
+
+      if (!result.ok) {
+        toast.error("Could not update payouts", {
+          description: result.error,
+        });
+        return;
+      }
+
+      toast.success(
+        `${selectedVisible.length} payout${
+          selectedVisible.length === 1 ? "" : "s"
+        } marked ${value}`,
+      );
+
       setSelected([]);
       router.refresh();
     });
@@ -81,10 +186,15 @@ export function AdminCommission({ overview, settings }: { overview: AdminCommiss
   function toggleAllVisible(checked: boolean) {
     setSelected((current) => {
       const currentSet = new Set(current);
+
       for (const id of visibleIds) {
-        if (checked) currentSet.add(id);
-        else currentSet.delete(id);
+        if (checked) {
+          currentSet.add(id);
+        } else {
+          currentSet.delete(id);
+        }
       }
+
       return [...currentSet];
     });
   }
@@ -92,151 +202,481 @@ export function AdminCommission({ overview, settings }: { overview: AdminCommiss
   function toggleOne(id: string, checked: boolean) {
     setSelected((current) => {
       const currentSet = new Set(current);
-      if (checked) currentSet.add(id);
-      else currentSet.delete(id);
+
+      if (checked) {
+        currentSet.add(id);
+      } else {
+        currentSet.delete(id);
+      }
+
       return [...currentSet];
     });
   }
 
   function exportCsv() {
-    const header = ["Date", "Client", "Lawyer", "Gross", "Commission", "Lawyer net", "Gateway fee", "Payment status", "Payout status", "Reference", "Receipt"];
-    const csvRows = rows.map((r) => [
-      formatDate(r.paidAt ?? r.createdAt),
-      r.clientName ?? "Client",
-      r.lawyerName ?? "",
-      r.gross,
-      r.commissionAmount,
-      r.lawyerNet,
-      r.gatewayFee,
-      r.paymentStatus,
-      r.payoutStatus,
-      r.reference,
-      r.receiptNumber,
+    const header = [
+      "Date",
+      "Client",
+      "Lawyer",
+      "Gross",
+      "Commission",
+      "Lawyer net",
+      "Gateway fee",
+      "Payment status",
+      "Payout status",
+      "Reference",
+      "Receipt",
+    ];
+
+    const csvRows = rows.map((row) => [
+      formatDate(row.paidAt ?? row.createdAt),
+      row.clientName ?? "Client",
+      row.lawyerName ?? "",
+      row.gross,
+      row.commissionAmount,
+      row.lawyerNet,
+      row.gatewayFee,
+      row.paymentStatus,
+      row.payoutStatus,
+      row.reference,
+      row.receiptNumber,
     ]);
-    const escape = (value: unknown) => `"${String(value).replaceAll("\"", "\"\"")}"`;
-    const csv = [header, ...csvRows].map((row) => row.map(escape).join(",")).join("\n");
-    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+
+    const escape = (value: unknown) =>
+      `"${String(value).replaceAll('"', '""')}"`;
+
+    const csv = [header, ...csvRows]
+      .map((row) => row.map(escape).join(","))
+      .join("\n");
+
+    const url = URL.createObjectURL(
+      new Blob([csv], {
+        type: "text/csv;charset=utf-8",
+      }),
+    );
+
     const link = document.createElement("a");
+
     link.href = url;
-    link.download = `wakeelhub-payouts-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.download = `Wakeel360-payouts-${new Date()
+      .toISOString()
+      .slice(0, 10)}.csv`;
+
     link.click();
+
     URL.revokeObjectURL(url);
   }
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard icon={TrendingUp} label="Total gross payments" value={formatPKR(overview.totalGross)} accent="gold" />
-        <StatCard icon={Percent} label="Platform commission" value={formatPKR(overview.totalCommission)} />
-        <StatCard icon={Wallet} label="Lawyer payable" value={formatPKR(overview.totalLawyerPayable)} />
-        <StatCard icon={Banknote} label="Gateway fees" value={formatPKR(overview.totalGatewayFees)} />
+    <div className="space-y-2.5">
+      <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-4">
+        <CommissionStat
+          icon={TrendingUp}
+          label="Total gross"
+          value={formatPKR(overview.totalGross)}
+          tone="gold"
+        />
+
+        <CommissionStat
+          icon={Percent}
+          label="Platform commission"
+          value={formatPKR(overview.totalCommission)}
+        />
+
+        <CommissionStat
+          icon={Wallet}
+          label="Lawyer payable"
+          value={formatPKR(overview.totalLawyerPayable)}
+        />
+
+        <CommissionStat
+          icon={Banknote}
+          label="Gateway fees"
+          value={formatPKR(overview.totalGatewayFees)}
+          tone="slate"
+        />
       </div>
 
-      <Card className="border-border/80 p-5">
-        <div className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/8 text-primary"><SlidersHorizontal className="h-4.5 w-4.5" /></span>
+      <Card className="border-slate-200 p-0 shadow-sm shadow-slate-200/20">
+        <div className="flex items-center gap-2.5 border-b border-slate-100 px-4 py-3 sm:px-5">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/8 text-primary">
+            <SlidersHorizontal
+              className="h-3.5 w-3.5"
+              aria-hidden
+            />
+          </span>
+
           <div>
-            <h3 className="font-heading text-sm font-semibold text-foreground">Commission settings</h3>
-            <p className="text-xs text-muted-foreground">Applied to every new consultation payment. Pro-plan lawyers are charged 0%.</p>
+            <h3 className="text-sm font-semibold text-slate-950">
+              Commission settings
+            </h3>
+
+            <p className="mt-0.5 text-[11px] text-slate-400">
+              Applied to new consultation payments. Pro-plan lawyers are
+              charged 0%.
+            </p>
           </div>
         </div>
-        <div className="mt-4 flex flex-wrap items-end gap-4">
+
+        <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:flex-wrap sm:items-end sm:px-5">
           <div className="space-y-1.5">
-            <Label className="text-xs">Platform commission (%)</Label>
-            <Input type="number" min={0} max={100} value={commission} onChange={(e) => setCommission(e.target.value)} className="h-10 w-40" />
+            <Label className="text-[11px] font-medium text-slate-500">
+              Platform commission (%)
+            </Label>
+
+            <Input
+              type="number"
+              min={0}
+              max={100}
+              value={commission}
+              onChange={(event) => setCommission(event.target.value)}
+              className="h-8 w-full text-xs sm:w-36"
+            />
           </div>
+
           <div className="space-y-1.5">
-            <Label className="text-xs">Gateway fee (%)</Label>
-            <Input type="number" min={0} max={100} value={gateway} onChange={(e) => setGateway(e.target.value)} className="h-10 w-40" />
+            <Label className="text-[11px] font-medium text-slate-500">
+              Gateway fee (%)
+            </Label>
+
+            <Input
+              type="number"
+              min={0}
+              max={100}
+              value={gateway}
+              onChange={(event) => setGateway(event.target.value)}
+              className="h-8 w-full text-xs sm:w-36"
+            />
           </div>
-          <Button onClick={saveSettings} disabled={pending} className="h-10 gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
-            {pending && <Loader2 className="h-4 w-4 animate-spin" />} Save settings
+
+          <Button
+            onClick={saveSettings}
+            disabled={pending}
+            className="h-8 gap-2 px-3 text-xs bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            {pending && (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            )}
+            Save settings
           </Button>
-          <p className="text-xs text-muted-foreground">Currency: <span className="font-medium text-foreground">{settings.currency}</span></p>
-        </div>
-      </Card>
 
-      <Card className="border-border/80 p-4">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search lawyer, client, ref..." value={q} onChange={(e) => setQ(e.target.value)} className="h-10 pl-9" />
-          </div>
-          <Select value={status} onValueChange={setStatus}>
-            <SelectTrigger className="h-10"><SelectValue placeholder="Payout status" /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All payouts</SelectItem>
-              {PAYOUT_STATUSES.map((s) => <SelectItem key={s} value={s} className="capitalize">{s}</SelectItem>)}
-            </SelectContent>
-          </Select>
-          <Input type="date" value={from} onChange={(e) => setFrom(e.target.value)} className="h-10" aria-label="From date" />
-          <Input type="date" value={to} onChange={(e) => setTo(e.target.value)} className="h-10" aria-label="To date" />
-        </div>
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
-          <p className="text-xs text-muted-foreground">{selectedVisible.length} selected in current view</p>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button type="button" variant="outline" size="sm" onClick={exportCsv} className="gap-1.5">
-              <FileDown className="h-3.5 w-3.5" /> Export CSV
-            </Button>
-            <Button type="button" variant="outline" size="sm" onClick={() => bulkSetPayout("processing")} disabled={pending || selectedVisible.length === 0} className="gap-1.5">
-              {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <CheckSquare className="h-3.5 w-3.5" />} Mark processing
-            </Button>
-            <Button type="button" size="sm" onClick={() => bulkSetPayout("paid")} disabled={pending || selectedVisible.length === 0} className="gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90">
-              {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <CheckSquare className="h-3.5 w-3.5" />} Mark paid
-            </Button>
+          <div className="flex h-8 items-center px-1 text-[11px] text-slate-400">
+            Currency:
+            <span className="ml-1 font-medium text-slate-700">
+              {settings.currency}
+            </span>
           </div>
         </div>
       </Card>
 
-      <Card className="overflow-hidden border-border/80 p-0">
-        <div className="border-b border-border px-5 py-3">
-          <h3 className="font-heading text-sm font-semibold text-foreground">Payments & payouts</h3>
-          <p className="text-xs text-muted-foreground">{rows.length} of {overview.rows.length} records</p>
+      <Card className="border-slate-200 p-0 shadow-sm shadow-slate-200/20">
+        <div className="flex flex-col gap-2.5 p-2.5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:flex">
+            <div className="relative sm:col-span-2 lg:w-64">
+              <Search
+                className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                aria-hidden
+              />
+
+              <Input
+                placeholder="Search lawyer, client, ref..."
+                value={q}
+                onChange={(event) => setQ(event.target.value)}
+                className="h-8 border-slate-200 bg-slate-50 pl-9 text-xs shadow-none focus-visible:bg-white"
+              />
+            </div>
+
+            <Select value={status} onValueChange={setStatus}>
+              <SelectTrigger className="h-8 text-xs lg:w-36">
+                <SelectValue placeholder="Payout status" />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectItem value="all">All payouts</SelectItem>
+
+                {PAYOUT_STATUSES.map((value) => (
+                  <SelectItem
+                    key={value}
+                    value={value}
+                    className="capitalize"
+                  >
+                    {value}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Input
+              type="date"
+              value={from}
+              onChange={(event) => setFrom(event.target.value)}
+              className="h-8 text-xs lg:w-36"
+              aria-label="From date"
+            />
+
+            <Input
+              type="date"
+              value={to}
+              onChange={(event) => setTo(event.target.value)}
+              className="h-8 text-xs lg:w-36"
+              aria-label="To date"
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-2 lg:justify-end">
+            <p className="text-[11px] text-slate-400">
+              <span className="font-medium text-slate-600">
+                {selectedVisible.length}
+              </span>{" "}
+              selected
+            </p>
+
+            <div className="flex flex-wrap items-center gap-1.5">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={exportCsv}
+                className="h-8 gap-1.5 px-2.5 text-xs"
+              >
+                <FileDown className="h-3.5 w-3.5" />
+                Export CSV
+              </Button>
+
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => bulkSetPayout("processing")}
+                disabled={pending || selectedVisible.length === 0}
+                className="h-8 gap-1.5 px-2.5 text-xs"
+              >
+                {pending ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <CheckSquare className="h-3.5 w-3.5" />
+                )}
+                Mark processing
+              </Button>
+
+              <Button
+                type="button"
+                size="sm"
+                onClick={() => bulkSetPayout("paid")}
+                disabled={pending || selectedVisible.length === 0}
+                className="h-8 gap-1.5 bg-primary px-2.5 text-xs text-primary-foreground hover:bg-primary/90"
+              >
+                {pending ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                ) : (
+                  <CheckSquare className="h-3.5 w-3.5" />
+                )}
+                Mark paid
+              </Button>
+            </div>
+          </div>
         </div>
+      </Card>
+
+      <Card className="overflow-hidden border-slate-200 p-0 shadow-sm shadow-slate-200/20">
+        <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-5">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-950">
+              Payments &amp; payouts
+            </h3>
+
+            <p className="mt-0.5 text-[11px] text-slate-400">
+              {rows.length} of {overview.rows.length} records
+            </p>
+          </div>
+
+          {selectedVisible.length > 0 && (
+            <span className="rounded-md bg-primary/8 px-2 py-1 text-[10px] font-medium text-primary">
+              {selectedVisible.length} selected
+            </span>
+          )}
+        </div>
+
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow>
-                <TableHead className="w-10">
-                  <Checkbox checked={allVisibleSelected} onCheckedChange={(v) => toggleAllVisible(v === true)} aria-label="Select visible payouts" />
+              <TableRow className="border-slate-100 bg-slate-50/60 hover:bg-slate-50/60">
+                <TableHead className="h-9 w-10">
+                  <Checkbox
+                    checked={allVisibleSelected}
+                    onCheckedChange={(value) =>
+                      toggleAllVisible(value === true)
+                    }
+                    aria-label="Select visible payouts"
+                  />
                 </TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Client</TableHead>
-                <TableHead>Lawyer</TableHead>
-                <TableHead className="text-right">Gross</TableHead>
-                <TableHead className="text-right">Commission</TableHead>
-                <TableHead className="text-right">Lawyer net</TableHead>
-                <TableHead>Payment</TableHead>
-                <TableHead>Payout</TableHead>
+
+                <TableHead className="h-9 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Date
+                </TableHead>
+
+                <TableHead className="h-9 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Client
+                </TableHead>
+
+                <TableHead className="h-9 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Lawyer
+                </TableHead>
+
+                <TableHead className="h-9 text-right text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Gross
+                </TableHead>
+
+                <TableHead className="h-9 text-right text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Commission
+                </TableHead>
+
+                <TableHead className="h-9 text-right text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Lawyer net
+                </TableHead>
+
+                <TableHead className="h-9 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Payment
+                </TableHead>
+
+                <TableHead className="h-9 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  Payout
+                </TableHead>
               </TableRow>
             </TableHeader>
+
             <TableBody>
               {rows.length === 0 ? (
-                <TableRow><TableCell colSpan={9} className="py-10 text-center text-sm text-muted-foreground">No payments match your filters.</TableCell></TableRow>
-              ) : rows.map((r) => (
-                <TableRow key={r.id}>
-                  <TableCell>
-                    <Checkbox checked={selected.includes(r.id)} onCheckedChange={(v) => toggleOne(r.id, v === true)} aria-label={`Select payout ${r.receiptNumber}`} />
-                  </TableCell>
-                  <TableCell className="text-muted-foreground">{formatDate(r.paidAt ?? r.createdAt)}</TableCell>
-                  <TableCell className="font-medium text-foreground">{r.clientName ?? "Client"}</TableCell>
-                  <TableCell className="text-muted-foreground">{r.lawyerName ?? "-"}</TableCell>
-                  <TableCell className="text-right text-foreground">{formatPKR(r.gross)}</TableCell>
-                  <TableCell className="text-right text-emerald-600">{formatPKR(r.commissionAmount)} <span className="text-[11px] text-muted-foreground">({r.commissionPct}%)</span></TableCell>
-                  <TableCell className="text-right text-foreground">{formatPKR(r.lawyerNet)}</TableCell>
-                  <TableCell><span className="text-xs font-medium capitalize text-muted-foreground">{r.paymentStatus}</span></TableCell>
-                  <TableCell>
-                    <Select value={r.payoutStatus} onValueChange={(v) => setPayout(r.id, v)} disabled={pending}>
-                      <SelectTrigger className="h-8 w-[130px] text-xs capitalize"><SelectValue /></SelectTrigger>
-                      <SelectContent>{PAYOUT_STATUSES.map((s) => <SelectItem key={s} value={s} className="capitalize">{s}</SelectItem>)}</SelectContent>
-                    </Select>
+                <TableRow>
+                  <TableCell
+                    colSpan={9}
+                    className="py-10 text-center text-xs text-slate-400"
+                  >
+                    No payments match your filters.
                   </TableCell>
                 </TableRow>
-              ))}
+              ) : (
+                rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    className="border-slate-100 hover:bg-slate-50/60"
+                  >
+                    <TableCell className="py-2.5">
+                      <Checkbox
+                        checked={selected.includes(row.id)}
+                        onCheckedChange={(value) =>
+                          toggleOne(row.id, value === true)
+                        }
+                        aria-label={`Select payout ${row.receiptNumber}`}
+                      />
+                    </TableCell>
+
+                    <TableCell className="whitespace-nowrap py-2.5 text-xs text-slate-500">
+                      {formatDate(row.paidAt ?? row.createdAt)}
+                    </TableCell>
+
+                    <TableCell className="py-2.5 text-xs font-medium text-slate-900">
+                      {row.clientName ?? "Client"}
+                    </TableCell>
+
+                    <TableCell className="py-2.5 text-xs text-slate-500">
+                      {row.lawyerName ?? "-"}
+                    </TableCell>
+
+                    <TableCell className="whitespace-nowrap py-2.5 text-right text-xs text-slate-900">
+                      {formatPKR(row.gross)}
+                    </TableCell>
+
+                    <TableCell className="whitespace-nowrap py-2.5 text-right text-xs text-emerald-600">
+                      {formatPKR(row.commissionAmount)}{" "}
+                      <span className="text-[10px] text-slate-400">
+                        ({row.commissionPct}%)
+                      </span>
+                    </TableCell>
+
+                    <TableCell className="whitespace-nowrap py-2.5 text-right text-xs text-slate-900">
+                      {formatPKR(row.lawyerNet)}
+                    </TableCell>
+
+                    <TableCell className="py-2.5">
+                      <span className="text-[11px] font-medium capitalize text-slate-500">
+                        {row.paymentStatus}
+                      </span>
+                    </TableCell>
+
+                    <TableCell className="py-2.5">
+                      <Select
+                        value={row.payoutStatus}
+                        onValueChange={(value) =>
+                          setPayout(row.id, value)
+                        }
+                        disabled={pending}
+                      >
+                        <SelectTrigger className="h-7 w-[118px] text-[11px] capitalize">
+                          <SelectValue />
+                        </SelectTrigger>
+
+                        <SelectContent>
+                          {PAYOUT_STATUSES.map((value) => (
+                            <SelectItem
+                              key={value}
+                              value={value}
+                              className="capitalize"
+                            >
+                              {value}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
             </TableBody>
           </Table>
         </div>
       </Card>
+    </div>
+  );
+}
+
+function CommissionStat({
+  icon: Icon,
+  label,
+  value,
+  tone = "primary",
+}: {
+  icon: typeof TrendingUp;
+  label: string;
+  value: string;
+  tone?: "primary" | "gold" | "slate";
+}) {
+  const iconClass =
+    tone === "gold"
+      ? "bg-amber-50 text-amber-600"
+      : tone === "slate"
+        ? "bg-slate-100 text-slate-500"
+        : "bg-primary/8 text-primary";
+
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white px-3.5 py-3 shadow-sm shadow-slate-200/20">
+      <div className="flex items-center gap-2.5">
+        <span
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${iconClass}`}
+        >
+          <Icon className="h-3.5 w-3.5" aria-hidden />
+        </span>
+
+        <div className="min-w-0">
+          <p className="truncate text-[10px] font-medium uppercase tracking-[0.08em] text-slate-400">
+            {label}
+          </p>
+
+          <p className="mt-0.5 truncate text-sm font-semibold tracking-tight text-slate-950">
+            {value}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

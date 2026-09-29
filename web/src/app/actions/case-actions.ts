@@ -84,7 +84,7 @@ export async function createCase(input: CaseInput): Promise<CaseActionResult> {
   if (error || !data) return { ok: false, error: error?.message ?? "Could not create case." };
 
   await saveNote(supabase, data.id, user.id, input.notes);
-  await addTimeline(supabase, data.id, user.id, "Case created", "Your case file was opened on WakeelHub.");
+  await addTimeline(supabase, data.id, user.id, "Case created", "Your case file was opened on Wakeel360.");
 
   revalidatePath("/dashboard/lawyer/cases");
   revalidatePath("/dashboard/lawyer");
@@ -447,3 +447,4 @@ export async function saveCaseNote(caseId: string, body: string): Promise<CaseAc
   revalidatePath(`/dashboard/lawyer/cases/${caseId}`);
   return { ok: true };
 }
+

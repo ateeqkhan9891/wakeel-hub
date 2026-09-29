@@ -1,6 +1,6 @@
-# WakeelHub Payments & Subscriptions Setup
+# Wakeel360 Payments & Subscriptions Setup
 
-WakeelHub now uses a callback-gated payment flow:
+Wakeel360 now uses a callback-gated payment flow:
 
 1. A server action creates a pending payment row.
 2. The user is redirected to a checkout URL.
@@ -74,3 +74,4 @@ The admin payments dashboard supports:
 - Payout status updates per row.
 - Bulk mark selected payouts as processing or paid.
 - CSV export of the current filtered table.
+

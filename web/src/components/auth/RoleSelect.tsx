@@ -24,7 +24,7 @@ export function RoleSelect({
         </h2>
 
         <p className="text-sm text-muted-foreground">
-          Choose how you want to use WakeelHub.
+          Choose how you want to use Wakeel360.
         </p>
       </div>
 

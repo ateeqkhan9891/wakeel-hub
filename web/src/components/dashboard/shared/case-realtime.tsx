@@ -25,3 +25,4 @@ export function CaseRealtime({ caseId }: { caseId: string }) {
   }, [caseId, router]);
   return null;
 }
+

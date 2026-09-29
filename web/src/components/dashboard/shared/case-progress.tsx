@@ -24,3 +24,4 @@ export function CaseProgress({ value, status }: { value: number; status: string 
     </div>
   );
 }
+

@@ -23,11 +23,11 @@ export const SEO_PRACTICE_PAGES: readonly SeoPracticePage[] = [
     shortName: "Family Lawyers",
     practiceAreaSlug: "family-law",
     description: "Find family lawyers in Pakistan for divorce, khula, child custody, maintenance, guardianship and related family court matters.",
-    intro: "Family matters can be sensitive and time-bound. WakeelHub helps you compare verified lawyer profiles, courts, languages and consultation fees before speaking with an advocate.",
+    intro: "Family matters can be sensitive and time-bound. Wakeel360 helps you compare verified lawyer profiles, courts, languages and consultation fees before speaking with an advocate.",
     services: ["Divorce and khula", "Child custody", "Maintenance", "Guardianship", "Family court petitions"],
     faqs: [
       { question: "How do I choose a family lawyer in Pakistan?", answer: "Compare the lawyer's city, courts, family law experience, languages, consultation fee and availability before booking a consultation." },
-      { question: "Can WakeelHub give family law advice?", answer: "No. WakeelHub is a marketplace. A qualified advocate can review your facts and guide you after consultation." },
+      { question: "Can Wakeel360 give family law advice?", answer: "No. Wakeel360 is a marketplace. A qualified advocate can review your facts and guide you after consultation." },
       { question: "What should I prepare before a family law consultation?", answer: "Bring CNIC details, marriage documents if relevant, notices, court papers, and a short timeline of events." },
     ],
   },
@@ -38,7 +38,7 @@ export const SEO_PRACTICE_PAGES: readonly SeoPracticePage[] = [
     shortName: "Property Lawyers",
     practiceAreaSlug: "property-law",
     description: "Find property lawyers in Pakistan for land disputes, possession issues, transfer matters, tenancy disputes and title verification.",
-    intro: "Property disputes often depend on documents, possession history and local court practice. Use WakeelHub to shortlist verified profiles before booking a consultation.",
+    intro: "Property disputes often depend on documents, possession history and local court practice. Use Wakeel360 to shortlist verified profiles before booking a consultation.",
     services: ["Land disputes", "Possession matters", "Title verification", "Transfer documents", "Tenancy disputes"],
     faqs: [
       { question: "When should I contact a property lawyer?", answer: "Consider speaking with a lawyer when a dispute involves possession, title documents, notices, inheritance property, tenancy, or transfer issues." },
@@ -53,11 +53,11 @@ export const SEO_PRACTICE_PAGES: readonly SeoPracticePage[] = [
     shortName: "Criminal Lawyers",
     practiceAreaSlug: "criminal-law",
     description: "Find criminal lawyers in Pakistan for bail, FIR matters, criminal trials, appeals and police-related legal issues.",
-    intro: "Criminal matters can move quickly. WakeelHub helps you find verified advocates by city, court, language and consultation mode so you can act with better preparation.",
+    intro: "Criminal matters can move quickly. Wakeel360 helps you find verified advocates by city, court, language and consultation mode so you can act with better preparation.",
     services: ["Bail", "FIR matters", "Criminal trial", "Appeals", "Police complaints"],
     faqs: [
       { question: "How quickly should I speak with a criminal lawyer?", answer: "If arrest, bail, FIR or court dates are involved, speak with a qualified advocate as soon as possible." },
-      { question: "Does WakeelHub handle emergency legal representation?", answer: "WakeelHub lists lawyer profiles and consultation options. Availability depends on the individual advocate." },
+      { question: "Does Wakeel360 handle emergency legal representation?", answer: "Wakeel360 lists lawyer profiles and consultation options. Availability depends on the individual advocate." },
       { question: "What information should I share with a criminal lawyer?", answer: "Share FIR details, police station, court notices, dates, names of parties and any available documents." },
     ],
   },
@@ -68,11 +68,11 @@ export const SEO_PRACTICE_PAGES: readonly SeoPracticePage[] = [
     shortName: "Corporate Lawyers",
     practiceAreaSlug: "corporate-law",
     description: "Find corporate lawyers in Pakistan for company matters, contracts, compliance, business disputes and commercial documentation.",
-    intro: "Business legal work needs clarity, documentation and timely review. WakeelHub helps companies and founders compare verified corporate lawyer profiles.",
+    intro: "Business legal work needs clarity, documentation and timely review. Wakeel360 helps companies and founders compare verified corporate lawyer profiles.",
     services: ["Company registration", "Commercial contracts", "Compliance", "Shareholder matters", "Business disputes"],
     faqs: [
       { question: "What does a corporate lawyer help with?", answer: "Corporate lawyers may assist with company documents, contracts, compliance, notices, business disputes and transaction review." },
-      { question: "Can startups use WakeelHub?", answer: "Yes. Founders can compare corporate lawyer profiles and book a consultation for business legal needs." },
+      { question: "Can startups use Wakeel360?", answer: "Yes. Founders can compare corporate lawyer profiles and book a consultation for business legal needs." },
       { question: "What should a business prepare before consultation?", answer: "Prepare company documents, contracts, notices, correspondence and a short explanation of the business issue." },
     ],
   },
@@ -83,11 +83,11 @@ export const SEO_PRACTICE_PAGES: readonly SeoPracticePage[] = [
     shortName: "Divorce Lawyers",
     practiceAreaSlug: "family-law",
     description: "Find divorce lawyers in Pakistan for divorce, khula, maintenance, custody and family court preparation.",
-    intro: "Divorce and khula matters require careful document preparation and court guidance. WakeelHub helps you compare family lawyer profiles without overstating outcomes.",
+    intro: "Divorce and khula matters require careful document preparation and court guidance. Wakeel360 helps you compare family lawyer profiles without overstating outcomes.",
     services: ["Divorce", "Khula", "Maintenance", "Custody issues", "Family court process"],
     faqs: [
       { question: "Is divorce handled by family lawyers in Pakistan?", answer: "Yes. Divorce, khula, maintenance and custody issues are commonly handled by family law advocates." },
-      { question: "Can WakeelHub predict the result of a divorce case?", answer: "No. Outcomes depend on facts, documents, court process and legal advice from a qualified advocate." },
+      { question: "Can Wakeel360 predict the result of a divorce case?", answer: "No. Outcomes depend on facts, documents, court process and legal advice from a qualified advocate." },
       { question: "What should I ask a divorce lawyer?", answer: "Ask about process, required documents, expected court steps, fee structure, timelines and communication method." },
     ],
   },
@@ -98,11 +98,11 @@ export const SEO_PRACTICE_PAGES: readonly SeoPracticePage[] = [
     shortName: "Tax Lawyers",
     practiceAreaSlug: "tax-law",
     description: "Find tax lawyers in Pakistan for FBR notices, income tax, sales tax, appeals, compliance and tax dispute support.",
-    intro: "Tax matters often involve notices, deadlines and document-heavy replies. WakeelHub helps you compare verified tax lawyer profiles before booking a consultation.",
+    intro: "Tax matters often involve notices, deadlines and document-heavy replies. Wakeel360 helps you compare verified tax lawyer profiles before booking a consultation.",
     services: ["FBR notices", "Income tax", "Sales tax", "Tax appeals", "Compliance review"],
     faqs: [
       { question: "When should I contact a tax lawyer?", answer: "Consider speaking with a tax lawyer when you receive an FBR notice, need to file an appeal, or face a tax dispute." },
-      { question: "Can WakeelHub file tax documents for me?", answer: "WakeelHub is a marketplace. The advocate or tax professional you hire can explain whether they provide filing support." },
+      { question: "Can Wakeel360 file tax documents for me?", answer: "Wakeel360 is a marketplace. The advocate or tax professional you hire can explain whether they provide filing support." },
       { question: "What should I prepare for a tax consultation?", answer: "Prepare notices, tax returns, NTN details, business records, bank statements and relevant correspondence." },
     ],
   },
@@ -227,3 +227,4 @@ export function relatedPracticeLinks(current: PracticeAreaSlug) {
       label: page.title,
     }));
 }
+

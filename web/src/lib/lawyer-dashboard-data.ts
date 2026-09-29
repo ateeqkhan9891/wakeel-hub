@@ -356,3 +356,4 @@ export function getLawyerDashboardStats(data: LawyerDashboardData) {
     notifications: data.notifications.filter((notification) => !notification.read).length,
   };
 }
+

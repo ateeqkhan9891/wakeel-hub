@@ -64,3 +64,4 @@ export function NotificationsList({ notifications }: { notifications: AppNotific
     </div>
   );
 }
+

@@ -194,3 +194,4 @@ async function getCaseLawyer(
     return fallbackName ? { name: fallbackName, slug: null, photoUrl: null, isVerified: false, professionalTitle: null, experienceYears: null } : null;
   }
 }
+

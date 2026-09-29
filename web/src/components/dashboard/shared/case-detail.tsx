@@ -138,3 +138,4 @@ export function CaseDetail({ caseFile, viewerRole }: { caseFile: CaseFile; viewe
     </div>
   );
 }
+

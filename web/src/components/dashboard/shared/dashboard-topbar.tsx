@@ -116,7 +116,7 @@ export function DashboardTopbar({
           </p>
 
           <p className="mt-0.5 text-[11px] text-slate-400">
-            Here&apos;s your WakeelHub overview.
+            Here&apos;s your Wakeel360 overview.
           </p>
         </div>
       </div>

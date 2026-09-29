@@ -27,8 +27,8 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "WakeelHub Pakistan - Find & Hire Verified Advocates Online",
-    template: "%s | WakeelHub Pakistan",
+    default: "Wakeel360 Pakistan - Find & Hire Verified Advocates Online",
+    template: "%s | Wakeel360 Pakistan",
   },
   description:
     "Find verified advocates in Pakistan by city, court and practice area. Compare lawyer profiles, book consultations, manage payments and follow your case online.",
@@ -37,24 +37,24 @@ export const metadata: Metadata = {
     "advocates Pakistan",
     "find a lawyer Pakistan",
     "legal consultation Pakistan",
-    "WakeelHub",
+    "Wakeel360",
     "hire advocate online",
     "Pakistan law firm directory",
   ],
-  authors: [{ name: "WakeelHub Pakistan" }],
+  authors: [{ name: "Wakeel360 Pakistan" }],
   openGraph: {
     type: "website",
     locale: "en_PK",
     url: siteUrl,
-    siteName: "WakeelHub Pakistan",
-    title: "WakeelHub Pakistan - Find & Hire Verified Advocates Online",
+    siteName: "Wakeel360 Pakistan",
+    title: "Wakeel360 Pakistan - Find & Hire Verified Advocates Online",
     description:
       "Search verified advocates across Pakistan by city, court and practice area. Book consultations, hire lawyers, pay online and track your case.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "WakeelHub Pakistan" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Wakeel360 Pakistan" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WakeelHub Pakistan - Find & Hire Verified Advocates Online",
+    title: "Wakeel360 Pakistan - Find & Hire Verified Advocates Online",
     description:
       "Compare verified advocates in Pakistan, book consultations, manage payments and track legal matters online.",
     images: ["/og-image.png"],
@@ -94,3 +94,4 @@ export default function RootLayout({
     </html>
   );
 }
+

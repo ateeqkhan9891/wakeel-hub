@@ -56,3 +56,4 @@ Deno.serve(async (req) => {
 
   return Response.json({ ok: true, expired: ids.length });
 });
+

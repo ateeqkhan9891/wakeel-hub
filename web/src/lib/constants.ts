@@ -237,9 +237,9 @@ export const PRICING_PLANS = [
 
 export const FAQS = [
   {
-    question: "How does WakeelHub verify advocates?",
+    question: "How does Wakeel360 verify advocates?",
     answer:
-      "Every lawyer on WakeelHub submits their Bar Council enrollment number and credentials, which our admin team manually cross-checks against Bar Council records before granting the verified advocate badge.",
+      "Every lawyer on Wakeel360 submits their Bar Council enrollment number and credentials, which our admin team manually cross-checks against Bar Council records before granting the verified advocate badge.",
   },
   {
     question: "Is it safe to pay for consultations online?",
@@ -249,12 +249,12 @@ export const FAQS = [
   {
     question: "Can I track my case after hiring a lawyer?",
     answer:
-      "Absolutely. Once you hire an advocate through WakeelHub, you get access to a case dashboard showing status updates, hearing dates, shared documents, and direct messaging with your lawyer.",
+      "Absolutely. Once you hire an advocate through Wakeel360, you get access to a case dashboard showing status updates, hearing dates, shared documents, and direct messaging with your lawyer.",
   },
   {
     question: "What cities and courts are covered?",
     answer:
-      "WakeelHub currently covers advocates practicing in Peshawar, Islamabad, Rawalpindi, Lahore, Karachi, Quetta, Multan, Faisalabad, Abbottabad and Swat - across High Courts, District Courts and specialized tribunals.",
+      "Wakeel360 currently covers advocates practicing in Peshawar, Islamabad, Rawalpindi, Lahore, Karachi, Quetta, Multan, Faisalabad, Abbottabad and Swat - across High Courts, District Courts and specialized tribunals.",
   },
   {
     question: "How do I register as a lawyer on the platform?",
@@ -267,3 +267,4 @@ export const FAQS = [
       "You can leave a review describing your experience, and our support team can help mediate. Repeated complaints against an advocate trigger an internal review by our admin team.",
   },
 ];
+

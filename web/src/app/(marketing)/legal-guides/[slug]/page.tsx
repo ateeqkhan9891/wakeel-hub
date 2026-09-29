@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
 
   const path = `/legal-guides/${guide.slug}`;
   return {
-    title: `${guide.title} | WakeelHub`,
+    title: `${guide.title} | Wakeel360`,
     description: guide.description,
     alternates: { canonical: path },
     openGraph: {
-      title: `${guide.title} | WakeelHub`,
+      title: `${guide.title} | Wakeel360`,
       description: guide.description,
       url: absoluteUrl(path),
       type: "article",
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
     },
     twitter: {
       card: "summary_large_image",
-      title: `${guide.title} | WakeelHub`,
+      title: `${guide.title} | Wakeel360`,
       description: guide.description,
       images: ["/og-image.png"],
     },
@@ -66,11 +66,11 @@ export default async function LegalGuideArticlePage({ params }: { params: Promis
             url: absoluteUrl(path),
             author: {
               "@type": "Organization",
-              name: "WakeelHub Pakistan",
+              name: "Wakeel360 Pakistan",
             },
             publisher: {
               "@type": "Organization",
-              name: "WakeelHub Pakistan",
+              name: "Wakeel360 Pakistan",
               logo: {
                 "@type": "ImageObject",
                 url: absoluteUrl("/og-image.png"),
@@ -121,7 +121,7 @@ export default async function LegalGuideArticlePage({ params }: { params: Promis
             <Card className="border-slate-200 bg-slate-950 p-6 text-white shadow-sm">
               <h2 className="font-heading text-xl font-semibold">Ready to compare lawyer profiles?</h2>
               <p className="mt-3 text-sm leading-7 text-white/70">
-                Use WakeelHub to search verified lawyer profiles by city, practice area, court, language and fee.
+                Use Wakeel360 to search verified lawyer profiles by city, practice area, court, language and fee.
               </p>
               <Link href="/find-lawyers" className="mt-5 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950">
                 Search lawyers

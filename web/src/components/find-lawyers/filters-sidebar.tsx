@@ -179,3 +179,4 @@ function FilterCheckbox({ id, label, checked, onChange }: { id: string; label: s
     </div>
   );
 }
+

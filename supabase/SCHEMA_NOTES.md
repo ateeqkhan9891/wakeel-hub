@@ -1,4 +1,4 @@
-# WakeelHub Pakistan - Production Schema Notes
+# Wakeel360 Pakistan - Production Schema Notes
 
 `schema.sql` is a **single, idempotent, copy-paste script** for the Supabase
 SQL Editor. Paste the whole file, run it once on a fresh project, done.
@@ -148,3 +148,4 @@ Supabase (each query MUST be scoped by the authenticated user):
 > First admin: sign the account up normally, then promote it once:
 > `update public.profiles set role = 'admin' where email = 'you@domain.com';`
 > (or set `role: 'admin'` in the signup metadata for that one account).
+

@@ -127,3 +127,4 @@ export async function getUnreadMessagesCount(): Promise<number> {
 
   return count ?? 0;
 }
+

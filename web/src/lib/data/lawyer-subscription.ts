@@ -112,3 +112,4 @@ export async function getSubscriptionInvoice(id: string): Promise<SubscriptionIn
     lawyerEmail: p?.email ?? user.email ?? "",
   };
 }
+

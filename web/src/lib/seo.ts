@@ -23,7 +23,7 @@ function resolveSiteUrl(): string {
       // ignore invalid value and try the next candidate
     }
   }
-  return process.env.NODE_ENV === "production" ? "https://wakeelhub.pk" : "http://localhost:3000";
+  return process.env.NODE_ENV === "production" ? "https://Wakeel360.pk" : "http://localhost:3000";
 }
 
 export const siteUrl = resolveSiteUrl();
@@ -94,7 +94,7 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "WakeelHub Pakistan",
+    name: "Wakeel360 Pakistan",
     url: siteUrl,
     logo: absoluteUrl("/og-image.png"),
     sameAs: [],
@@ -111,7 +111,7 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "WakeelHub Pakistan",
+    name: "Wakeel360 Pakistan",
     url: siteUrl,
     potentialAction: {
       "@type": "SearchAction",
@@ -145,7 +145,7 @@ export function lawyerLegalServiceJsonLd(lawyer: Lawyer) {
   return {
     "@context": "https://schema.org",
     "@type": "LegalService",
-    name: `${lawyer.fullName} - WakeelHub lawyer profile`,
+    name: `${lawyer.fullName} - Wakeel360 lawyer profile`,
     url: absoluteUrl(`/lawyers/${lawyer.slug}`),
     image: absoluteUrl(lawyer.photoUrl),
     areaServed: [
@@ -182,3 +182,4 @@ export function lawyerLegalServiceJsonLd(lawyer: Lawyer) {
 export function practiceSlugFromName(name: string): PracticeAreaSlug | undefined {
   return PRACTICE_AREAS.find((area) => area.name.toLowerCase() === name.toLowerCase())?.slug;
 }
+

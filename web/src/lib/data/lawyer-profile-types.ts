@@ -92,3 +92,4 @@ export type LawyerProfileUpdate = Omit<
   LawyerFullProfile,
   "id" | "slug" | "email" | "verificationStatus" | "rating" | "reviewCount" | "totalConsultations" | "responseRate" | "isFeatured" | "isVerified"
 >;
+

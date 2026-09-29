@@ -38,7 +38,7 @@ export function FinalCta() {
 
           <p className="mt-5 max-w-2xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
             Whether you are looking for legal help or building your practice,
-            WakeelHub is designed to bring the important parts of the journey
+            Wakeel360 is designed to bring the important parts of the journey
             into one connected experience.
           </p>
 
@@ -67,7 +67,7 @@ export function FinalCta() {
           </div>
 
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/30">
-            WakeelHub
+            Wakeel360
           </span>
         </div>
       </div>

@@ -37,11 +37,12 @@ export async function generateMetadata({
   params,
 }: LawyerPageProps): Promise<Metadata> {
   const { slug } = await params;
+
   const lawyer = await getPublicLawyerBySlug(slug);
 
   if (!lawyer) {
     return {
-      title: "Lawyer not found | WakeelHub",
+      title: "Lawyer not found | Wakeel360",
     };
   }
 
@@ -54,10 +55,10 @@ export async function generateMetadata({
     .join(", ");
 
   return {
-    title: `${lawyer.fullName} | ${practiceAreas || "Advocate"} | WakeelHub`,
+    title: `${lawyer.fullName} | ${practiceAreas || "Advocate"} | Wakeel360`,
     description:
       lawyer.about ||
-      `View ${lawyer.fullName}'s profile, practice areas, experience, reviews, availability, and consultation details on WakeelHub.`,
+      `View ${lawyer.fullName}'s profile, practice areas, experience, reviews, availability, and consultation details on Wakeel360.`,
     alternates: {
       canonical: absoluteUrl(`/lawyers/${lawyer.slug}`),
     },
@@ -95,7 +96,7 @@ export default async function LawyerPage({
       answer: `${lawyer.fullName} lists ${
         practiceAreas.map((area) => area.label).join(", ") ||
         "legal matters"
-      } on this WakeelHub profile.`,
+      } on this Wakeel360 profile.`,
     },
     {
       question: `Where does ${lawyer.fullName} practice?`,
@@ -112,24 +113,24 @@ export default async function LawyerPage({
     {
       question: "Is this profile legal advice?",
       answer:
-        "No. WakeelHub is a lawyer marketplace and does not provide legal advice. Consult a qualified advocate for advice about your specific circumstances.",
+        "No. Wakeel360 is a lawyer marketplace and does not provide legal advice. Consult a qualified advocate for advice about your specific circumstances.",
     },
   ];
 
   const breadcrumb = breadcrumbJsonLd([
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Find lawyers",
-    path: "/lawyers",
-  },
-  {
-    name: lawyer.fullName,
-    path: `/lawyers/${lawyer.slug}`,
-  },
-]);
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "Find lawyers",
+      path: "/lawyers",
+    },
+    {
+      name: lawyer.fullName,
+      path: `/lawyers/${lawyer.slug}`,
+    },
+  ]);
 
   const person = lawyerPersonJsonLd(lawyer);
   const legalService = lawyerLegalServiceJsonLd(lawyer);
@@ -158,8 +159,8 @@ export default async function LawyerPage({
         />
 
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
-            <div className="min-w-0 space-y-6">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+            <div className="min-w-0 space-y-5">
               <LawyerProfileOverview lawyer={lawyer} />
 
               <LawyerProfileReviews
@@ -176,7 +177,7 @@ export default async function LawyerPage({
               <SimilarLawyers lawyers={similarLawyers} />
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               <LawyerProfileSidebar lawyer={lawyer} />
 
               <LawyerProfileTrust lawyer={lawyer} />

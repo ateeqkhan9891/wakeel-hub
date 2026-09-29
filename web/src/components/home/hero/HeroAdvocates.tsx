@@ -126,7 +126,7 @@ export function HeroAdvocates({
       {advocates.length === 0 ? (
         <div className="mt-4 flex flex-col items-center gap-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50/60 px-6 py-10 text-center">
           <p className="text-sm font-medium text-slate-700">
-            Verified advocates are joining WakeelHub
+            Verified advocates are joining Wakeel360
           </p>
 
           <p className="text-xs text-slate-500">

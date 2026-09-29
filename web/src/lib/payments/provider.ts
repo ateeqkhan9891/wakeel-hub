@@ -52,7 +52,7 @@ function callbackSecret() {
     throw new Error("PAYMENT_CALLBACK_SECRET is required in production.");
   }
 
-  return secret ?? "wakeelhub-dev-payment-secret";
+  return secret ?? "Wakeel360-dev-payment-secret";
 }
 
 function canonicalParams(params: URLSearchParams) {
@@ -224,3 +224,4 @@ export function getPaymentProviderByName(name: string | null): PaymentProvider {
       return new SandboxPaymentProvider();
   }
 }
+

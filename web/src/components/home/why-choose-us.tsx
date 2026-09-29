@@ -53,7 +53,7 @@ export function WhyChooseUs() {
     <section className="border-y border-border/70 bg-secondary/20">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <SectionHeading
-          eyebrow="Why WakeelHub"
+          eyebrow="Why Wakeel360"
           title="A simpler way to find legal help"
           description="Everything you need to discover, evaluate, and communicate with advocates through one trusted platform."
         />

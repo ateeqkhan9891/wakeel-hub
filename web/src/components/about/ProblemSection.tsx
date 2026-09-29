@@ -24,7 +24,7 @@ export function ProblemSection() {
 
             <div className="mt-8 border-l-2 border-amber-400 pl-5">
               <p className="text-sm font-medium leading-6 text-zinc-700">
-                WakeelHub is designed to make the legal journey easier to
+                Wakeel360 is designed to make the legal journey easier to
                 discover, understand, and manage.
               </p>
             </div>

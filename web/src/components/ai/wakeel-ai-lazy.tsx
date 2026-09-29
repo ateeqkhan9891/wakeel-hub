@@ -10,3 +10,4 @@ const WakeelAIFloatingButton = dynamic(
 export function WakeelAILazy() {
   return <WakeelAIFloatingButton />;
 }
+

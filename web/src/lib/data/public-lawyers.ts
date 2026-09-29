@@ -193,3 +193,4 @@ export async function getPublicLawyerBySlug(slug: string): Promise<Lawyer | null
     reviews,
   };
 }
+

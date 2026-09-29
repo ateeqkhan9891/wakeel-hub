@@ -48,10 +48,10 @@ export function SeoInternalLinks({ featuredLawyers }: { featuredLawyers: Feature
   Areas of practice
 </span>
             <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-slate-950">
-              Explore WakeelHub by legal need
+              Explore Wakeel360 by legal need
             </h2>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              Browse useful pages by practice area, city, lawyer profile and guide. WakeelHub uses real profile data and
+              Browse useful pages by practice area, city, lawyer profile and guide. Wakeel360 uses real profile data and
               avoids fake rankings, fake reviews and inflated lawyer counts.
             </p>
             <button
@@ -99,3 +99,4 @@ export function SeoInternalLinks({ featuredLawyers }: { featuredLawyers: Feature
     </section>
   );
 }
+

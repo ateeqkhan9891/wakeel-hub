@@ -386,7 +386,7 @@ export function PracticeAreas() {
           </h2>
 
           <p className="mt-4 text-base leading-7 text-muted-foreground">
-            Explore the areas of law covered by WakeelHub, from family and
+            Explore the areas of law covered by Wakeel360, from family and
             property matters to corporate, tax, and specialist disputes.
           </p>
 

@@ -1,19 +1,50 @@
 import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
+
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-export type AdminTone = "navy" | "gold" | "emerald" | "rose" | "blue" | "slate";
+export type AdminTone =
+  | "navy"
+  | "gold"
+  | "emerald"
+  | "rose"
+  | "blue"
+  | "slate";
 
-const TONES: Record<AdminTone, string> = {
-  navy: "bg-primary/8 text-primary",
-  gold: "bg-amber-50 text-amber-600",
-  emerald: "bg-emerald-50 text-emerald-600",
-  rose: "bg-rose-50 text-rose-600",
-  blue: "bg-blue-50 text-blue-600",
-  slate: "bg-slate-100 text-slate-500",
+const TONES: Record<
+  AdminTone,
+  {
+    icon: string;
+    accent: string;
+  }
+> = {
+  navy: {
+    icon: "bg-primary/8 text-primary",
+    accent: "bg-primary",
+  },
+  gold: {
+    icon: "bg-amber-50 text-amber-600",
+    accent: "bg-amber-500",
+  },
+  emerald: {
+    icon: "bg-emerald-50 text-emerald-600",
+    accent: "bg-emerald-500",
+  },
+  rose: {
+    icon: "bg-rose-50 text-rose-600",
+    accent: "bg-rose-500",
+  },
+  blue: {
+    icon: "bg-blue-50 text-blue-600",
+    accent: "bg-blue-500",
+  },
+  slate: {
+    icon: "bg-slate-100 text-slate-500",
+    accent: "bg-slate-400",
+  },
 };
 
-/** Compact white metric card used across the admin panel. */
 export function AdminStat({
   icon: Icon,
   label,
@@ -27,21 +58,47 @@ export function AdminStat({
   helper?: string;
   tone?: AdminTone;
 }) {
+  const styles = TONES[tone];
+
   return (
-    <Card className="rounded-xl border-slate-200 bg-white p-4 shadow-sm shadow-slate-200/40 ring-0">
-      <div className="flex items-start justify-between gap-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
-        <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg", TONES[tone])}>
+    <Card className="group relative overflow-hidden rounded-none border-0 bg-white p-5 shadow-none ring-0 transition-colors hover:bg-slate-50/70">
+      <div
+        className={cn(
+          "absolute inset-y-0 left-0 w-0.5 opacity-0 transition-opacity group-hover:opacity-100",
+          styles.accent,
+        )}
+      />
+
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400">
+            {label}
+          </p>
+
+          <p className="mt-3 truncate text-2xl font-semibold tracking-tight text-slate-950 sm:text-[26px]">
+            {value}
+          </p>
+
+          {helper && (
+            <p className="mt-1.5 truncate text-xs leading-5 text-slate-500">
+              {helper}
+            </p>
+          )}
+        </div>
+
+        <span
+          className={cn(
+            "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-transform duration-200 group-hover:scale-105",
+            styles.icon,
+          )}
+        >
           <Icon className="h-4 w-4" aria-hidden />
         </span>
       </div>
-      <p className="mt-3 text-2xl font-semibold tracking-tight text-slate-950">{value}</p>
-      {helper && <p className="mt-1 text-xs leading-5 text-slate-500">{helper}</p>}
     </Card>
   );
 }
 
-/** Standard admin section card with a heading + optional action slot. */
 export function AdminSection({
   title,
   icon: Icon,
@@ -51,18 +108,20 @@ export function AdminSection({
 }: {
   title: string;
   icon?: LucideIcon;
-  action?: React.ReactNode;
-  children: React.ReactNode;
+  action?: ReactNode;
+  children: ReactNode;
   className?: string;
 }) {
   return (
     <Card className={cn("border-slate-200 p-5 ring-0", className)}>
       <div className="mb-4 flex items-center justify-between gap-3">
         <h2 className="flex items-center gap-2 font-heading text-sm font-semibold text-slate-950">
-          {Icon && <Icon className="h-4 w-4 text-gold" />} {title}
+          {Icon && <Icon className="h-4 w-4 text-gold" />}
+          {title}
         </h2>
         {action}
       </div>
+
       {children}
     </Card>
   );

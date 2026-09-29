@@ -37,7 +37,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
         <div className="flex items-start justify-between gap-4 border-b border-border pb-6">
           <div className="flex items-center gap-2.5">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground"><Scale className="h-5 w-5" /></span>
-            <div><p className="font-heading text-lg font-semibold text-foreground">WakeelHub Pakistan</p><p className="text-xs text-muted-foreground">Verified legal marketplace</p></div>
+            <div><p className="font-heading text-lg font-semibold text-foreground">Wakeel360 Pakistan</p><p className="text-xs text-muted-foreground">Verified legal marketplace</p></div>
           </div>
           <div className="text-right"><p className="font-heading text-xl font-semibold text-foreground">RECEIPT</p><p className="mt-1 text-xs text-muted-foreground">{r.receiptNumber}</p></div>
         </div>
@@ -73,7 +73,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
         </div>
 
         <p className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
-          Thank you for using WakeelHub Pakistan. This receipt was generated electronically and is valid without a signature.
+          Thank you for using Wakeel360 Pakistan. This receipt was generated electronically and is valid without a signature.
         </p>
       </div>
     </div>

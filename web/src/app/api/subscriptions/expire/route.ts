@@ -11,3 +11,4 @@ export async function POST(request: NextRequest) {
   const result = await expirePastDueSubscriptions();
   return NextResponse.json(result);
 }
+

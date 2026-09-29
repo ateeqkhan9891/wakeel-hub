@@ -109,3 +109,4 @@ export async function getLawyerCase(id: string): Promise<CaseDetail | null> {
     hearings,
   };
 }
+

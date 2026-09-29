@@ -95,3 +95,4 @@ export async function getClientPaymentInvoice(id: string): Promise<ClientPayment
     createdAt: r.created_at as string,
   };
 }
+

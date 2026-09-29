@@ -163,3 +163,4 @@ export async function submitVerification(
   revalidatePath("/dashboard/lawyer");
   return { ok: true };
 }
+

@@ -39,7 +39,7 @@ export async function submitContactMessage(input: z.infer<typeof contactSchema>)
   if (supportTo) {
     const emailResult = await sendEmail({
   to: supportTo,
-  subject: `WakeelHub contact: ${parsed.data.topic}`,
+  subject: `Wakeel360 contact: ${parsed.data.topic}`,
   html: basicEmail(
     `New message from ${parsed.data.fullName}`,
     `${parsed.data.message}<br><br>Email: ${parsed.data.email}`,
@@ -58,3 +58,4 @@ if (!emailResult.ok) {
 
   return { ok: true };
 }
+

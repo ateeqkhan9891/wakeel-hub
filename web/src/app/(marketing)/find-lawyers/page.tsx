@@ -43,3 +43,4 @@ export default async function FindLawyersPage({
 
   return <FindLawyersClient initialFilters={initialFilters} lawyers={lawyers} />;
 }
+

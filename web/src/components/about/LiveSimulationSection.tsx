@@ -17,7 +17,7 @@ export function LiveSimulationSection() {
             <Kicker>How it works</Kicker>
 
             <h2 className="mt-5 max-w-xl text-3xl font-semibold tracking-[-0.035em] text-zinc-950 sm:text-4xl">
-              Watch one legal matter move through WakeelHub.
+              Watch one legal matter move through Wakeel360.
             </h2>
           </div>
 

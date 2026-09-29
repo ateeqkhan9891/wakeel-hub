@@ -8,7 +8,7 @@ interface EmailInput {
   idempotencyKey?: string;
 }
 
-const FROM = process.env.RESEND_FROM_EMAIL ?? "WakeelHub Pakistan <onboarding@resend.dev>";
+const FROM = process.env.RESEND_FROM_EMAIL ?? "Wakeel360 Pakistan <onboarding@resend.dev>";
 
 export async function sendEmail(input: EmailInput) {
   const key = process.env.RESEND_API_KEY;
@@ -48,7 +48,7 @@ export function basicEmail(title: string, body: string, action?: { label: string
           ? `<a href="${action.url}" style="display:inline-block;background:#0f172a;color:white;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:600">${action.label}</a>`
           : ""
       }
-      <p style="font-size:12px;color:#6b7280;margin-top:24px">WakeelHub Pakistan</p>
+      <p style="font-size:12px;color:#6b7280;margin-top:24px">Wakeel360 Pakistan</p>
     </div>
   `;
 }
@@ -56,7 +56,7 @@ export function basicEmail(title: string, body: string, action?: { label: string
 export async function sendTransactionalEmail(input: { to?: string | null; subject: string; title: string; body: string; path?: string; idempotencyKey?: string }) {
   if (!input.to) return { ok: false, skipped: true, error: "Missing recipient." };
   const origin = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? "";
-  const action = input.path && origin ? { label: "Open WakeelHub", url: `${origin}${input.path}` } : undefined;
+  const action = input.path && origin ? { label: "Open Wakeel360", url: `${origin}${input.path}` } : undefined;
   return sendEmail({
     to: input.to,
     subject: input.subject,
@@ -65,3 +65,4 @@ export async function sendTransactionalEmail(input: { to?: string | null; subjec
     idempotencyKey: input.idempotencyKey,
   });
 }
+

@@ -8,7 +8,7 @@ export function Faq() {
       <SectionHeading
         eyebrow="FAQ"
         title="Frequently asked questions"
-        description="Everything you need to know about using WakeelHub - for clients and lawyers alike."
+        description="Everything you need to know about using Wakeel360 - for clients and lawyers alike."
       />
       <Accordion type="single" collapsible className="mt-10 w-full">
         {FAQS.map((faq, i) => (
@@ -25,3 +25,4 @@ export function Faq() {
     </section>
   );
 }
+

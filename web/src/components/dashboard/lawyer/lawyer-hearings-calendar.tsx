@@ -83,3 +83,4 @@ export function LawyerHearingsCalendar({ hearings }: { hearings: LawyerHearingRo
     </div>
   );
 }
+

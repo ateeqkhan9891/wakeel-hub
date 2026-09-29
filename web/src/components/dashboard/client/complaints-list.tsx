@@ -72,3 +72,4 @@ export function ComplaintsList({ reports }: { reports: AdminComplaint[] }) {
     </div>
   );
 }
+

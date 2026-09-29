@@ -55,3 +55,4 @@ export function PayBookingButton({ bookingId, amount, lawyerName }: { bookingId:
     </Dialog>
   );
 }
+

@@ -41,12 +41,12 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
   const path = `/${seoSlug}`;
   const title =
     parsed.type === "practice"
-      ? `${parsed.page.title} | WakeelHub`
-      : `${parsed.page.shortName} in ${parsed.city} | WakeelHub`;
+      ? `${parsed.page.title} | Wakeel360`
+      : `${parsed.page.shortName} in ${parsed.city} | Wakeel360`;
   const description =
     parsed.type === "practice"
       ? parsed.page.description
-      : `Find ${parsed.page.shortName.toLowerCase()} in ${parsed.city}, Pakistan. Compare verified lawyer profiles, practice areas, courts, fees and consultation options on WakeelHub.`;
+      : `Find ${parsed.page.shortName.toLowerCase()} in ${parsed.city}, Pakistan. Compare verified lawyer profiles, practice areas, courts, fees and consultation options on Wakeel360.`;
 
   return {
     title,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
       description,
       url: absoluteUrl(path),
       type: "website",
-      siteName: "WakeelHub Pakistan",
+      siteName: "Wakeel360 Pakistan",
       images: [{ url: "/og-image.png", width: 1200, height: 630, alt: title }],
     },
     twitter: {
@@ -144,9 +144,9 @@ function PracticeSeoPage({
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:px-8">
         <div className="space-y-10">
           <Card className="border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="font-heading text-2xl font-semibold text-slate-950">How WakeelHub helps with {page.shortName.toLowerCase()}</h2>
+            <h2 className="font-heading text-2xl font-semibold text-slate-950">How Wakeel360 helps with {page.shortName.toLowerCase()}</h2>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              WakeelHub does not provide legal advice or promise outcomes. It helps you compare verified lawyer
+              Wakeel360 does not provide legal advice or promise outcomes. It helps you compare verified lawyer
               profiles, practice areas, city, courts, languages, consultation fees and availability before you speak
               with a qualified advocate.
             </p>
@@ -160,8 +160,8 @@ function PracticeSeoPage({
           </Card>
 
           <LawyerResults
-            title={`${page.shortName} on WakeelHub`}
-            description="These are real public lawyer profiles from the WakeelHub directory. Availability, fees and profile details are controlled from each lawyer profile."
+            title={`${page.shortName} on Wakeel360`}
+            description="These are real public lawyer profiles from the Wakeel360 directory. Availability, fees and profile details are controlled from each lawyer profile."
             matches={relatedLawyers}
             emptyHref={`/find-lawyers?practiceArea=${page.practiceAreaSlug}`}
           />
@@ -209,12 +209,12 @@ function CityPracticeSeoPage({
       answer: `Compare verified profiles by practice area, courts, languages, consultation fee and availability. You can then book a consultation with a lawyer whose profile fits your matter.`,
     },
     {
-      question: `Are ${city} lawyer profiles verified on WakeelHub?`,
-      answer: "WakeelHub verifies lawyer profiles through Bar Council credential checks before a verified profile appears publicly.",
+      question: `Are ${city} lawyer profiles verified on Wakeel360?`,
+      answer: "Wakeel360 verifies lawyer profiles through Bar Council credential checks before a verified profile appears publicly.",
     },
     {
-      question: `Can WakeelHub advise me on a ${page.shortName.toLowerCase()} matter?`,
-      answer: "No. WakeelHub is a marketplace and preparation tool. Legal advice should come from a qualified advocate after reviewing your facts.",
+      question: `Can Wakeel360 advise me on a ${page.shortName.toLowerCase()} matter?`,
+      answer: "No. Wakeel360 is a marketplace and preparation tool. Legal advice should come from a qualified advocate after reviewing your facts.",
     },
   ];
   const schema = [
@@ -263,7 +263,7 @@ function CityPracticeSeoPage({
 
           <LawyerResults
             title={`${page.shortName} listed for ${city}`}
-            description="If no exact local match is available yet, WakeelHub shows relevant nationwide profiles and keeps the directory honest."
+            description="If no exact local match is available yet, Wakeel360 shows relevant nationwide profiles and keeps the directory honest."
             matches={relatedLawyers}
             emptyHref={`/find-lawyers?practiceArea=${page.practiceAreaSlug}&city=${encodeURIComponent(city)}`}
           />
@@ -372,7 +372,7 @@ function LawyerResults({
         <Card className="mt-7 border-dashed border-slate-200 bg-white p-8 text-center shadow-sm">
           <p className="font-heading text-lg font-semibold text-slate-950">No exact public profiles listed yet</p>
           <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600">
-            WakeelHub avoids fake listings. Browse the live directory to compare currently available verified profiles.
+            Wakeel360 avoids fake listings. Browse the live directory to compare currently available verified profiles.
           </p>
           <Button asChild className="mt-5 bg-slate-950 text-white hover:bg-slate-800">
             <Link href={emptyHref}>Browse live directory</Link>
@@ -428,7 +428,7 @@ function TrustCard() {
       <div className="mt-4 space-y-3 text-sm leading-6 text-white/70">
         <p className="flex gap-2"><BadgeCheck className="mt-1 h-4 w-4 shrink-0 text-gold" /> No fake reviews or staged lawyer cards.</p>
         <p className="flex gap-2"><BadgeCheck className="mt-1 h-4 w-4 shrink-0 text-gold" /> Public pages use live verified profile data.</p>
-        <p className="flex gap-2"><BadgeCheck className="mt-1 h-4 w-4 shrink-0 text-gold" /> WakeelHub is not a law firm and does not provide legal advice.</p>
+        <p className="flex gap-2"><BadgeCheck className="mt-1 h-4 w-4 shrink-0 text-gold" /> Wakeel360 is not a law firm and does not provide legal advice.</p>
       </div>
     </Card>
   );
@@ -447,7 +447,7 @@ function legalServiceSchema(name: string, path: string, description: string, are
     },
     provider: {
       "@type": "Organization",
-      name: "WakeelHub Pakistan",
+      name: "Wakeel360 Pakistan",
       url: absoluteUrl("/"),
     },
     serviceType,

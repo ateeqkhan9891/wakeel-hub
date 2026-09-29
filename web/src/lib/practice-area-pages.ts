@@ -131,7 +131,7 @@ const FAMILY_LAW: PracticeAreaPageData = {
   faqs: [
     {
       title: "How much does a family lawyer cost?",
-      body: "Most initial consultations on WakeelHub range from Rs. 2,000 to Rs. 5,000 depending on city, seniority, and consultation mode.",
+      body: "Most initial consultations on Wakeel360 range from Rs. 2,000 to Rs. 5,000 depending on city, seniority, and consultation mode.",
     },
     {
       title: "How long does a custody case take?",
@@ -220,7 +220,7 @@ function fallbackPracticeArea(slug: PracticeAreaSlug): PracticeAreaPageData {
     recentConsultations: [],
     faqs: [
       { title: `How do I choose a ${area.name.toLowerCase()} lawyer?`, body: "Compare verification, court experience, relevant services, consultation fee, response time, and client ratings." },
-      { title: "Do I see lawyer listings immediately?", body: "No. WakeelHub first helps you understand the service and subcategory, then shows listings after you choose to view all lawyers." },
+      { title: "Do I see lawyer listings immediately?", body: "No. Wakeel360 first helps you understand the service and subcategory, then shows listings after you choose to view all lawyers." },
       { title: "Can I book online?", body: "Yes. Once you enter the lawyer directory or profile, you can request online or office consultations where available." },
     ],
   };
@@ -247,3 +247,4 @@ export function getSubcategoryStaticParams() {
     subcategory: item.slug,
   }));
 }
+

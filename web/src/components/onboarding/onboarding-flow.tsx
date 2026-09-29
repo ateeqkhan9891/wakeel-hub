@@ -20,7 +20,7 @@ const stages = [
   {
     number: 1,
     eyebrow: "First things first",
-    title: "Welcome to WakeelHub.",
+    title: "Welcome to Wakeel360.",
     description:
       "“I do believe in killing the messenger. Why? Because it sends a message.” — The Vampire Diaries",
     image: "/onboarding/onboarding-1.png",
@@ -88,7 +88,7 @@ export function OnboardingFlow() {
                 Getting started
               </p>
               <p className="mt-0.5 text-xs text-muted-foreground">
-                Set up your WakeelHub account
+                Set up your Wakeel360 account
               </p>
             </div>
 
@@ -185,7 +185,7 @@ export function OnboardingFlow() {
                       {isSubmitting
                         ? "Setting things up..."
                         : isLastStage
-                          ? "Enter WakeelHub"
+                          ? "Enter Wakeel360"
                           : "Continue"}
 
                       {!isSubmitting && (

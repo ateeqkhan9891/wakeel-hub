@@ -74,3 +74,4 @@ export async function FeaturedLawyers({ lawyers: lawyersProp }: { lawyers?: Lawy
     </section>
   );
 }
+

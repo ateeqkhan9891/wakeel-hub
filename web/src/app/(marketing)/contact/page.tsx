@@ -16,7 +16,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with the WakeelHub Pakistan team for support, lawyer verification, billing questions, or partnership inquiries.",
+    "Get in touch with the Wakeel360 Pakistan team for support, lawyer verification, billing questions, or partnership inquiries.",
   alternates: { canonical: "/contact" },
 };
 
@@ -25,7 +25,7 @@ const CONTACT_DETAILS = [
     icon: MapPin,
     title: "Office",
     lines: [
-      "WakeelHub Pakistan",
+      "Wakeel360 Pakistan",
       "Floor 4, Evacuee Trust Complex",
       "F-5/1, Islamabad, Pakistan",
     ],
@@ -38,7 +38,7 @@ const CONTACT_DETAILS = [
   {
     icon: Mail,
     title: "Email",
-    lines: ["ateeqrehmankhan0346@gmail.com", "lawyers@wakeelhub.pk"],
+    lines: ["ateeqrehmankhan0346@gmail.com", "lawyers@Wakeel360.pk"],
   },
   {
     icon: MessageCircle,
@@ -61,7 +61,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="How can we help?"
-        description="Have a fuckong question about WakeelHub? Send us a message and our team will help you with the next step."
+        description="Have a fuckong question about Wakeel360? Send us a message and our team will help you with the next step."
       />
 
       <section className="border-b border-border/70">

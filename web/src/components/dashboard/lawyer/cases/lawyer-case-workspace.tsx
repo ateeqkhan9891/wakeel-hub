@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition, type FormEvent } from "react";
 
 import {
   CalendarDays,
@@ -8,14 +8,19 @@ import {
   FileText,
   Lock,
   MessageSquareText,
+  Plus,
 } from "lucide-react";
 
 import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 
+import { addCaseUpdate } from "@/app/actions/case-actions";
 import { formatDate } from "@/lib/utils";
 
 import type {
@@ -43,6 +48,8 @@ export function LawyerCaseWorkspace({
   const [activeTab, setActiveTab] = useState<
     "timeline" | "hearings" | "documents"
   >("timeline");
+
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_300px]">
@@ -74,7 +81,37 @@ export function LawyerCaseWorkspace({
 
         <div className="p-5 sm:p-6">
           {activeTab === "timeline" && (
-            <Timeline timeline={timeline} />
+            <div className="space-y-5">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <h2 className="text-sm font-semibold text-slate-950">
+                    Case timeline
+                  </h2>
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    Record important activity and keep the client informed.
+                  </p>
+                </div>
+
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => setShowUpdateForm((value) => !value)}
+                  className="shrink-0 gap-1.5"
+                >
+                  <Plus className="h-3.5 w-3.5" />
+                  {showUpdateForm ? "Close" : "Add update"}
+                </Button>
+              </div>
+
+              {showUpdateForm && (
+                <AddUpdateForm
+                  caseId={record.id}
+                  onCancel={() => setShowUpdateForm(false)}
+                />
+              )}
+
+              <Timeline timeline={timeline} />
+            </div>
           )}
 
           {activeTab === "hearings" && (
@@ -131,6 +168,119 @@ export function LawyerCaseWorkspace({
   );
 }
 
+function AddUpdateForm({
+  caseId,
+  onCancel,
+}: {
+  caseId: string;
+  onCancel: () => void;
+}) {
+  const [isPending, startTransition] = useTransition();
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!title.trim()) {
+      toast.error("Update title is required.");
+      return;
+    }
+
+    if (!description.trim()) {
+      toast.error("Update description is required.");
+      return;
+    }
+
+    startTransition(async () => {
+      const result = await addCaseUpdate({
+        caseId,
+        title: title.trim(),
+        updateType: "general",
+        description: description.trim(),
+        visibleToClient: true,
+        notifyClient: true,
+      });
+
+      if (!result.ok) {
+        toast.error(result.error ?? "Could not add update.");
+        return;
+      }
+
+      toast.success("Case update added.");
+
+      setTitle("");
+      setDescription("");
+      onCancel();
+    });
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-xl border border-slate-200 bg-slate-50/60 p-4"
+    >
+      <div className="space-y-4">
+        <div className="space-y-1.5">
+          <Label
+            htmlFor="case-update-title"
+            className="text-xs font-semibold text-slate-700"
+          >
+            Update title
+          </Label>
+
+          <Input
+            id="case-update-title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            placeholder="e.g. Initial case review"
+            disabled={isPending}
+          />
+        </div>
+
+        <div className="space-y-1.5">
+          <Label
+            htmlFor="case-update-description"
+            className="text-xs font-semibold text-slate-700"
+          >
+            Description
+          </Label>
+
+          <Textarea
+            id="case-update-description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            placeholder="Describe what happened in this case..."
+            rows={4}
+            disabled={isPending}
+          />
+        </div>
+
+        <div className="flex items-center justify-end gap-2">
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={onCancel}
+            disabled={isPending}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            type="submit"
+            size="sm"
+            disabled={isPending}
+          >
+            {isPending ? "Adding..." : "Add update"}
+          </Button>
+        </div>
+      </div>
+    </form>
+  );
+}
+
 function TabButton({
   active,
   label,
@@ -181,7 +331,9 @@ function Timeline({
   timeline: CaseUpdateRow[];
 }) {
   if (timeline.length === 0) {
-    return <EmptyState text="No case updates have been recorded yet." />;
+    return (
+      <EmptyState text="No case updates have been recorded yet." />
+    );
   }
 
   return (
@@ -249,7 +401,9 @@ function Hearings({
   hearings: CaseHearingRow[];
 }) {
   if (hearings.length === 0) {
-    return <EmptyState text="No hearing dates have been recorded yet." />;
+    return (
+      <EmptyState text="No hearing dates have been recorded yet." />
+    );
   }
 
   return (
@@ -288,9 +442,7 @@ function Hearings({
           {(hearing.court || hearing.judge) && (
             <div className="mt-3 border-t border-slate-200 pt-3 text-xs text-slate-500">
               {hearing.court && <span>{hearing.court}</span>}
-
               {hearing.court && hearing.judge && <span> · </span>}
-
               {hearing.judge && <span>Judge {hearing.judge}</span>}
             </div>
           )}
@@ -315,7 +467,9 @@ function Documents({
   documents: CaseDocument[];
 }) {
   if (documents.length === 0) {
-    return <EmptyState text="No documents have been shared on this case." />;
+    return (
+      <EmptyState text="No documents have been shared on this case." />
+    );
   }
 
   return (

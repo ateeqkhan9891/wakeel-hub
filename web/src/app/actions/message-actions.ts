@@ -139,3 +139,4 @@ export async function markConversationRead(conversationId: string): Promise<Mess
   revalidatePath("/dashboard/lawyer");
   return { ok: true };
 }
+

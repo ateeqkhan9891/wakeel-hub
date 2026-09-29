@@ -33,7 +33,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
-              WakeelHub helps people in Pakistan compare verified advocates, book consultations,
+              Wakeel360 helps people in Pakistan compare verified advocates, book consultations,
               manage payments, and keep legal matters organized online.
             </p>
             <div className="mt-5 space-y-2 text-sm text-muted-foreground">
@@ -98,7 +98,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
-          <p>Copyright {new Date().getFullYear()} WakeelHub Pakistan. All rights reserved.</p>
+          <p>Copyright {new Date().getFullYear()} Wakeel360 Pakistan. All rights reserved.</p>
           <div className="flex items-center gap-6">
             {footerLinks.legal.map((link) => (
               <Link key={link.href} href={link.href} className="transition-colors hover:text-gold">
@@ -128,3 +128,4 @@ function FooterCol({ title, links }: { title: string; links: { href: string; lab
     </div>
   );
 }
+

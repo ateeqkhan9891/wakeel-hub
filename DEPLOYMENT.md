@@ -1,4 +1,4 @@
-# Deploying WakeelHub Pakistan to Vercel
+# Deploying Wakeel360 Pakistan to Vercel
 
 This is a monorepo. The deployable Next.js app lives in **`web/`** and has its
 own complete `package.json`. Deploy it as a Vercel project pointed at `web/`.
@@ -87,3 +87,4 @@ npm run web:start
 npm run web:lint
 npm run web:typecheck
 ```
+

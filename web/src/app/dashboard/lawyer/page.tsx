@@ -68,7 +68,7 @@ function completionItems(
         p?.verificationStatus === "pending",
       helper:
         p?.verificationStatus === "approved"
-          ? "Approved by WakeelHub"
+          ? "Approved by Wakeel360"
           : "Submit verification documents",
     },
     {

@@ -65,7 +65,7 @@ export async function activateSubscription(
       currency: "PKR",
       reference: (data?.reference_number as string | undefined) ?? ref,
       kind: "subscription",
-      description: `WakeelHub Pro ${period} subscription`,
+      description: `Wakeel360 Pro ${period} subscription`,
       customerEmail: user.email ?? undefined,
       origin,
       successPath: invoiceId ? `/dashboard/lawyer/billing/${invoiceId}/invoice` : "/dashboard/lawyer/billing",
@@ -115,3 +115,4 @@ export async function cancelSubscription(): Promise<SubscriptionResult> {
   revalidatePath("/find-lawyers");
   return { ok: true };
 }
+

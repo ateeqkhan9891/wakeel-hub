@@ -159,7 +159,7 @@ export function SettingsSecurity({
       <SettingsCard
         icon={LogOut}
         title="Session"
-        description="Sign out of your WakeelHub account on this device."
+        description="Sign out of your Wakeel360 account on this device."
       >
         <div className="flex flex-col gap-3 rounded-lg border border-slate-200 bg-slate-50/50 p-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">

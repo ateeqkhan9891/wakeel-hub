@@ -218,7 +218,7 @@ export function LoginPanel({
 
         <div className="relative flex justify-center">
           <span className="bg-background px-3 text-xs text-muted-foreground">
-            New to WakeelHub?
+            New to Wakeel360?
           </span>
         </div>
       </div>

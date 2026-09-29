@@ -164,7 +164,7 @@ export function LawyerProfileHeader({
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />
 
                 <span className="text-xs font-semibold text-slate-700">
-                  Active on WakeelHub
+                  Active on Wakeel360
                 </span>
               </div>
 

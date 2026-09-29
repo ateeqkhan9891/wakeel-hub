@@ -27,3 +27,4 @@ export const emptyFilters: Filters = {
   availabilityDay: null,
   sortBy: "rating",
 };
+

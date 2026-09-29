@@ -19,7 +19,7 @@ export function AboutHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            <Kicker>About WakeelHub</Kicker>
+            <Kicker>About Wakeel360</Kicker>
 
             <h1 className="mt-7 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-zinc-950 sm:text-5xl lg:text-6xl">
               Making legal help easier to{" "}
@@ -39,7 +39,7 @@ export function AboutHero() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
-              WakeelHub brings legal discovery, consultations, communication,
+              Wakeel360 brings legal discovery, consultations, communication,
               documents, hearings, and case progress into a more organized
               digital experience for clients and advocates.
             </p>

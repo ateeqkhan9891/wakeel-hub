@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: data.subheadline,
     alternates: { canonical: `/practice-areas/${data.parentSlug}/${data.slug}` },
     openGraph: {
-      title: `${data.headline} | WakeelHub Pakistan`,
+      title: `${data.headline} | Wakeel360 Pakistan`,
       description: data.subheadline,
     },
   };

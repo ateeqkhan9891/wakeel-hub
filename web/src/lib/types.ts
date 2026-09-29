@@ -227,3 +227,4 @@ export interface ComplaintReport {
   status: "open" | "investigating" | "resolved" | "dismissed";
   submittedAt: string;
 }
+

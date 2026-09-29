@@ -10,7 +10,7 @@ import { formatDate, formatPKR } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Subscription Invoice" };
 
-const PLAN_LABEL: Record<string, string> = { pro: "WakeelHub Pro", commission: "Pay-as-you-go" };
+const PLAN_LABEL: Record<string, string> = { pro: "Wakeel360 Pro", commission: "Pay-as-you-go" };
 
 export default async function SubscriptionInvoicePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -32,7 +32,7 @@ export default async function SubscriptionInvoicePage({ params }: { params: Prom
         <div className="flex items-start justify-between gap-4 border-b border-border pb-6">
           <div className="flex items-center gap-2.5">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground"><Scale className="h-5 w-5" /></span>
-            <div><p className="font-heading text-lg font-semibold text-foreground">WakeelHub Pakistan</p><p className="text-xs text-muted-foreground">Verified legal marketplace</p></div>
+            <div><p className="font-heading text-lg font-semibold text-foreground">Wakeel360 Pakistan</p><p className="text-xs text-muted-foreground">Verified legal marketplace</p></div>
           </div>
           <div className="text-right"><p className="font-heading text-xl font-semibold text-foreground">INVOICE</p><p className="mt-1 text-xs text-muted-foreground">{inv.invoiceNumber}</p></div>
         </div>
@@ -61,7 +61,7 @@ export default async function SubscriptionInvoicePage({ params }: { params: Prom
           <div className="flex justify-end pt-1"><StatusBadge status={inv.status} /></div>
         </div>
 
-        <p className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">Thank you for subscribing to WakeelHub Pakistan. This invoice was generated electronically and is valid without a signature.</p>
+        <p className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">Thank you for subscribing to Wakeel360 Pakistan. This invoice was generated electronically and is valid without a signature.</p>
       </div>
     </div>
   );

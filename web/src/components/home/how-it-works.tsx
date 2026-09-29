@@ -212,7 +212,7 @@ function PaymentPanel({ active, reduce }: { active: boolean; reduce: boolean }) 
     <Panel>
       <div className="rounded-xl bg-gradient-to-br from-primary to-primary/80 p-4 text-primary-foreground">
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-medium uppercase tracking-wider text-primary-foreground/60">WakeelHub Pay</span>
+          <span className="text-[11px] font-medium uppercase tracking-wider text-primary-foreground/60">Wakeel360 Pay</span>
           <CreditCard className="h-4 w-4 text-gold" />
         </div>
         <p className="mt-4 font-heading text-xl font-semibold">Rs. 4,000</p>
@@ -407,7 +407,7 @@ export function HowItWorks() {
         <SectionHeadingLocal
           eyebrow="How it works"
           title="From lawyer search to case tracking"
-          description="A simple look at how WakeelHub helps clients compare advocates, book consultations and keep legal matters organized."
+          description="A simple look at how Wakeel360 helps clients compare advocates, book consultations and keep legal matters organized."
         />
 
         <div ref={trackRef} className="relative mt-16">
@@ -467,3 +467,4 @@ export function PremiumBackdrop({ reduce }: { reduce: boolean }) {
     </div>
   );
 }
+

@@ -58,7 +58,7 @@ export async function decideVerificationRequest(
       status: decision,
       reviewed_by: admin.id,
       reviewed_at: new Date().toISOString(),
-      rejection_reason: decision === "rejected" ? "Rejected by WakeelHub admin review." : null,
+      rejection_reason: decision === "rejected" ? "Rejected by Wakeel360 admin review." : null,
     })
     .eq("id", requestId);
 
@@ -97,7 +97,7 @@ export async function decideVerificationRequest(
   const { data: profile } = await supabase.from("profiles").select("email").eq("id", request.lawyer_id).maybeSingle();
   await sendTransactionalEmail({
     to: (profile as { email?: string } | null)?.email,
-    subject: decision === "approved" ? "Your WakeelHub verification was approved" : "Your WakeelHub verification needs attention",
+    subject: decision === "approved" ? "Your Wakeel360 verification was approved" : "Your Wakeel360 verification needs attention",
     title: decision === "approved" ? "Verification approved" : "Verification rejected",
     body:
       decision === "approved"
@@ -117,3 +117,4 @@ export async function decideVerificationRequest(
 
   return { ok: true };
 }
+

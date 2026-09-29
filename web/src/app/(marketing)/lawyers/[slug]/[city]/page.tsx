@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
   if (!area || !cityName) return {};
 
   const title = `${area.name} Lawyers in ${cityName} - Verified Advocates`;
-  const description = `Find and book verified ${area.name.toLowerCase()} advocates in ${cityName}, Pakistan. Compare experience, fees, ratings and reviews, then book a consultation online with WakeelHub.`;
+  const description = `Find and book verified ${area.name.toLowerCase()} advocates in ${cityName}, Pakistan. Compare experience, fees, ratings and reviews, then book a consultation online with Wakeel360.`;
 
   return {
     title,
@@ -157,7 +157,7 @@ export default async function PracticeAreaCityPage({ params }: { params: Promise
               align="left"
               eyebrow={`${matches.length} found`}
               title={`${area.name} advocates practicing in ${cityName}`}
-              description={`These are verified advocate profiles currently available on WakeelHub for ${cityName}.`}
+              description={`These are verified advocate profiles currently available on Wakeel360 for ${cityName}.`}
             />
 
             {matches.length > 0 ? (
@@ -205,7 +205,7 @@ export default async function PracticeAreaCityPage({ params }: { params: Promise
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <ShieldCheck className="h-4.5 w-4.5" />
                 </span>
-                <p className="text-sm font-semibold text-foreground">Why book through WakeelHub</p>
+                <p className="text-sm font-semibold text-foreground">Why book through Wakeel360</p>
               </div>
               <ul className="mt-4 space-y-2.5 text-sm leading-6 text-muted-foreground">
                 <li>Every advocate badge is checked against Bar Council records.</li>

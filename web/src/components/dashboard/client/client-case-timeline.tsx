@@ -103,3 +103,4 @@ export function ClientCaseTimeline({ timeline }: { timeline: CaseTimelineEntry[]
     </div>
   );
 }
+

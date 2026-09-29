@@ -27,7 +27,7 @@ export function ComplaintForm() {
         toast.error("Could not file report", { description: result.error });
         return;
       }
-      toast.success("Report filed", { description: "WakeelHub support will review it from the admin dashboard." });
+      toast.success("Report filed", { description: "Wakeel360 support will review it from the admin dashboard." });
       setSubject("");
       setCategory("");
       setDescription("");
@@ -62,3 +62,4 @@ export function ComplaintForm() {
     </Card>
   );
 }
+

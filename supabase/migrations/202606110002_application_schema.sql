@@ -1,5 +1,5 @@
-﻿-- =====================================================================
--- WakeelHub Pakistan - Application schema
+-- =====================================================================
+-- Wakeel360 Pakistan - Application schema
 -- Generated from supabase/schema.sql sections 4-17.
 -- =====================================================================
 
@@ -1683,4 +1683,5 @@ create policy "chat attachment write" on storage.objects
 -- =====================================================================
 
 -- Continued in 202606110003_reference_data.sql.
+
 

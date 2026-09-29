@@ -27,8 +27,8 @@ export function BenefitsSplit() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <BenefitCard
           eyebrow="For Lawyers"
-          title="Grow your practice with WakeelHub"
-          description="Join thousands of advocates who use WakeelHub to reach new clients, manage cases efficiently, and build a trusted online reputation."
+          title="Grow your practice with Wakeel360"
+          description="Join thousands of advocates who use Wakeel360 to reach new clients, manage cases efficiently, and build a trusted online reputation."
           items={lawyerBenefits}
           cta={{ label: "Register as Lawyer", href: "/register/lawyer" }}
           accent="primary"
@@ -90,3 +90,4 @@ function BenefitCard({
     </Card>
   );
 }
+

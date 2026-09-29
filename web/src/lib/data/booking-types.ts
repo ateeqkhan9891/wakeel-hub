@@ -27,3 +27,4 @@ export const MODE_LABEL: Record<ConsultationModeEnum, string> = {
   in_person: "In-person",
   phone: "Phone",
 };
+

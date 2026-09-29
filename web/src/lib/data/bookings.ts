@@ -38,3 +38,4 @@ export async function getLawyerBookings(): Promise<BookingRow[]> {
 
   return (data as BookingRow[] | null) ?? [];
 }
+

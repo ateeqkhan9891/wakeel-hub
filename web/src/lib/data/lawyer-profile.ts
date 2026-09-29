@@ -123,3 +123,4 @@ export async function getMyLawyerProfile(): Promise<LawyerFullProfile | null> {
     isVerified: bool(lawyer?.is_verified),
   };
 }
+

@@ -9,7 +9,7 @@ import { FAQS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for WakeelHub Pakistan - free for clients, Rs. 2,000/month (or Rs. 18,000/year) for verified advocates, plus a commission-only pay-as-you-go plan.",
+    "Transparent pricing for Wakeel360 Pakistan - free for clients, Rs. 2,000/month (or Rs. 18,000/year) for verified advocates, plus a commission-only pay-as-you-go plan.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -28,7 +28,7 @@ export default function PricingPage() {
 
       <section className="border-t border-border bg-secondary/30 py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="FAQs" title="Frequently asked questions" description="Everything you need to know about using WakeelHub as a client or advocate." />
+          <SectionHeading eyebrow="FAQs" title="Frequently asked questions" description="Everything you need to know about using Wakeel360 as a client or advocate." />
 
           <div className="mt-10 space-y-4">
             {FAQS.map((faq) => (
@@ -50,3 +50,4 @@ export default function PricingPage() {
     </>
   );
 }
+

@@ -31,3 +31,4 @@ export interface ActiveConversation {
   bookingId: string | null;
   messages: ChatMessage[];
 }
+

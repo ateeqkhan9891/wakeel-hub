@@ -8,3 +8,4 @@ export function JsonLd({ data }: { data: JsonLdValue }) {
     />
   );
 }
+

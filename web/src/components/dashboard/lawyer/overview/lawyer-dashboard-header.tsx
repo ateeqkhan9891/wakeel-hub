@@ -81,7 +81,7 @@ export function LawyerDashboardHeader({
 
             <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
               {isLive
-                ? "Your profile is live and visible to clients on WakeelHub Pakistan."
+                ? "Your profile is live and visible to clients on Wakeel360 Pakistan."
                 : isVerified
                   ? "Your verification is complete. Activate your subscription to stay visible to clients."
                   : "Complete your verification and subscription setup to make your public profile client-ready."}

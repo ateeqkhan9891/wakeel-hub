@@ -21,7 +21,7 @@ export function ComparisonSection() {
           </div>
 
           <p className="max-w-xl text-sm leading-7 text-zinc-600 sm:text-base lg:justify-self-end">
-            WakeelHub brings common parts of the legal journey into one
+            Wakeel360 brings common parts of the legal journey into one
             structured experience, giving clients and advocates clearer
             information about the work happening around a matter.
           </p>
@@ -43,7 +43,7 @@ export function ComparisonSection() {
 
             <div className="border-l border-zinc-200 px-5 py-4 sm:px-7">
               <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-amber-700">
-                With WakeelHub
+                With Wakeel360
               </span>
             </div>
           </div>
@@ -70,7 +70,7 @@ export function ComparisonSection() {
                   </span>
 
                   <span className="text-sm font-medium leading-6 text-zinc-800">
-                    {row.wakeelHub}
+                    {row.Wakeel360}
                   </span>
                 </div>
               </div>

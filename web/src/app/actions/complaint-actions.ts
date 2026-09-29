@@ -79,3 +79,4 @@ export async function updateComplaintStatus(id: string, status: "investigating" 
   revalidatePath("/dashboard/admin");
   return { ok: true };
 }
+

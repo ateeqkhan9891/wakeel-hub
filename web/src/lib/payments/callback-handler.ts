@@ -69,3 +69,4 @@ export async function handlePaymentCallback(request: NextRequest, providerName?:
     return NextResponse.json({ ok: false, error: message }, { status: 400 });
   }
 }
+

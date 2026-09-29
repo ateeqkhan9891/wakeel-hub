@@ -163,7 +163,7 @@ export function WakeelAIAssistantPanel({ open, onClose }: { open: boolean; onClo
                   {hasAnalyzed ? profile.urgency : "We will flag time-sensitive details from your description."}
                 </ResultCard>
                 <ResultCard icon={BriefcaseBusiness} title="Recommended Lawyer Type">
-                  {hasAnalyzed ? profile.lawyerType : "WakeelHub will suggest the type of lawyer to compare."}
+                  {hasAnalyzed ? profile.lawyerType : "Wakeel360 will suggest the type of lawyer to compare."}
                 </ResultCard>
                 <ResultCard icon={FileText} title="Case Summary">
                   {hasAnalyzed ? profile.summary : "A short, lawyer-ready summary will be prepared here."}
@@ -194,3 +194,4 @@ export function WakeelAIAssistantPanel({ open, onClose }: { open: boolean; onClo
     </AnimatePresence>
   );
 }
+

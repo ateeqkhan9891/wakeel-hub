@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Cookie, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const STORAGE_KEY = "wakeelhub_cookie_consent";
+const STORAGE_KEY = "Wakeel360_cookie_consent";
 
 export function CookieConsent() {
   const reduce = useReducedMotion();
@@ -64,7 +64,7 @@ export function CookieConsent() {
               <div className="min-w-0">
                 <p className="font-heading text-sm font-semibold text-foreground">We value your privacy</p>
                 <p className="mt-1 text-[13px] leading-5 text-muted-foreground">
-                  WakeelHub uses cookies to keep you signed in, remember your preferences, and improve the platform. See our{" "}
+                  Wakeel360 uses cookies to keep you signed in, remember your preferences, and improve the platform. See our{" "}
                   <Link href="/privacy" className="font-medium text-primary underline-offset-2 hover:underline">Privacy Policy</Link>.
                 </p>
               </div>
@@ -84,3 +84,4 @@ export function CookieConsent() {
     </AnimatePresence>
   );
 }
+

@@ -51,7 +51,7 @@ export function LawyerProfileReviews({
           </h2>
 
           <p className="mt-0.5 text-xs text-slate-500">
-            Feedback from clients on WakeelHub
+            Feedback from clients on Wakeel360
           </p>
         </div>
       </div>

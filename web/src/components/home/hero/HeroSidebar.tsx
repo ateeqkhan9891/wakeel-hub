@@ -118,7 +118,7 @@ export function HeroSidebar() {
             </p>
 
             <h2 className="mt-1 text-lg font-semibold tracking-tight text-slate-950">
-              How WakeelHub works
+              How Wakeel360 works
             </h2>
           </div>
 

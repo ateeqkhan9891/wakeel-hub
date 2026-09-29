@@ -66,7 +66,7 @@ function getLawyerProfileFaqs(lawyer: Lawyer) {
   return [
     {
       question: `What practice areas does ${lawyer.fullName} handle?`,
-      answer: `${lawyer.fullName} lists ${practiceAreas} on this WakeelHub profile. You should confirm whether your specific facts fall within the lawyer's current practice before hiring.`,
+      answer: `${lawyer.fullName} lists ${practiceAreas} on this Wakeel360 profile. You should confirm whether your specific facts fall within the lawyer's current practice before hiring.`,
     },
     {
       question: `Where does ${lawyer.fullName} practice?`,
@@ -79,7 +79,7 @@ function getLawyerProfileFaqs(lawyer: Lawyer) {
     {
       question: "Is this profile legal advice?",
       answer:
-        "No. WakeelHub is a lawyer marketplace and does not provide legal advice. Book a consultation with a qualified advocate for advice on your specific facts.",
+        "No. Wakeel360 is a lawyer marketplace and does not provide legal advice. Book a consultation with a qualified advocate for advice on your specific facts.",
     },
   ];
 }

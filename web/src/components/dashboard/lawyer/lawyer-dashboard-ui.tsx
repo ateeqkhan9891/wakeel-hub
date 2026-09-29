@@ -118,3 +118,4 @@ export function TableScroll({ children }: { children: React.ReactNode }) {
 
 export const subduedButtonClass =
   "rounded-lg border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-950";
+

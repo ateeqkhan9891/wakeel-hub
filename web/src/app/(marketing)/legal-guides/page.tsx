@@ -9,12 +9,12 @@ import { LEGAL_GUIDES } from "@/lib/seo-content";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Legal Guides Pakistan | WakeelHub",
+  title: "Legal Guides Pakistan | Wakeel360",
   description:
     "Read general legal information guides for people in Pakistan preparing to speak with a qualified lawyer. No legal advice, no fake claims.",
   alternates: { canonical: "/legal-guides" },
   openGraph: {
-    title: "Legal Guides Pakistan | WakeelHub",
+    title: "Legal Guides Pakistan | Wakeel360",
     description:
       "General legal information for people preparing to find and speak with a lawyer in Pakistan.",
     url: absoluteUrl("/legal-guides"),
@@ -88,3 +88,4 @@ export default function LegalGuidesPage() {
     </main>
   );
 }
+

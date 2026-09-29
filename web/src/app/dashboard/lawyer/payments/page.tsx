@@ -32,7 +32,7 @@ export default async function LawyerPaymentsPage() {
       <LawyerEarningsTable earnings={earnings} />
 
       <p className="text-xs text-muted-foreground">
-        Payouts are processed by WakeelHub after each consultation is
+        Payouts are processed by Wakeel360 after each consultation is
         completed. You&apos;ll be notified when a payout is marked paid.
       </p>
     </div>

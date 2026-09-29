@@ -13,7 +13,7 @@ type LawyerDashboardSubscriptionProps = {
 };
 
 function SubscriptionLabel({ plan }: { plan: string | null | undefined }) {
-  if (plan === "pro") return "WakeelHub Pro";
+  if (plan === "pro") return "Wakeel360 Pro";
   if (plan === "commission") return "Pay-as-you-go";
   return "No active plan";
 }

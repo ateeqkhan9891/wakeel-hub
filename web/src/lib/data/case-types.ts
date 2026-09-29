@@ -82,3 +82,4 @@ export interface CaseInput {
   advanceReceived: string;
   notes: string;
 }
+

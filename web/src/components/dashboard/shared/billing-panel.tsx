@@ -184,7 +184,7 @@ function Detail({ icon: Icon, label, value, accent }: { icon: typeof Crown; labe
 function ActiveSubscriptionCard({ subscription, onPause, pausing }: { subscription: LawyerSubscription; onPause: () => void; pausing: boolean }) {
   const isPro = subscription.plan === "pro";
   const latest = subscription.payments[0];
-  const planName = isPro ? "WakeelHub Pro" : "Pay-as-you-go";
+  const planName = isPro ? "Wakeel360 Pro" : "Pay-as-you-go";
   const used = subscription.totalDays && subscription.daysRemaining !== null ? Math.min(100, Math.max(0, Math.round(((subscription.totalDays - subscription.daysRemaining) / subscription.totalDays) * 100))) : 0;
 
   return (
@@ -258,3 +258,4 @@ function ActiveSubscriptionCard({ subscription, onPause, pausing }: { subscripti
     </Card>
   );
 }
+

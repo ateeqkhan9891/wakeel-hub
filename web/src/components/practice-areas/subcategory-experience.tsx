@@ -217,3 +217,4 @@ export function SubcategoryExperience({ data }: { data: SubcategoryPageData }) {
     </main>
   );
 }
+

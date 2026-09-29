@@ -45,3 +45,4 @@ export async function getUnreadNotificationCount(): Promise<number> {
 
   return count ?? 0;
 }
+
